@@ -1,0 +1,14 @@
+<h1>新規ユーザー登録</h1>
+
+<%= form_for @user do |f| %>
+  <%= f.label :nickname, "ユーザー名" %>
+  <%= f.text_field :nickname %>
+
+  <%= f.label :email, "メールアドレス" %>
+  <%= f.email_field :email %>
+
+  <%= f.label :password, "パスワード" %>
+  <%= f.password_field :password %>
+
+  <%= f.submit "登録する" %>
+<% end %>
