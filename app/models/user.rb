@@ -9,6 +9,5 @@ class User < ApplicationRecord
                         format: { with: VALID_EMAIL_REGEX },
                         uniqueness: {case_sensitive: false}
   validates :password,  presence:true
-  # validates :role,      null: false #0:一般、1:ショップ、2:管理者
 
 end
