@@ -1,0 +1,12 @@
+%header.bg-light.py-2
+  .container
+    .row
+      .col.text-left
+        =link_to image_tag("logo2.png", height: "60"), root_path, class: "logo2"
+      .col.text-right.mt-2
+        .dropdown
+          %button(class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")Menus
+          %div(class="dropdown-menu" aria-labelledby="dropdownMenuButton")
+            =link_to "TOP", root_path, class: "dropdown-item"
+            =link_to "AtlAcadeとは？", about_path, class: "dropdown-item"
+            =link_to "ログイン", new_user_session_path, class: "dropdown-item"
