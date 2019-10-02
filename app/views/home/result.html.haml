@@ -1,0 +1,21 @@
+%section.bg-light.py-5
+  .container
+    %p ●件のお店が見つかりました。
+    .row
+      .col-lg-6
+        =render 'shop'
+      .col-lg-6
+        =render 'shop'
+    .row
+      .col-lg-6
+        =render 'shop'
+      .col-lg-6
+        =render 'shop'
+    .row
+      .col-lg-6
+        =render 'shop'
+      .col-lg-6
+        =render 'shop'
+
+%section.text-center.bg-light.pb-5
+  =link_to "条件を変えて検索する", root_path, class: "btn btn-primary w-50"
