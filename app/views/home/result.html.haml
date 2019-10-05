@@ -1,21 +1,12 @@
-%section.bg-light.py-5
+%section.bg-base.py-5.text-center
   .container
-    %p ●件のお店が見つかりました。
-    .row
-      .col-lg-6
-        =render 'shop'
-      .col-lg-6
-        =render 'shop'
-    .row
-      .col-lg-6
-        =render 'shop'
-      .col-lg-6
-        =render 'shop'
-    .row
-      .col-lg-6
-        =render 'shop'
-      .col-lg-6
-        =render 'shop'
+    %p.mb-5 ●件のお店が見つかりました。
+    - 3.times do
+      .row.mb-3
+        .col-lg-6
+          = render 'shop'
+        .col-lg-6
+          = render 'shop'
 
-%section.text-center.bg-light.pb-5
-  =link_to "条件を変えて検索する", root_path, class: "btn btn-primary w-50"
+%section.text-center.bg-base.pb-5
+  =link_to "条件を変えて検索する", root_path, class: "btn1 bg-main w-50"

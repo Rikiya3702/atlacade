@@ -1,12 +1,13 @@
-%header.bg-light.py-2
+%header.bg-main.py-2
   .container
     .row
       .col.text-left
-        =link_to image_tag("logo2.png", height: "60"), root_path, class: "logo2"
+        /= link_to image_tag("logo2.png", height: "60"), root_path, class: "logo2"
+        = link_to "AtlAcade", root_path, class: "bg-accent logo2"
       .col.text-right.mt-2
         .dropdown
-          %button(class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")メニュー
-          %div(class="dropdown-menu" aria-labelledby="dropdownMenuButton")
-            =link_to "TOP", root_path, class: "dropdown-item"
-            =link_to "AtlAcadeとは？", about_path, class: "dropdown-item"
-            =link_to "ログイン", new_user_session_path, class: "dropdown-item"
+          %button(class="btn bg-accent dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")メニュー
+          %div(class="dropdown-menu bg-base" aria-labelledby="dropdownMenuButton")
+            = link_to "TOP", root_path, class: "dropdown-item"
+            = link_to "AtlAcadeとは？", about_path, class: "dropdown-item"
+            = link_to "ログイン", new_user_session_path, class: "dropdown-item"

@@ -1,10 +1,9 @@
 .signboard{
-  background-color: #444957;
-  color: #eff;
+  background-color: rgba(68,73,87,0.5);
   -moz-box-shadow: 1px 1px 8px gray;
   -webkit-box-shadow: 1px 1px 8px gray;
   box-shadow: 1px 1px 10px gray;
-
+  font-size: 20px;
   .logo{
     width: 200px;
     height: 200px;
@@ -12,9 +11,16 @@
   h1{
     font-size: 60px;
     color: #ef8349;
-
-    text-shadow: 4px 4px 0 #533, 6px 6px 0 #311;
+    text-shadow: 2px 2px 0 #533, 4px 4px 0 #311;
   }
+
+  .title{
+    font-family: 'Poiret One', cursive;
+    color: #ff6d33;
+    font-size: 80px;
+    text-shadow: 2px 2px 0 #533, 4px 4px 0 #311;
+  }
+
 }
 .image-atlacade{
   margin-right: 30px;
@@ -48,7 +54,7 @@
 }
 
 .bg2 {
-	background-color: #ff6aa9;
+	//background-color: #ff6aa9;
 	-webkit-background-size: 10px 10px;
 	-moz-background-size: 10px 10px;
 	background-size: 10px 10px;
