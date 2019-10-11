@@ -1,0 +1,31 @@
+.bg-base {
+  background-color: #e6f8ff;
+  color: #17191a;
+}
+
+.bg-main{
+  background-color: #006e99;
+  color: #e6f8ff;
+}
+
+.bg-accent{
+  background-color: #ff6d33;
+  color: #002533;
+}
+
+.btn1 {
+  display:inline-block;
+  text-decoration: none;
+  //width: 25%;
+  opacity: 0.85;
+  padding: 15px;
+  // padding-top: 15px;
+  // padding-bottom: 15px;
+  border-radius: 15px;
+  line-height: 1;
+  &:hover{
+    opacity: 1.0;
+    color: #f8f8ff;
+    text-decoration: none;
+  }
+}

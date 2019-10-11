@@ -1,0 +1,11 @@
+.card.bg-light.mb-4.shadow
+  .card-header
+    = link_to "お店の名前", shop_path
+  .row.no-gutters
+    .col-md-4
+      = link_to image_tag('logo.png', size:"150x150"), shop_path
+    .col-md-8
+      .card-body
+        %h5.card-title
+        %p.card-text 本文
+        %p.card-text サンプルテキスト、サンプルテキスト、サンプルテキスト

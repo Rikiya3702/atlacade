@@ -1,3 +1,89 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.signboard{
+  background-color: rgba(68,73,87,0.5);
+  -moz-box-shadow: 1px 1px 8px gray;
+  -webkit-box-shadow: 1px 1px 8px gray;
+  box-shadow: 1px 1px 10px gray;
+  font-size: 20px;
+  .logo{
+    width: 200px;
+    height: 200px;
+  }
+  h1{
+    font-size: 60px;
+    color: #ef8349;
+    text-shadow: 2px 2px 0 #533, 4px 4px 0 #311;
+  }
+
+  .title{
+    font-family: 'Poiret One', cursive;
+    color: #ff6d33;
+    font-size: 80px;
+    text-shadow: 2px 2px 0 #533, 4px 4px 0 #311;
+  }
+
+}
+.image-atlacade{
+  margin-right: 30px;
+}
+
+.back1{
+  background-color: #7ff;
+}
+.back2{
+  background-color: #77f
+}
+.back3{
+  background-color: #ff7;
+}
+.back4{
+  background-color: #f7f
+}
+
+.checkbg {
+	background-image: -webkit-linear-gradient(transparent 80%, rgba(255, 255, 255, 0.3) 80%, rgba(255, 255, 255, 0.3) 100%),
+					-webkit-linear-gradient(0deg, transparent 80%, rgba(255, 255, 255, 0.3) 80%, rgba(255, 255, 255, 0.3) 100%);
+	background-image: linear-gradient(transparent 80%, rgba(255, 255, 255, 0.3) 80%, rgba(255, 255, 255, 0.3) 100%),
+					linear-gradient(90deg, transparent 80%, rgba(255, 255, 255, 0.3) 80%, rgba(255, 255, 255, 0.3) 100%);
+}
+
+.bg1 {
+	background-color: #ffd03f;
+	-webkit-background-size: 30px 30px;
+	-moz-background-size: 30px 30px;
+	background-size: 30px 30px;
+}
+
+.bg2 {
+	//background-color: #ff6aa9;
+	-webkit-background-size: 10px 10px;
+	-moz-background-size: 10px 10px;
+	background-size: 10px 10px;
+}
+
+.bg3 {
+	// background-color: #a4c62e;
+	-webkit-background-size: 40px 40px;
+	-moz-background-size: 40px 40px;
+	background-size: 40px 40px;
+}
+
+
+.checkbg2 {
+	background-image: -webkit-linear-gradient(transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 100%),
+					-webkit-linear-gradient(0deg, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 100%);
+	background-image: linear-gradient(transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 100%),
+					linear-gradient(90deg, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 100%);
+}
+
+
+.bg4 {
+	background-color: #ff9f9f;
+	-webkit-background-size: 20px 20px;
+	background-size: 20px 20px;
+}
+
+.bg5 {
+	background-color: #7ecfed;
+	-webkit-background-size: 50px 50px;
+	background-size: 50px 50px;
+}
