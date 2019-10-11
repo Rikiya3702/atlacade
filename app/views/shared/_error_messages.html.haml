@@ -1,0 +1,8 @@
+- if @shop.errors.any?
+  #error_explanation
+    .alert.alert-danger
+      入力エラーがあります
+    %ul
+    - @shop.errors.full_messages.each do |msg|
+      %li
+        = msg

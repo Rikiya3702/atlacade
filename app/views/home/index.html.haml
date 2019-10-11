@@ -6,11 +6,15 @@
       .col-md-8
         %span.title> AtlAcade
         へようこそ
-        %p こんにちは
+        %p
+          - if current_user
+            = "#{@user.nickname}さん"
+          こんにちは
 
 %section.text-center.bg-base.py-5
   %p 好きな条件で検索しよう！
   = link_to "検索する", result_path, class: "btn1 bg-main w-25"
+  = link_to "shops#index", shops_path, class: "btn1 bg-main w-25"
 
 %section.text-center.bg-base.py-5
   %p ログイン・新規登録はこちら

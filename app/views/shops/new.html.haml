@@ -1,0 +1,30 @@
+.section.bg-base
+  .container.text-center
+    .display-4.py-5 店舗の新規登録
+    = form_for @shop do |f|
+      .row.mb-4.col
+        = render 'shared/error_messages'
+        
+      .row.mb-4.col-lg-6
+        = f.label       :shop_name, "店舗名"
+        = f.text_field  :shop_name, class: "form_control"
+      .row.mb-4.col-lg-6
+        = f.label       :business_hours, "営業時間"
+        = f.text_field  :business_hours, class: "form_control"
+      .row.mb-4.col-lg-6
+        = f.label       :tel, "TEL"
+        = f.text_field  :tel
+      .row.mb-4.col-lg-6
+        = f.label       :adress, "住所"
+        = f.text_field  :adress, class: "form_control"
+      .row.mb-4.col-lg-6
+        = f.label       :nearest_station, "最寄駅"
+        = f.text_field  :nearest_station, class: "form_control"
+      .row.mb-4.col-lg-6
+        = f.label       :access, "アクセス"
+        = f.text_field  :access, class: "form_control"
+      .row.mb-4.col-lg-6
+        = f.label       :shop_info, "紹介文"
+        = f.text_area   :shop_info, class: "form_control"
+
+      = f.submit "登録する", class: "btn1 bg-accent w-50 my-4"

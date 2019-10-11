@@ -11,3 +11,11 @@
             = link_to "TOP", root_path, class: "dropdown-item"
             = link_to "AtlAcadeとは？", about_path, class: "dropdown-item"
             = link_to "ログイン", new_user_session_path, class: "dropdown-item"
+            - if user_signed_in?
+              = link_to "ログアウト", destroy_user_session_path, class: "dropdown-item", method: :delete
+              = link_to "店舗登録", new_shop_path, class: "dropdown-item"
+
+              -# - if current_user.shop
+              -#   = link_to "店舗情報", shop_path, class: "dropdown-item"
+              -#   = link_to "店舗設定", edit_shop_path, class: "dropdown-item"
+              -# - else

@@ -1,10 +1,14 @@
-<section class="bg-light pb-5">
+<section class="bg-base pb-5">
   <div class="container text-center">
     <h2 class="display-4 py-4">新規登録</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
+      <div class="field row mb-5">
+        <%= f.label :nickname, "ユーザー名", class: "col-sm-5 text-right" %><br />
+        <%= f.text_field :nickname, class: "col-sm-3", autofocus: true, autocomplete: "name" %>
+      </div>
       <div class="field row mb-5">
         <%= f.label :email, "メールアドレス", class: "col-sm-5 text-right" %><br />
         <%= f.email_field :email, class: "col-sm-3", autofocus: true, autocomplete: "email" %>
@@ -24,7 +28,7 @@
       </div>
 
       <div class="actions my-5">
-        <%= f.submit "登録する", class: "btn btn-primary w-50" %>
+        <%= f.submit "登録する", class: "btn1 bg-accent w-50" %>
       </div>
     <% end %>
 

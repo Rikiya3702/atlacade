@@ -1,0 +1,25 @@
+%section.bg-base.py-5.text-center
+  .container
+    %p.mb-5
+      = @shops.count
+      件のお店が見つかりました。
+    .row
+      - @shops.each do |shop|
+        .cd-lg-6
+          -# = render 'shop'
+          .card.bg-light.mb-4.shadow
+            .card-header
+              = link_to shop.shop_name, "shops/#{shop.id}"
+            .row.no-gutters
+              .col-md-4
+                = link_to image_tag('logo.png', size:"150x150"), "shops/#{shop.id}"
+              .col-md-8
+                .card-body
+                  %h5.card-title
+                  %p.card-text
+                    = shop.tel
+                  %p.card-text サンプルテキスト、サンプルテキスト、サンプルテキスト
+
+
+%section.text-center.bg-base.pb-5
+  =link_to "条件を変えて検索する", root_path, class: "btn1 bg-main w-50"

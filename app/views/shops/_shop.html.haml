@@ -1,0 +1,12 @@
+.card.bg-light.mb-4.shadow
+  .card-header
+    = link_to shop.shop_name, "show/#{shop.id}"
+  .row.no-gutters
+    .col-md-4
+      = link_to image_tag('logo.png', size:"150x150"),"show/#{shop.id}"
+    .col-md-8
+      .card-body
+        %h5.card-title
+        %p.card-text
+          = shop.tel
+        %p.card-text サンプルテキスト、サンプルテキスト、サンプルテキスト
