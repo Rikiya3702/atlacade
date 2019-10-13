@@ -10,7 +10,7 @@ class ShopsController < ApplicationController
   end
 
   def new
-    @shop = current_user.build_shop
+    @shop = Shop.new
   end
 
   def edit
@@ -18,12 +18,10 @@ class ShopsController < ApplicationController
   end
 
   def create
-    @shop = current_user.create_shop(shop_params)
+    @shop = current_user.build_shop(shop_params)
     if @shop.save
       flash[:success] = "登録しました"
-      # redirect_to @shop
-      # redirect_to user.shop
-      redirect_to "/shops/#{@shop.id}"
+      redirect_to shop_path(@shop)
     else
       render 'new'
     end
@@ -40,9 +38,6 @@ class ShopsController < ApplicationController
   end
 
   def destroy
-    current_user.shop.destroy
-    flash[:success] = "削除しました"
-    redirect_to "/shops"
   end
 
   private
