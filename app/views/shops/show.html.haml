@@ -1,4 +1,4 @@
-.section.bg-base
+%section.bg-base
   .container.text-center.py-4
     .display-4
       = @shop.shop_name
@@ -7,14 +7,27 @@
         = link_to "/edit", edit_shop_path, class: "btn1 bg-accent w-25"
     .row.py-4
       .col
-        = image_tag('logo.png', size:"400x400")
+        = show_self_image(@shop,300)
+        .row.mt-3
+          .col
+            %span.tag 電子マネー
+            %span.tag PASELI
+            %span.tag 24時間営業
+            %span.tag R18
+            %span.tag 禁煙
       .col.text-left
-        %p= "営業時間：#{@shop.business_hours}"
-        %br= "TEL：#{@shop.tel}"
-        %br= "住所：#{@shop.adress}"
-        %br= "最寄駅：#{@shop.nearest_station}"
+        %span.content-title.mt-0 営業時間
+        %br= "#{@shop.business_hours}"
+        %span.content-title TEL
+        %br= "#{@shop.tel}"
+        %span.content-title 住所
+        %br= "#{@shop.adress}"
+        %span.content-title 最寄駅
+        %br= "#{@shop.nearest_station}"
         = link_to "アクセス", "#Access_forjump", class: "btn1 bg-main my-3 ml-1"
-        %br= "更新日：#{@shop.updated_at}"
+        %br
+        %span.content-title 更新日
+        %br= "#{@shop.updated_at.strftime("%Y年%m月%d日 %H:%M:%S")}"
     %hr.py-4
 
     %a(class="btn btn-outline-info w-75 mb-5" data-toggle="collapse" href="#Events" role="button" aria-expanded="true" aria-controls="Events")
@@ -41,5 +54,5 @@
         = "#{@shop.access}"
       %p.mb-5 ここにGoogleMap
 
-  %section.text-center.bg-base.pb-5
+  .text-center.pb-5
     =link_to "検索結果に戻る", shops_path, class: "btn1 bg-main w-50"

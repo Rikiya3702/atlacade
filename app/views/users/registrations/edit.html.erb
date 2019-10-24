@@ -4,51 +4,81 @@
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="row">
+        <div class="col-md-4 text-center my-auto">
+          <%= show_self_image(@user) %>
+          <div class="row mt-5">
+            <%= f.file_field :image %>
+          </div>
+        </div>
+        <div class="col-md-6 text-left ml-5">
+          <div class="field form-group mb-5">
+            <%= f.label :nickname, "ユーザー名", class: "" %>
+            <%= f.text_field :nickname, class: "form-control", autofocus: true, autocomplete: "name" %>
+          </div>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+          <div class="field form-group mb-5">
+            <%= f.label :email, "メールアドレス", class: "" %><br />
+            <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
+          </div>
+          <div class="field form-group mb-5">
+            <%= f.label :profile, "紹介文", class: "" %><br />
+            <%= f.text_area :profile, class: "form-control profile", autofocus: true %>
+          </div>
+          <div class="row">
+          <div class="col">
+            <div class="actions my-5 ">
+              <%= f.submit "変更を保存する", class: "col btn1 bg-accent w-50" %>
+            </div>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn1 bg-main w-50" data-toggle="modal" data-target="#exampleModal">
+              パスワードの変更
+            </button>
+            <!-- Modal -->
 
-      <div class="field row mb-5">
-        <%= f.label :nickname, "ユーザー名", class: "col-sm-5 text-right" %><br />
-        <%= f.text_field :nickname, class: "col-sm-3", autofocus: true, autocomplete: "name" %>
-      </div>
-      <div class="field row mb-5">
-        <%= f.label :profile, "紹介文", class: "col-sm-5 text-right" %><br />
-        <%= f.text_area :profile, class: "col-sm-3", autofocus: true %>
-      </div>
-      <div class="field row mb-5">
-        <%= f.label :email, "メールアドレス", class: "col-sm-5 text-right" %><br />
-        <%= f.email_field :email, class: "col-sm-3", autofocus: true, autocomplete: "email" %>
-      </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header bg-main">
+                    <h5 class="modal-title" id="exampleModalLabel">パスワードの変更</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body container bg-base">
+                    <div class="field my-3 form-group text-left">
+                      <%= f.label :password, "新しいパスワード", class: "" %>
+                      <% if @minimum_password_length %>
+                      <em>(<%= @minimum_password_length %>文字以上)</em>
+                      <% end %>
+                      <%= f.password_field :password, class: "form-control w-50", autocomplete: "new-password" %>
+                    </div>
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-      <% end %>
+                    <div class="field mt-5 form-group text-left">
+                      <%= f.label :password_confirmation, "新しいパスワード（確認）", class: ""  %><br />
+                      <%= f.password_field :password_confirmation, class: "form-control w-50", autocomplete: "new-password" %>
+                    </div>
 
-      <div class="field row my-3">
-        <%= f.label :password, "パスワード", class: "col-sm-4 text-right" %>(変更する場合のみ)
-        <% if @minimum_password_length %>
-        <br><em>(<%= @minimum_password_length %>文字以上)</em>
-        <% end %>
-        <%= f.password_field :password, class: "col-sm-3", autocomplete: "new-password" %>
+                    <div class="field mt-5 form-group text-left">
+                      <%= f.label :current_password, "現在のパスワード", class: "" %><br />
+                      <%= f.password_field :current_password, class: "form-control w-50", autocomplete: "current-password" %>
+                    </div>
+
+                  </div>
+                  <div class="modal-footer bg-base">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+                    <%= f.submit "変更する", class: "btn1 bg-accent w-25" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        </div>
       </div>
-
-      <div class="field row mt-3">
-        <%= f.label :password_confirmation, "パスワード（確認）", class: "col-sm-5 text-right"  %><br />
-        <%= f.password_field :password_confirmation, class: "col-sm-3", autocomplete: "new-password" %>
-      </div>
-
-      <div class="field row mt-3">
-        <%= f.label :current_password, "現在のパスワード", class: "col-sm-5 text-right" %><br />
-        <%= f.password_field :current_password, class: "col-sm-3", autocomplete: "current-password" %>
-      </div>
-
-      <div class="actions my-5">
-        <%= f.submit "変更を保存する", class: "btn1 bg-accent w-50" %>
       </div>
     <% end %>
-    <hr class="mt-5">
-    <h3 class="py-4">アカウントを削除する</h3>
-
-    <p>Unhappy? <%= button_to "削除する", registration_path(resource_name), data: { confirm: "本当によろしいですか？" }, method: :delete, class: "btn1 bg-accent w-50 mb-5" %></p>
-
     <%= link_to "戻る", :back %>
   </div>
 </section>

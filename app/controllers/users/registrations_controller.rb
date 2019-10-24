@@ -38,7 +38,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
+
+    # passwordとpassword_confirmationが空の場合のみcurrent_passwordを無視する
+    # 参考 https://qiita.com/kei_f_1996/items/32c87b924076445ab55e 
+    def update_resource(resource, params)
+      return super if params["password"]&.present?
+      resource.update_without_password(params.except("current_password"))
+    end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

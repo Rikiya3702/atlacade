@@ -3,14 +3,14 @@
     <h2 class="display-4 py-4">ログイン</h2>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="field row mb-5">
+      <div class="field form-group row mb-5">
         <%= f.label :email, "メールアドレス", class: "col-sm-5 text-right" %><br />
-        <%= f.email_field :email, class: "col-sm-3", autofocus: true, autocomplete: "email", value:"admin@example.com"%>
+        <%= f.email_field :email, class: "col-sm-5", autofocus: true, autocomplete: "email", value:"admin@example.com"%>
       </div>
 
-      <div class="field row my-3">
+      <div class="field form-group row my-3">
         <%= f.label :password, "パスワード", class: "col-sm-5 text-right" %><br />
-        <%= f.password_field :password, class: "col-sm-3", autocomplete: "current-password", value: "password" %>
+        <%= f.password_field :password, class: "col-sm-5", autocomplete: "current-password", value: "password" %>
       </div>
 
       <% if devise_mapping.rememberable? %>

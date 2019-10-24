@@ -1,22 +1,23 @@
-%section.signboard.checkbg.bg-base.bg3
+%section.bg-base
   .container
-    .row.text-center.py-5
-      .col-md-4.image_atlacade
-        = image_tag "logo.png", class: "logo", size:"400x400"
-      .col-md-8
-        %span.title> AtlAcade
-        へようこそ
-        %p
-          - if current_user
-            = "#{@user.nickname}さん"
-          こんにちは
+    .signboard.checkbg.bg3
+      .row.text-center.py-5
+        .col-md-4.image_atlacade
+          = image_tag "logo.png", class: "logo", size:"400x400"
+        .col-md-8
+          %span.title> AtlAcade
+          へようこそ
+          %p
+            - if current_user
+              - sou = "15"
+              = "#{@user.nickname}さん"
+            こんにちは
 
-%section.text-center.bg-base.py-5
-  %p 好きな条件で検索しよう！
-  = link_to "検索する", result_path, class: "btn1 bg-main w-25"
-  = link_to "shops#index", shops_path, class: "btn1 bg-main w-25"
+  .text-center.py-5
+    %p 好きな条件で検索しよう！
+    = link_to "検索する", shops_path, class: "btn1 bg-main w-25"
 
-%section.text-center.bg-base.py-5
-  %p ログイン・新規登録はこちら
-  = link_to "ログインする", new_user_session_path, class: "btn1 bg-main w-25 mr-2"
-  = link_to "新規登録する", new_user_registration_path, class: "btn1 bg-main w-25 ml-2"
+  .text-center.py-5
+    %p ログイン・新規登録はこちら
+    = link_to "ログインする", new_user_session_path, class: "btn1 bg-main w-25 mr-2"
+    = link_to "新規登録する", new_user_registration_path, class: "btn1 bg-main w-25 ml-2"

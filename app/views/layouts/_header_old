@@ -1,0 +1,41 @@
+%header.bg-main.py-2
+  .container
+    .row
+      .col-md-3.text-left
+        /= link_to image_tag("logo2.png", height: "60"), root_path, class: "logo2"
+        = link_to "AtlAcade", root_path, class: "bg-accent logo2"
+      - if user_signed_in?
+        .col-md-3.text-left.my-auto.link_to_user
+          = link_to edit_user_registration_path(@user) do
+            = show_self_image(@user, 30)
+            = @user.nickname
+        - if has_shop?(@user)
+          .col-md-3.text-left.my-auto.link_to_shop
+            = link_to shop_path(@user.shop.id) do
+              = show_self_image(@user.shop, 30)
+              = @user.shop.shop_name
+        -else
+          .offset-md-3
+      - else
+        .offset-md-6
+      .col-md-3.text-right.my-auto
+        .dropdown
+          %button(class="btn bg-accent dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")メニュー
+          .dropdown-menu.bg-base{ "aria-labelledby": "dropdownMenuButton"}
+            = link_to_unless_current "TOP", root_path, class: "dropdown-item"
+            = link_to "AtlAcadeとは？", about_path, class: "dropdown-item"
+
+            - if user_signed_in?
+              = link_to "アカウント設定", edit_user_registration_path(@user), class: "dropdown-item"
+
+              -# - unless current_user.shop.nil?
+              -# - if !current_user.shop.nil?
+              - if has_shop?(current_user)
+                = link_to "店舗情報", shop_path(@user.shop.id), class: "dropdown-item"
+                = link_to "店舗設定", edit_shop_path(@user.shop.id), class: "dropdown-item"
+              - elsif @user.role != 0
+                = link_to "店舗登録", new_shop_path, class: "dropdown-item"
+
+              = link_to "ログアウト", destroy_user_session_path, class: "dropdown-item", method: :delete
+            - else
+              = link_to "ログイン", new_user_session_path, class: "dropdown-item"

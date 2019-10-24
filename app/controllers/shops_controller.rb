@@ -10,26 +10,36 @@ class ShopsController < ApplicationController
   end
 
   def new
+    redirect_to shop_path(current_user) if current_user.shop.present?
     @shop = Shop.new
   end
 
   def edit
     @shop = Shop.find(params[:id])
+    unless @shop == current_user.shop || current_user.role == 2
+      flash[:notice] = "権限がありません。"
+      redirect_to shop_path(@shop)
+    end
   end
 
   def create
-    @shop = current_user.build_shop(shop_params)
-    if @shop.save
-      flash[:success] = "登録しました"
-      redirect_to shop_path(@shop)
+    if user_signed_in? && current_user.shop.present?
+      redirect_to root_path
     else
-      render 'new'
+      @shop = current_user.build_shop(shop_params)
+      if @shop.save
+        flash[:success] = "登録しました"
+        redirect_to shop_path(@shop)
+      else
+        render 'new'
+      end
     end
   end
 
   def update
     @shop = Shop.find(params[:id])
-    if @shop.update_attributes(shop_params)
+
+    if @shop == current_user.shop && @shop.update_attributes(shop_params)
       flash[:success] = "更新しました"
       redirect_to "/shops/#{@shop.id}"
     else
@@ -45,6 +55,6 @@ class ShopsController < ApplicationController
     def shop_params
       params.require(:shop).permit( :shop_name, :business_hours,  :tel,
                                     :adress,    :nearest_station, :access,
-                                    :shop_info)
+                                    :shop_info, :image)
     end
 end

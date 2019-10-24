@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get 'result', to: "home#result"
   # get 'shop', to: "home#shop"
 
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+  }
 
   resources :shops
   # get 'shops/index' => 'shops#index'

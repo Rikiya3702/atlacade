@@ -1,30 +1,35 @@
-.section.bg-base
+%section.bg-base
   .container.text-center
     .display-4.py-5 店舗情報の変更
     = form_for @shop, url: "/shops/#{params[:id]}" do |f|
-      .row.mb-4.col
-        = render 'shared/error_messages'
-
-      .row.mb-4.col-lg-6
-        = f.label       :shop_name, "店舗名"
-        = f.text_field  :shop_name, class: "form_control"
-      .row.mb-4.col-lg-6
-        = f.label       :business_hours, "営業時間"
-        = f.text_field  :business_hours, class: "form_control"
-      .row.mb-4.col-lg-6
-        = f.label       :tel, "TEL"
-        = f.text_field  :tel
-      .row.mb-4.col-lg-6
-        = f.label       :adress, "住所"
-        = f.text_field  :adress, class: "form_control"
-      .row.mb-4.col-lg-6
-        = f.label       :nearest_station, "最寄駅"
-        = f.text_field  :nearest_station, class: "form_control"
-      .row.mb-4.col-lg-6
-        = f.label       :access, "アクセス"
-        = f.text_field  :access, class: "form_control"
-      .row.mb-4.col-lg-6
-        = f.label       :shop_info, "紹介文"
-        = f.text_area   :shop_info, class: "form_control"
+      = render 'shared/error_messages'
+      .row
+        .col-md-2.mb-4.text-left
+          = show_self_image(@shop)
+          .row.mt-3.ml-5
+            = f.file_field :image
+        .offset-sm-2
+        .col-sm-8
+          .form-group.row
+            = f.label       :shop_name, "店舗名", class: "col-sm-3"
+            = f.text_field  :shop_name, class: "form-control col-sm-9"
+          .form-group.row
+            = f.label       :business_hours, "営業時間", class: "col-sm-3"
+            = f.text_field  :business_hours, class: "form-control col-sm-9"
+          .form-group.row
+            = f.label       :tel, "TEL", class: "col-sm-3"
+            = f.text_field  :tel, class: "form-control col-sm-9"
+          .form-group.row
+            = f.label       :adress, "住所", class: "col-sm-3"
+            = f.text_field  :adress, class: "form-control col-sm-9"
+          .form-group.row
+            = f.label       :nearest_station, "最寄駅", class: "col-sm-3"
+            = f.text_field  :nearest_station, class: "form-control col-sm-9"
+          .form-group.row
+            = f.label       :access, "アクセス", class: "col-sm-3"
+            = f.text_field  :access, class: "form-control col-sm-9"
+          .form-group.row
+            = f.label       :shop_info, "紹介文", class: "col-sm-3"
+            = f.text_area   :shop_info, class: "form-control col-sm-9"
 
       = f.submit "更新する", class: "btn1 bg-accent w-50 my-4"

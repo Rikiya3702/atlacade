@@ -5,5 +5,5 @@ class Shop < ApplicationRecord
   validates :tel,       presence: true,
                         length: {maximum: 20},
                         uniqueness: true
-
+  mount_uploader :image, ImageUploader
 end
