@@ -12,6 +12,7 @@ class ShopsController < ApplicationController
   def new
     redirect_to shop_path(current_user) if current_user.shop.present?
     @shop = Shop.new
+    @shop.builud_tag
   end
 
   def edit
@@ -39,7 +40,10 @@ class ShopsController < ApplicationController
   def update
     @shop = Shop.find(params[:id])
 
-    if @shop == current_user.shop && @shop.update_attributes(shop_params)
+    if  @shop == current_user.shop             &&
+        @shop.update_attributes(shop_params)   &&
+        @shop.tag.update_attributes(tag_params)
+
       flash[:success] = "更新しました"
       redirect_to "/shops/#{@shop.id}"
     else
@@ -55,6 +59,11 @@ class ShopsController < ApplicationController
     def shop_params
       params.require(:shop).permit( :shop_name, :business_hours,  :tel,
                                     :adress,    :nearest_station, :access,
-                                    :shop_info, :image)
+                                    :shop_info, :image )
+    end
+
+    def tag_params
+      params.require(:tag).permit(  :emoney,  :paseli,  :parking,
+                                    :open24h, :older18, :smoking)
     end
 end

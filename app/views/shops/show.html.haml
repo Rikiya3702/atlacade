@@ -4,17 +4,30 @@
       = @shop.shop_name
     .row.py-4
       .col
-        = link_to "/edit", edit_shop_path, class: "btn1 bg-accent w-25"
+        = link_to "編集", edit_shop_path, class: "btn1 bg-main w-25"
     .row.py-4
       .col
         = show_self_image(@shop,300)
         .row.mt-3
           .col
-            %span.tag 電子マネー
-            %span.tag PASELI
-            %span.tag 24時間営業
-            %span.tag R18
-            %span.tag 禁煙
+            - if @shop.tag.emoney
+              %span.tag 電子マネー
+            - if @shop.tag.paseli
+              %span.tag PASELI
+            - if @shop.tag.parking
+              %span.tag 駐車場アリ
+            - if @shop.tag.open24h
+              %span.tag 24時間営業
+            - if @shop.tag.older18
+              %span.tag R18
+            - case @shop.tag.smoking
+              - when 0 then
+                %span.tag 禁煙
+              - when 1 then
+                %span.tag 分煙
+              - else
+                %span.tag 禁煙
+
       .col.text-left
         %span.content-title.mt-0 営業時間
         %br= "#{@shop.business_hours}"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191013081837) do
+ActiveRecord::Schema.define(version: 20191024105532) do
 
   create_table "shops", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -26,6 +26,19 @@ ActiveRecord::Schema.define(version: 20191013081837) do
     t.string "image"
     t.index ["tel"], name: "index_shops_on_tel", unique: true
     t.index ["user_id"], name: "index_shops_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.integer "shop_id", null: false
+    t.boolean "emoney", default: false
+    t.boolean "paseli", default: false
+    t.boolean "parking", default: false
+    t.boolean "open24h", default: false
+    t.boolean "older18", default: false
+    t.integer "smoking", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_tags_on_shop_id"
   end
 
   create_table "users", force: :cascade do |t|

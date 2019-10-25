@@ -14,6 +14,13 @@ su.create_shop!(  shop_name:        "Admin_Shop",
                   access:           "JR新宿駅よりXXXXX",
                   shop_info:        "テストアカウントです。"
                 )
+su.shop.create_tag!(  emoney:   true,
+                      paseli:   true,
+                      parking:  true,
+                      open24h:  true,
+                      older18:  true,
+                      smoking:      1
+                    )
 
 # 一般の店舗
 5.times do |i|
@@ -30,4 +37,11 @@ su.create_shop!(  shop_name:        "Admin_Shop",
                     access:           "JR新宿駅よりXXXXX",
                     shop_info:        "テストアカウントです。"
                   )
+  u.shop.create_tag!(   emoney:   true,
+                        paseli:   true,
+                        parking:  true,
+                        open24h:  false,
+                        older18:  false,
+                        smoking:      0
+                      )
 end

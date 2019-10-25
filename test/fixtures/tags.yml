@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shop: one
+  emoney: false
+  paseli: false
+  parking: false
+  open24h: false
+  older18: false
+  smoking: 1
+
+two:
+  shop: two
+  emoney: false
+  paseli: false
+  parking: false
+  open24h: false
+  older18: false
+  smoking: 1

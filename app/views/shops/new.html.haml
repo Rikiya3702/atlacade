@@ -29,5 +29,17 @@
           .form-group.row
             = f.label       :shop_info, "紹介文", class: "col-sm-3"
             = f.text_area   :shop_info, class: "form-control col-sm-9"
-
-      = f.submit "登録する", class: "btn1 bg-accent w-50 my-4"
+          .form-group.row
+            = fields_for :tag do |t|
+              = t.check_box      :emoney, {:checked => :emoeny} , "true", "false"
+              = t.label          :emoney, "電子マニー", class: "pr-3"
+              = t.check_box      :paseli, {}, "true", "false"
+              = t.label          :paseli, "PASELI", class: "pr-3"
+              = t.check_box      :parking, {}, "true", "false"
+              = t.label          :parking, "駐車場アリ", class: "pr-3"
+              = t.check_box      :open24h, {}, "true", "false"
+              = t.label          :open24h, "24時間営業", class: "pr-3"
+              = t.check_box      :older18, {}, "true", "false"
+              = t.label          :older18, "18歳未満禁止", class: "pr-3"
+              = t.select         :smoking, [["禁煙", 0], ["分煙", 1], ["喫煙可", 2] ]
+          = f.submit "登録する", class: "btn1 bg-accent w-50 my-4"
