@@ -4,7 +4,8 @@
       = @shop.shop_name
     .row.py-4
       .col
-        = link_to "編集", edit_shop_path, class: "btn1 bg-main w-25"
+        - if has_shop?(current_user) && @shop.id == current_user.shop.id
+          = link_to "編集", edit_shop_path, class: "btn1 bg-main w-25"
     .row.py-4
       .col
         = show_self_image(@shop,300)
@@ -12,8 +13,8 @@
           .col
             - if @shop.tag.emoney
               %span.tag 電子マネー
-            - if @shop.tag.paseli
-              %span.tag PASELI
+            -# - if @shop.tag.paseli
+            -#   %span.tag PASELI
             - if @shop.tag.parking
               %span.tag 駐車場アリ
             - if @shop.tag.open24h

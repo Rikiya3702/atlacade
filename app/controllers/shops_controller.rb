@@ -12,7 +12,7 @@ class ShopsController < ApplicationController
   def new
     redirect_to shop_path(current_user) if current_user.shop.present?
     @shop = Shop.new
-    @shop.builud_tag
+    @shop.build_tag
   end
 
   def edit

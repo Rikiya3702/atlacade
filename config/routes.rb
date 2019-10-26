@@ -9,8 +9,6 @@ Rails.application.routes.draw do
   }
 
   resources :shops
-  # get 'shops/index' => 'shops#index'
-  # get 'shops/show/:id' => 'shops#show'
-  # get 'shops/new' => 'shops#new'
-  # post 'shops/create' => 'shops#create'
+  resources :machines
+
 end

@@ -2,7 +2,7 @@
   .container.text-center
     .display-4.py-5 店舗の新規登録
     = form_for @shop do |f|
-      = render 'shared/error_messages'
+      = render 'shared/error_messages', object: f.object
       .row.text-center
         .col.mb-5
         = f.file_field :image
@@ -33,8 +33,8 @@
             = fields_for :tag do |t|
               = t.check_box      :emoney, {:checked => :emoeny} , "true", "false"
               = t.label          :emoney, "電子マニー", class: "pr-3"
-              = t.check_box      :paseli, {}, "true", "false"
-              = t.label          :paseli, "PASELI", class: "pr-3"
+              -# = t.check_box      :paseli, {}, "true", "false"
+              -# = t.label          :paseli, "PASELI", class: "pr-3"
               = t.check_box      :parking, {}, "true", "false"
               = t.label          :parking, "駐車場アリ", class: "pr-3"
               = t.check_box      :open24h, {}, "true", "false"
