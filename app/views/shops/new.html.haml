@@ -31,7 +31,7 @@
             = f.text_area   :shop_info, class: "form-control col-sm-9"
           .form-group.row
             = fields_for :tag do |t|
-              = t.check_box      :emoney, {:checked => :emoeny} , "true", "false"
+              = t.check_box      :emoney, {checked :emoeny} , "true", "false"
               = t.label          :emoney, "電子マニー", class: "pr-3"
               -# = t.check_box      :paseli, {}, "true", "false"
               -# = t.label          :paseli, "PASELI", class: "pr-3"

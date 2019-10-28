@@ -1,6 +1,6 @@
 class MachinesController < ApplicationController
   before_action :admin_user, only: [:new, :edit, :craete, :update, :destroy]
-  
+
   def index
     @machines = Machine.all
   end
@@ -52,5 +52,4 @@ class MachinesController < ApplicationController
     def admin_user
       redirect_to(root_url) unless current_user.role == 2
     end
-
 end

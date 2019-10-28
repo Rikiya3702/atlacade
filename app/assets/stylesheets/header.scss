@@ -1,3 +1,18 @@
+.logo2{
+  text-decoration: none;
+  display: block;
+  font-family: 'Poiret One', cursive;
+  color: #002533;
+  font-size: 45px;
+  border: 1px #fff solid;
+  border-radius: 12px;
+  padding: 5px 12px;
+  margin: 0px;
+  &:hover{
+    text-decoration: none;
+  }
+}
+
 .nav-item{
   padding-left: 10px;
   border-left: 2px solid #888;

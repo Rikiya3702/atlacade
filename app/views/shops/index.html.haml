@@ -5,17 +5,6 @@
       件のお店が見つかりました。
     .row.justify-content-between
       - @shops.each do |shop|
-        .card.bg-light.mb-4.px-0.shadow.col-md-6
-          .card-header
-            = link_to shop.shop_name, shop_path(shop)
-          .row.no-gutters
-            .col-md-3.my-auto
-              = link_to show_self_image(shop,150), shop_path(shop)
-            .col-md-9
-              .card-body
-                %h5.card-title
-                %p.card-text
-                  = shop.tel
-                %p.card-text サンプルテキスト、サンプルテキスト、サンプルテキスト
+        = render 'shop', shop: shop
   .text-center.py-5
     =link_to "条件を変えて検索する", root_path, class: "btn1 bg-main w-50"

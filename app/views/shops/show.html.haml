@@ -4,7 +4,7 @@
       = @shop.shop_name
     .row.py-4
       .col
-        - if has_shop?(current_user) && @shop.id == current_user.shop.id
+        - if  user_signed_in? && has_shop?(current_user) && @shop.id == current_user.shop.id
           = link_to "編集", edit_shop_path, class: "btn1 bg-main w-25"
     .row.py-4
       .col

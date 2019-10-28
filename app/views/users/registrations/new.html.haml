@@ -21,6 +21,9 @@
         = f.label :password_confirmation, "パスワード（確認）", class: "col-sm-5 text-right"
         %br/
         = f.password_field :password_confirmation, class: "form-control col-sm-5", autocomplete: "new-password"
+      .field.form-group.row.mt-3
+        = f.check_box :role
+        = f.label :role
       .actions.my-5
         = f.submit "登録する", class: "btn1 bg-accent w-50"
     = render "users/shared/links"

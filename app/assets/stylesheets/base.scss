@@ -5,34 +5,8 @@ body{
   a:visited { text-decoration: none; }
 }
 
-a{
-  // text-decoration: none;
-}
-
 .link_to_user{
     &:hover{
       color: #666;
     }
-}
-
-ul{
-  display: flex;
-  height: 50px;
-  li{
-    padding: 0px;
-    height: 100%;
-    list-style: none;
-    background: #88a;
-    width: 150px;
-    text-align: center;
-    .nav-btn{
-      display: block;
-      text-decoration: none;
-
-    }
-  }
-
-  li:first-child{
-    margin-right: auto;
-  }
 }
