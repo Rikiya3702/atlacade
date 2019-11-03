@@ -44,4 +44,8 @@ su.shop.create_tag!(  emoney:   true,
                         older18:  false,
                         smoking:      0
                       )
+# ゲームの登録
+  Machine.create!(  title:  "Game[#{i}]",
+                    maker:  "KONYAMI",
+                    genre:  "音楽ゲーム")
 end

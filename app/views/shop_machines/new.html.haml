@@ -1,0 +1,28 @@
+%section.bg-base
+  .container.text-center
+    .display-4.py-5 ゲームの登録
+    %table.table.table-striped
+      %thead
+        %tr
+          %th{scope: "col"}
+            ゲームタイトル
+          %th{scope: "col"}
+            料金
+          %th{scope: "col"}
+            設置台数
+      %tbody
+        = form_tag shop_machines_path do
+          - @machines.each do |machine|
+            - shop_machine = machine.shop_machine.build(shop_id: @shop.id)
+            = fields_for "shop_machines[]", shop_machine do |f|
+              = render 'shared/error_messages', object: f.object
+              = f.hidden_field :shop_id, value: @shop.id
+              = f.hidden_field :machine_id, value: machine.id
+              %tr.form-group
+                %th{scope: "row"}
+                  = f.label machine.title
+                %td.text-right
+                  = f.text_field  :price, class:"form-control text-right w-50"
+                %td
+                  = f.text_field  :own, class:"form-control text-right w-25"
+            = submit_tag "登録する", class: "btn1 bg-accent w-50 my-4"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191025044237) do
+ActiveRecord::Schema.define(version: 20191028083420) do
 
   create_table "machines", force: :cascade do |t|
     t.string "title", null: false
@@ -19,6 +19,17 @@ ActiveRecord::Schema.define(version: 20191025044237) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+  end
+
+  create_table "shop_machines", force: :cascade do |t|
+    t.integer "shop_id", null: false
+    t.integer "machine_id", null: false
+    t.string "price", default: "100円"
+    t.integer "own", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["machine_id"], name: "index_shop_machines_on_machine_id"
+    t.index ["shop_id"], name: "index_shop_machines_on_shop_id"
   end
 
   create_table "shops", force: :cascade do |t|

@@ -1,0 +1,13 @@
+%section.bg-base
+  .container.text-center
+    .display-4.py-5 登録ゲームの編集
+    = form_tag shop_machine_path, method: :patch do
+      - @shop_machines.each do |shop_machine|
+        = fields_for "shop_machines[]", shop_machine do |f|
+          = render 'shared/error_messages', object: f.object
+          = f.hidden_field :id, value: shop_machine.id
+          = shop_machine.machine.title
+          = f.text_field  :price
+          = f.text_field  :own
+          %br
+      = submit_tag "更新する", class: "btn1 bg-accent w-50 my-4"

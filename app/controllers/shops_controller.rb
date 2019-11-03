@@ -28,6 +28,7 @@ class ShopsController < ApplicationController
       redirect_to root_path
     else
       @shop = current_user.build_shop(shop_params)
+      @shop.build_tag(tag_params)
       if @shop.save
         flash[:success] = "登録しました"
         redirect_to shop_path(@shop)
@@ -51,8 +52,8 @@ class ShopsController < ApplicationController
     end
   end
 
-    def destroy
-    end
+  def destroy
+  end
 
   private
 
