@@ -21,4 +21,8 @@ class ApplicationController < ActionController::Base
     def set_user
       @user = current_user
     end
+
+    def admin_user?
+      current_user.role == 2
+    end
 end

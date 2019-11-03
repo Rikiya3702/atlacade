@@ -11,7 +11,7 @@
           %th{scope: "col"}
             設置台数
       %tbody
-        = form_tag shop_machines_path do
+        = form_tag "/shop_machines/#{@shop.id}/create", method: :post do
           - @machines.each do |machine|
             - shop_machine = machine.shop_machine.build(shop_id: @shop.id)
             = fields_for "shop_machines[]", shop_machine do |f|
@@ -25,4 +25,4 @@
                   = f.text_field  :price, class:"form-control text-right w-50"
                 %td
                   = f.text_field  :own, class:"form-control text-right w-25"
-            = submit_tag "登録する", class: "btn1 bg-accent w-50 my-4"
+          = submit_tag "登録する", class: "btn1 bg-accent w-50 my-4"
