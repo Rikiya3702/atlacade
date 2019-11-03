@@ -1,0 +1,10 @@
+%section.bg-base.py-5.text-center
+  .container.px-0
+    %p.mb-5
+      = @shops.count
+      件のお店が見つかりました。
+    .row.justify-content-between
+      - @shops.each do |shop|
+        = render 'shop', shop: shop
+  .text-center.py-5
+    =link_to "条件を変えて検索する", root_path, class: "btn1 bg-main w-50"

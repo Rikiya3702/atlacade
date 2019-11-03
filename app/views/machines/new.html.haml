@@ -1,0 +1,18 @@
+%section.bg-base
+  .container.text-center
+    .display-4.py-5 ゲームの新規登録
+    = form_for @machine do |f|
+      = render 'shared/error_messages', object: f.object
+      .row.text-center.mb-4
+        = f.file_field :image
+      .form-group.row
+        = f.label       :title, "ゲームタイトル", class: "col-sm-3"
+        = f.text_field  :title, class: "form-control col-sm-9"
+      .form-group.row
+        = f.label       :genre, "ジャンル", class: "col-sm-3"
+        = f.text_field  :genre, class: "form-control col-sm-9"
+      .form-group.row
+        = f.label       :maker, "メーカー", class: "col-sm-3"
+        = f.text_field  :maker, class: "form-control col-sm-9"
+      = f.submit "登録する", class: "btn1 bg-accent w-25 my-4"
+    =link_to "ゲーム一覧に戻る", machines_path, class: "btn1 bg-main w-25 mb-5"

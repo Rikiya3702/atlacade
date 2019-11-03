@@ -1,0 +1,4 @@
+%section.bg-flash
+  .container.text-center
+    - flash.each do |message_type, message|
+      = content_tag(:div, message, class: "flash my-2 alert alert-#{message_type}")

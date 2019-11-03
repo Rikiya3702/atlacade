@@ -1,0 +1,59 @@
+%section.bg-base.pb-5
+  .container.text-center
+    %h2.display-4.py-4 アカウント設定
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .row
+        .col-md-4.text-center.my-auto
+          = show_self_image(@user)
+          .row.mt-5
+            = f.file_field :image
+        .col-md-6.text-left.ml-5
+          .field.form-group.mb-5
+            = f.label :nickname, "ユーザー名", class: ""
+            = f.text_field :nickname, class: "form-control", autofocus: true, autocomplete: "name"
+          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+            %div
+              Currently waiting confirmation for: #{resource.unconfirmed_email}
+          .field.form-group.mb-5
+            = f.label :email, "メールアドレス", class: ""
+            %br/
+            = f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email"
+          .field.form-group.mb-5
+            = f.label :profile, "紹介文", class: ""
+            %br/
+            = f.text_area :profile, class: "form-control profile", autofocus: true
+          .row
+            .col
+              .actions.my-5
+                = f.submit "変更を保存する", class: "col btn1 bg-accent w-50"
+              / Button trigger modal
+              %button.btn1.bg-main.w-50{"data-target" => "#exampleModal", "data-toggle" => "modal", :type => "button"}
+                パスワードの変更
+              / Modal
+              #exampleModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+                .modal-dialog{:role => "document"}
+                  .modal-content
+                    .modal-header.bg-main
+                      %h5#exampleModalLabel.modal-title パスワードの変更
+                      %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+                        %span{"aria-hidden" => "true"} ×
+                    .modal-body.container.bg-base
+                      .field.my-3.form-group.text-left
+                        = f.label :password, "新しいパスワード", class: ""
+                        - if @minimum_password_length
+                          %em
+                            (#{@minimum_password_length}文字以上)
+                        = f.password_field :password, class: "form-control w-50", autocomplete: "new-password"
+                      .field.mt-5.form-group.text-left
+                        = f.label :password_confirmation, "新しいパスワード（確認）", class: ""
+                        %br/
+                        = f.password_field :password_confirmation, class: "form-control w-50", autocomplete: "new-password"
+                      .field.mt-5.form-group.text-left
+                        = f.label :current_password, "現在のパスワード", class: ""
+                        %br/
+                        = f.password_field :current_password, class: "form-control w-50", autocomplete: "current-password"
+                    .modal-footer.bg-base
+                      %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} キャンセル
+                      = f.submit "変更する", class: "btn1 bg-accent w-25"
+    = link_to "戻る", :back

@@ -1,0 +1,19 @@
+%section.bg-base.pb-5
+  .container.text-center
+    %h2.display-4.py-4 ログイン
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .field.form-group.row.mb-5
+        = f.label :email, "メールアドレス", class: "col-sm-5 text-right"
+        %br/
+        = f.email_field :email, class: "col-sm-5", autofocus: true, autocomplete: "email", value:"admin@example.com"
+      .field.form-group.row.my-3
+        = f.label :password, "パスワード", class: "col-sm-5 text-right"
+        %br/
+        = f.password_field :password, class: "col-sm-5", autocomplete: "current-password", value: "password"
+      - if devise_mapping.rememberable?
+        .field
+          = f.check_box :remember_me
+          = f.label :remember_me, "ログインしたままにする"
+      .actions.my-5
+        = f.submit "ログインする", class: "btn1 bg-accent w-50"
+    = render "users/shared/links"

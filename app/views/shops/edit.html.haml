@@ -1,0 +1,47 @@
+%section.bg-base
+  .container.text-center
+    .display-4.py-5 店舗情報の変更
+    = form_for @shop do |f|
+      = render 'shared/error_messages', object: f.object
+      .row
+        .col-md-2.mb-4.text-left
+          = show_self_image(@shop)
+          .row.mt-3.ml-5
+            = f.file_field :image
+        .offset-sm-2
+        .col-sm-8
+          .form-group.row
+            = f.label       :shop_name, "店舗名", class: "col-sm-3"
+            = f.text_field  :shop_name, class: "form-control col-sm-9"
+          .form-group.row
+            = f.label       :business_hours, "営業時間", class: "col-sm-3"
+            = f.text_field  :business_hours, class: "form-control col-sm-9"
+          .form-group.row
+            = f.label       :tel, "TEL", class: "col-sm-3"
+            = f.text_field  :tel, class: "form-control col-sm-9"
+          .form-group.row
+            = f.label       :adress, "住所", class: "col-sm-3"
+            = f.text_field  :adress, class: "form-control col-sm-9"
+          .form-group.row
+            = f.label       :nearest_station, "最寄駅", class: "col-sm-3"
+            = f.text_field  :nearest_station, class: "form-control col-sm-9"
+          .form-group.row
+            = f.label       :access, "アクセス", class: "col-sm-3"
+            = f.text_field  :access, class: "form-control col-sm-9"
+          .form-group.row
+            = f.label       :shop_info, "紹介文", class: "col-sm-3"
+            = f.text_area   :shop_info, class: "form-control col-sm-9"
+          .form-group.row
+            = fields_for :tag do |t|
+              = t.check_box      :emoney, {:checked => @shop.tag.emoney} , "true", "false"
+              = t.label          :emoney, "電子マニー", class: "pr-3"
+              -# = t.check_box      :paseli, {:checked => @shop.tag.paseli}, "true", "false"
+              -# = t.label          :paseli, "PASELI", class: "pr-3"
+              = t.check_box      :parking, {:checked => @shop.tag.parking}, "true", "false"
+              = t.label          :parking, "駐車場アリ", class: "pr-3"
+              = t.check_box      :open24h, {:checked => @shop.tag.open24h}, "true", "false"
+              = t.label          :open24h, "24時間営業", class: "pr-3"
+              = t.check_box      :older18, {:checked => @shop.tag.older18}, "true", "false"
+              = t.label          :older18, "18歳未満禁止", class: "pr-3"
+              = t.select         :smoking, [["禁煙", 0], ["分煙", 1], ["喫煙可", 2] ], :selected => @shop.tag.smoking
+      = f.submit "更新する", class: "btn1 bg-accent w-50 my-4"

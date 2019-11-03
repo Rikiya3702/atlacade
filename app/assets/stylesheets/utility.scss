@@ -1,6 +1,21 @@
 .bg-base {
-  background-color: #e6f8ff;
+  background: rgb(230,248,255); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(230,248,255,1) 0%, rgba(204,220,220,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(230,248,255,1) 0%,rgba(204,220,220,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(230,248,255,1) 0%,rgba(204,220,220,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   color: #17191a;
+}
+
+.bg-flash {
+  background: rgb(230,248,255); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(230,248,255,1) 0%, rgba(204,220,220,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(230,248,255,1) 0%,rgba(204,220,220,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(230,248,255,1) 0%,rgba(204,220,220,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  color: #17191a;
+  .flash{
+    border-top: 1px #000 solid;
+    border-bottom: 1px #000 solid;
+  }
 }
 
 .bg-main{
@@ -15,12 +30,8 @@
 
 .btn1 {
   display:inline-block;
-  text-decoration: none;
-  //width: 25%;
   opacity: 0.85;
   padding: 15px;
-  // padding-top: 15px;
-  // padding-bottom: 15px;
   border-radius: 15px;
   line-height: 1;
   &:hover{
@@ -28,4 +39,8 @@
     color: #f8f8ff;
     text-decoration: none;
   }
+}
+
+.alert{
+  margin-bottom: 0;
 }
