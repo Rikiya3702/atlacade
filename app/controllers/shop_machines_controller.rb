@@ -56,14 +56,6 @@ class ShopMachinesController < ApplicationController
 
   private
 
-    def user_is_owner?
-      authenticate_user!
-      return admin_user?
-      if current_user.role == 0 || current_user.shop.blank? || current_user.shop != @shop
-        redirect_to(root_url)
-      end
-    end
-
     def set_shop
       @shop = Shop.find_by(id: params[:id])
     end

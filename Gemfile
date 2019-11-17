@@ -15,6 +15,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem 'bootstrap'
+gem "bootstrap4-datetime-picker-rails"
+gem 'momentjs-rails'
 gem 'jquery-rails'
 gem 'devise'
 gem 'devise-i18n'
@@ -23,6 +25,11 @@ gem 'haml-rails'
 gem 'html2haml'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'font-awesome-sass'
+gem 'faker'
+gem 'gimei'
+gem "gmaps4rails"
+gem "geocoder"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

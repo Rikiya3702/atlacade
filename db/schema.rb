@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191028083420) do
+ActiveRecord::Schema.define(version: 20191111053925) do
+
+  create_table "events", force: :cascade do |t|
+    t.integer "shop_id", null: false
+    t.date "event_date", null: false
+    t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_events_on_shop_id"
+  end
 
   create_table "machines", force: :cascade do |t|
     t.string "title", null: false
@@ -29,6 +38,7 @@ ActiveRecord::Schema.define(version: 20191028083420) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["machine_id"], name: "index_shop_machines_on_machine_id"
+    t.index ["shop_id", "machine_id"], name: "index_shop_machines_on_shop_id_and_machine_id", unique: true
     t.index ["shop_id"], name: "index_shop_machines_on_shop_id"
   end
 
@@ -44,6 +54,9 @@ ActiveRecord::Schema.define(version: 20191028083420) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+    t.string "official_url"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["tel"], name: "index_shops_on_tel", unique: true
     t.index ["user_id"], name: "index_shops_on_user_id"
   end
@@ -58,6 +71,9 @@ ActiveRecord::Schema.define(version: 20191028083420) do
     t.integer "smoking", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "hand_towel"
+    t.boolean "locker"
+    t.boolean "wifi"
     t.index ["shop_id"], name: "index_tags_on_shop_id"
   end
 

@@ -1,28 +1,43 @@
-%section.bg-base
+%section.atl-base
   .container.text-center
     .display-4.py-5 ゲームの登録
-    %table.table.table-striped
-      %thead
-        %tr
-          %th{scope: "col"}
-            ゲームタイトル
-          %th{scope: "col"}
-            料金
-          %th{scope: "col"}
-            設置台数
-      %tbody
-        = form_tag "/shop_machines/#{@shop.id}/create", method: :post do
-          - @machines.each do |machine|
-            - shop_machine = machine.shop_machine.build(shop_id: @shop.id)
-            = fields_for "shop_machines[]", shop_machine do |f|
-              = render 'shared/error_messages', object: f.object
-              = f.hidden_field :shop_id, value: @shop.id
-              = f.hidden_field :machine_id, value: machine.id
-              %tr.form-group
-                %th{scope: "row"}
-                  = f.label machine.title
-                %td.text-right
-                  = f.text_field  :price, class:"form-control text-right w-50"
-                %td
-                  = f.text_field  :own, class:"form-control text-right w-25"
-          = submit_tag "登録する", class: "btn1 bg-accent w-50 my-4"
+    .atl-table-form.mx-auto.pb-5
+      %table
+        %thead.atl-table-head
+          %tr
+            %th.atl-table-title-form
+              ゲームタイトル
+            %th.atl-table-maker
+              メーカー
+            %th.atl-table-maker
+              ジャンル
+            %th.atl-table-maker
+              料金
+            %th.atl-table-maker
+              設置台数
+        %tbody.atl-table-body
+          = form_tag "/shop_machines/#{@shop.id}/create", method: :post do
+            - @machines.each do |machine|
+              - shop_machine = machine.shop_machine.build(shop_id: @shop.id)
+              = fields_for "shop_machines[]", shop_machine do |f|
+                = render 'shared/error_messages', object: f.object
+                = f.hidden_field :shop_id, value: @shop.id
+                = f.hidden_field :machine_id, value: machine.id
+                %tr
+                  %th.py-3
+                    = f.label machine.title
+                  %td
+                    = f.label machine.maker
+                  %td
+                    = f.label machine.genre
+                  %td.text-right
+                    = f.text_field  :price, class:"text-right "
+                  %td
+                    = f.text_field  :own, class:"text-right "
+            = button_tag type: "submit", class: "atl-submit my-3" do
+              %i.fa.fa-calendar-plus.fa-2x
+              登録する
+  .text-center.pb-5
+    = link_to :back, class: "atl-btn" do
+      %i.far.fa-arrow-alt-circle-left.fa-2x
+      戻る

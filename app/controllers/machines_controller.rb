@@ -50,6 +50,6 @@ class MachinesController < ApplicationController
     end
 
     def admin_user
-      redirect_to(root_url) unless current_user.role == 2
+      redirect_to(root_url) unless admin_user?
     end
 end

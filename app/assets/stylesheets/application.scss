@@ -1,4 +1,7 @@
 @import "bootstrap";
+@import "tempusdominus-bootstrap-4.css";
+@import 'font-awesome-sprockets';
+@import "font-awesome";
 @import "utility";
 @import "base";
 @import "header";
@@ -6,6 +9,7 @@
 @import "about";
 @import "/users/edit";
 @import "/shops/show";
+@import "/shops/form";
 
 footer{
   background-color: #ccc;

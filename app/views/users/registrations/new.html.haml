@@ -1,29 +1,30 @@
-%section.bg-base.pb-5
+%section.atl-base.pb-5
   .container.text-center
-    %h2.display-4.py-4 新規登録
-    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-      = render "devise/shared/error_messages", resource: resource
-      .field.form-group.row.mb-5
-        = f.label :nickname, "ユーザー名", class: "col-sm-5 text-right"
-        %br/
-        = f.text_field :nickname, class: "form-control col-sm-5", autofocus: true, autocomplete: "name"
-      .field.form-group.row.mb-5
-        = f.label :email, "メールアドレス", class: "col-sm-5 text-right"
-        %br/
-        = f.email_field :email, class: "form-control col-sm-5", autofocus: true, autocomplete: "email"
-      .field.form-group.row.my-3
-        = f.label :password, "パスワード", class: "col-sm-5 text-right"
-        - if @minimum_password_length
-          %em
-            (#{@minimum_password_length}文字以上)
-        = f.password_field :password, class: "form-control col-sm-5", autocomplete: "new-password"
-      .field.form-group.row.mt-3
-        = f.label :password_confirmation, "パスワード（確認）", class: "col-sm-5 text-right"
-        %br/
-        = f.password_field :password_confirmation, class: "form-control col-sm-5", autocomplete: "new-password"
-      .field.form-group.row.mt-3
-        = f.check_box :role
-        = f.label :role
-      .actions.my-5
-        = f.submit "登録する", class: "btn1 bg-accent w-50"
-    = render "users/shared/links"
+    .main-border
+      .main-title 新規登録
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .field.form-group.row.mb-5
+          = f.label :nickname, "ユーザー名", class: "col-sm-5 text-right"
+          %br/
+          = f.text_field :nickname, class: "form-control col-sm-5", autofocus: true, autocomplete: "name"
+        .field.form-group.row.mb-5
+          = f.label :email, "メールアドレス", class: "col-sm-5 text-right"
+          %br/
+          = f.email_field :email, class: "form-control col-sm-5", autofocus: true, autocomplete: "email"
+        .field.form-group.row.my-3
+          = f.label :password, "パスワード", class: "col-sm-5 text-right"
+          - if @minimum_password_length
+            %em
+              (#{@minimum_password_length}文字以上)
+          = f.password_field :password, class: "form-control col-sm-5", autocomplete: "new-password"
+        .field.form-group.row.mt-3
+          = f.label :password_confirmation, "パスワード（確認）", class: "col-sm-5 text-right"
+          %br/
+          = f.password_field :password_confirmation, class: "form-control col-sm-5", autocomplete: "new-password"
+        .field.form-group.row.mt-3
+          = f.check_box :role
+          = f.label :role
+        .actions.my-5
+          = f.submit "登録する", class: "btn1 bg-accent w-50"
+      = render "users/shared/links"

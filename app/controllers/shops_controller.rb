@@ -7,6 +7,8 @@ class ShopsController < ApplicationController
 
   def show
     @shop = Shop.find(params[:id])
+    @new_event = Event.new
+
   end
 
   def new
@@ -41,7 +43,7 @@ class ShopsController < ApplicationController
   def update
     @shop = Shop.find(params[:id])
 
-    if  @shop == current_user.shop             &&
+    if  (@shop == current_user.shop || current_user.role == 2)  &&
         @shop.update_attributes(shop_params)   &&
         @shop.tag.update_attributes(tag_params)
 
@@ -60,11 +62,13 @@ class ShopsController < ApplicationController
     def shop_params
       params.require(:shop).permit( :shop_name, :business_hours,  :tel,
                                     :adress,    :nearest_station, :access,
-                                    :shop_info, :image )
+                                    :shop_info, :official_url,    :image,
+                                    :latitude,  :longitude  )
     end
 
     def tag_params
-      params.require(:tag).permit(  :emoney,  :paseli,  :parking,
-                                    :open24h, :older18, :smoking)
+      params.require(:tag).permit(  :emoney,     :paseli,  :parking,
+                                    :open24h,    :older18, :smoking,
+                                    :hand_towel, :locker,  :wifi )
     end
 end

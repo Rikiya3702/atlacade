@@ -9,11 +9,13 @@ Rails.application.routes.draw do
 
   resources :shops
   resources :machines
-  resources :shop_machines
-
+  resources :shop_machines, only: [:edit, :update, :destroy]
   get "/shop_machines/:id/new", to: 'shop_machines#new'
-  get "/shop_machines/:id/edit", to: 'shop_machines#edit'
   post "/shop_machines/:id/create", to: 'shop_machines#create'
-  patch "/shop_machines/:id/update", to: 'shop_machines#update'
+
+  resources :events, only: [:edit, :create, :update, :destroy]
+  get "/events/:id/new", to: 'events#new'
+
+
 
 end
