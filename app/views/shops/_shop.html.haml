@@ -1,12 +1,13 @@
-.card.bg-light.mb-4.px-0.shadow.col-md-6
-  .card-header
-    = link_to shop.shop_name, shop_path(shop)
-  .row.no-gutters
-    .col-md-3.my-auto
-      = link_to show_self_image(shop,150), shop_path(shop)
-    .col-md-9
-      .card-body
-        %h5.card-title
-        %p.card-text
-          = shop.tel
-        %p.card-text サンプルテキスト、サンプルテキスト、サンプルテキスト
+.shops.text-left
+  .shop-element-head
+
+    = link_to shop_path(shop) do
+      %i.fas.fa-home
+      = shop.shop_name
+  .shop-element.pt-1
+    .row.justify-content-end
+      .col-xs-3.ml-4
+        = link_to show_self_image(shop,100), shop_path(shop)
+      .col
+        = shop.tel
+        %br= shop.shop_info

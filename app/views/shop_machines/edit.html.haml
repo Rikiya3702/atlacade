@@ -1,41 +1,35 @@
-%section.atl-base
-  .container.text-center
-    .display-4.py-5 登録ゲームの編集
-    .atl-table-form.mx-auto.pb-5
-      %table
-        %thead.atl-table-head
-          %tr
-            %th.atl-table-title-form
-              ゲームタイトル
-            %th.atl-table-maker
-              メーカー
-            %th.atl-table-maker
-              ジャンル
-            %th.atl-table-maker
-              料金
-            %th.atl-table-maker
-              設置台数
-        %tbody.atl-table-body
-          = form_tag shop_machine_path, method: :patch do
-            - @shop_machines.each do |shop_machine|
-              = fields_for "shop_machines[]", shop_machine do |f|
-                = render 'shared/error_messages', object: f.object
-                = f.hidden_field :id, value: shop_machine.id
-                %tr
-                  %th.py-3
-                    = shop_machine.machine.title
-                  %td
-                    = shop_machine.machine.maker
-                  %td
-                    = shop_machine.machine.genre
-                  %td
-                    = f.text_field  :price, class:"text-right "
-                  %td
-                    = f.text_field  :own, class:"text-right"
-            = button_tag type: "submit", class: "atl-submit my-3" do
-              %i.fa.fa-calendar-plus.fa-2x
-              登録する
-  .text-center.pb-5
-    = link_to :back, class: "atl-btn" do
-      %i.far.fa-arrow-alt-circle-left.fa-2x
-      戻る
+- provide :title, "登録ゲームの編集"
+.container.atl-table-form.mx-auto.pb-5
+  %table
+    %thead.atl-table-head
+      %tr
+        %th.atl-table-title-form
+          ゲームタイトル
+        %th.atl-table-maker
+          メーカー
+        %th.atl-table-maker
+          ジャンル
+        %th.atl-table-maker
+          料金
+        %th.atl-table-maker
+          設置台数
+    %tbody.atl-table-body
+      = form_tag shop_machine_path, method: :patch do
+        - @shop_machines.each do |shop_machine|
+          = fields_for "shop_machines[]", shop_machine do |f|
+            = render 'shared/error_messages', object: f.object
+            = f.hidden_field :id, value: shop_machine.id
+            %tr
+              %th.py-3
+                = shop_machine.machine.title
+              %td
+                = shop_machine.machine.maker
+              %td
+                = shop_machine.machine.genre
+              %td
+                = f.text_field  :price, class:"text-right "
+              %td
+                = f.text_field  :own, class:"text-right"
+        = button_tag type: "submit", class: "atl-submit my-3" do
+          %i.far.fa-check-square.fa-2x
+          登録する

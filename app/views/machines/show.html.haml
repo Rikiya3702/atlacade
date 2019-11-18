@@ -1,22 +1,24 @@
-%section.bg-base
-  .container.text-center.py-4
-    .display-4
-      = @machine.title
-    .row.py-4
-      .col
-        = link_to "編集", edit_machine_path, class: "btn1 bg-main w-25"
-        = link_to "削除", @machine, class: "btn1 bg-main w-25", method: :delete, data: {confirm: "本当によろしいですか？"}
-    .row.py-4
-      .col
-        = show_self_image(@machine,300)
-      .col.text-left
-        %span.content-title.mt-0 ジャンル
-        %br= "#{@machine.genre}"
-        %span.content-title メーカー
-        %br= "#{@machine.maker}"
-        %span.content-title 更新日
-        %br= "#{@machine.updated_at.strftime("%Y年%m月%d日 %H:%M:%S")}"
-    %hr.py-4
-
-  .text-center.pb-5
-    =link_to "ゲーム一覧に戻る", machines_path, class: "btn1 bg-main w-50"
+- provide :title, @machine.title
+.row.py-4
+  .col
+    = show_self_image(@machine,300)
+  .col.text-left
+    %span.content-title メーカー
+    .content-border
+    .content-child= "#{@machine.maker}"
+    %span.content-title ジャンル
+    .content-border
+    .content-child= "#{@machine.genre}"
+    %span.content-title 更新日
+    .content-border
+    .content-child= "#{@machine.updated_at.strftime("%Y年%m月%d日 %H:%M:%S")}"
+    = link_to @machine.official_url, class: "atl-btn", target: :_blank do
+      %i.far.fa-hand-point-right.fa-2x
+      公式サイト
+    - if current_user.role == 2
+      = link_to edit_machine_path, class: "atl-btn" do
+        %i.fas.fa-edit.fa-2x
+        編集
+      = link_to @machine, class: "atl-btn", method: :delete, data: {confirm: "本当によろしいですか？"} do
+        %i.fa.fa-trash.fa-2x
+        削除

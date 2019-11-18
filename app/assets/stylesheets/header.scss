@@ -1,19 +1,53 @@
+header{
+  box-sizing: border-box;
+  border-bottom: 2px #eee double;
+}
+
+nav{
+  box-sizing: border-box;
+  border-bottom: 3px #2f2 double;
+  padding-bottom: 5px;
+}
+
 .logo2{
   text-decoration: none;
   display: block;
   font-family: 'Poiret One', cursive;
-  color: #002533;
   font-size: 45px;
-  border: 1px #fff solid;
-  border-radius: 12px;
+  font-weight: bold;
   padding: 5px 12px;
   margin: 0px;
-  &:hover{
-    text-decoration: none;
+  a{
+    color: #ff6d33 !important;
+    text-shadow: 2px 2px #655;
+    transition: 0.4s;
+    &:hover{
+      color: #ff4433 !important;
+      text-shadow: 2px 2px #655, 4px 4px #322;
+    }
+  }
+}
+
+.atl-navtoggle{
+  color: #ff6d33 !important;
+  font-size: 2rem !important;
+  border: 1px #eee solid  !important;
+  border-radius: none;
+  &:forcas{
+    box-shadow:none;
   }
 }
 
 .nav-item{
-  padding-left: 10px;
-  border-left: 2px solid #888;
+  
+  box-sizing: border-box;
+  color: #eee !important;
+  border-left: 2px solid #2f2;
+  transition: 0.4s;
+  &:hover{
+    box-sizing: border-box;
+    color: #ff6d33 !important;
+    text-shadow: 1px 1px #322;
+    border-bottom: 1px solid #2f2;
+  }
 }

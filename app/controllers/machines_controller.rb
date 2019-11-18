@@ -46,7 +46,7 @@ class MachinesController < ApplicationController
   private
 
     def machine_params
-      params.require(:machine).permit( :title, :genre, :maker )
+      params.require(:machine).permit( :title, :genre, :maker, :official_url)
     end
 
     def admin_user

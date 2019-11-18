@@ -1,82 +1,47 @@
 - content_for :scripts do
   = javascript_include_tag 'application'
-%section.atl-base.py-4
-  .container.text-center.main-border
-    .main-title= @shop.shop_name
-    .row.py-4
+- provide :title, @shop.shop_name
+.row.py-4
+  .col
+    = show_self_image(@shop,300)
+    .row.mt-3
       .col
-        = show_self_image(@shop,300)
-        .row.mt-3
-          .col
-            = render 'tags'
-      .col.text-left
-        %span.content-title 営業時間
-        .content-border
-        .content-child= "#{@shop.business_hours}"
-        %span.content-title TEL
-        .content-border
-        .content-child= "#{@shop.tel}"
-        %span.content-title 住所
-        .content-border
-        .content-child= "#{@shop.adress}"
-        %span.content-title 最寄駅
-        .content-border
-        .content-child= "#{@shop.nearest_station}"
-        %span.content-title 更新日
-        .content-border
-        .content-child= "#{@shop.updated_at.strftime("%Y年%m月%d日 %H:%M:%S")}"
-        = link_to "#Access", class: "atl-btn" do
-          %i.far.fa-hand-point-right.fa-2x
-          アクセス
-        = link_to @shop.official_url, class: "atl-btn", target: :_blank do
-          %i.far.fa-hand-point-right.fa-2x
-          公式サイト
-        - if has_edit_authority?(@user, @shop)
-          = link_to edit_shop_path, class: "atl-btn" do
-            %i.fas.fa-edit.fa-2x
-            編集
+        = render 'tags'
+  .col.text-left
+    = render 'shop_status'
+.row.justify-content-center
+  .col-xs-8
+    %p.py-2
+      = "#{@shop.shop_info}"
+.container.py-4.ml-2
+  .row
+    .col-xs-3.shop-element-head
+      %i.fa.fa-flag
+      = link_to "イベント", "#Events", role: "button", data:{toggle: "collapse"}, aria: {expanded: "true", controls: "Events"}
+  #Events.collapse.show.shop-element
+    = render 'events'
 
-%section.atl-base.py-4
-  .container.py-4
-    .row
-      .col-md-3.shop-element-head
-        %i.fa.fa-flag
-        = link_to "イベント", "#Events", role: "button", data:{toggle: "collapse"}, aria: {expanded: "true", controls: "Events"}
-    #Events.collapse.show.text-center
-      .shop-element
-        = render 'events'
+.container.py-4.ml-2
+  .row
+    .col-xs-3.shop-element-head
+      %i.fa.fa-desktop
+      = link_to "設置ゲーム", "#Machines", role: "button", data:{toggle: "collapse"}, aria: {expanded: "true", controls: "Machines"}
+  #Machines.collapse.show.shop-element
+    = render 'machines'
 
-%section.atl-base.py-4
-  .container.py-4
-    .row
-      .col-md-3.shop-element-head
-        %i.fa.fa-desktop
-        = link_to "設置ゲーム", "#Machines", role: "button", data:{toggle: "collapse"}, aria: {expanded: "true", controls: "Machines"}
-    #Machines.collapse.text-center.show
-      .shop-element
-        = render 'machines'
-
-%section.atl-base.py-4
-  .container.py-4
-    .row
-      .col-md-3.shop-element-head
-        %i.fa.fa-map-marker-alt
-        = link_to "アクセス", "#Access", role: "button", data:{toggle: "collapse"}, aria: {expanded: "true", controls: "Access"}
-    #Access.collapse.show.text-center
-      .shop-element
-        %p
-          = "#{@shop.access}"
-        - if @shop.latitude
-          .googlemap.mx-auto.mb-5
-            #map
-        - else
-          .text-center.mb-5
-            実在する住所を入力すると、ここにGoogleMapが表示されます。
-
-.atl-base.text-center.pb-5
-  = link_to :back, class: "atl-btn" do
-    %i.far.fa-arrow-alt-circle-left.fa-2x
-    戻る
+.container.py-4.ml-2
+  .row
+    .col-xs-3.shop-element-head
+      %i.fa.fa-map-marker-alt
+      = link_to "アクセス", "#Access", role: "button", data:{toggle: "collapse"}, aria: {expanded: "true", controls: "Access"}
+  #Access.collapse.show.shop-element
+    %p= "#{@shop.access}"
+    - if @shop.latitude
+      .googlemap.mx-auto.mb-5
+        #map
+    - else
+      .text-center.mb-5
+        実在する住所を入力すると、ここにGoogleMapが表示されます。
 
 :javascript
   handler = Gmaps.build('Google');

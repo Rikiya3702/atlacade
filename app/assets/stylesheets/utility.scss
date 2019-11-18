@@ -35,22 +35,6 @@
   color: #002533;
 }
 
-.btn1 {
-  color: #f8f8ff;
-  display:inline-block;
-  // background: rgb(8,4,22);
-  // opacity: 0.85;
-  padding: 15px;
-  border-radius: 15px;
-  line-height: 1;
-  &:hover{
-    opacity: 1.0;
-
-
-    text-decoration: none;
-  }
-}
-
 .atl-btn {
   display: inline-block;
   position: relative;
@@ -80,7 +64,7 @@
     padding: 15px 17px 20px;
     margin: 0;
       border-left: 1px #ff2 solid;
-      border-right: 3px #ff2 double;
+      border-right: 3px #ff2 solid;
     i{
       -webkit-transform: rotateZ(360deg);
       transform: rotateZ(360deg);
@@ -101,23 +85,6 @@
   border-right: 3px #2f2 double;
   padding-bottom: 3px;
 }
-
-.atl-btn2{
-  position: relative;
-  z-index: 2;
-  top: -3rem;
-  left: 1rem;
-  background: rgba(0,0,0,0);
-  width: 9rem;
-  height: 4.5rem;
-  border-top: 3px #2f2 double;
-  border-left: 3px #2f2 double;
-}
-
-.atl-btn3{
-
-}
-
 
 .alert{
   margin-bottom: 0;
