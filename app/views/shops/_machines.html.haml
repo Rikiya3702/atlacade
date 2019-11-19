@@ -1,0 +1,35 @@
+.atl-table.mx-auto.mb-5
+  %table
+    %thead.atl-table-head
+      %tr
+        %th.atl-table-title
+          ゲームタイトル
+        %th.atl-table-maker
+          メーカー
+        %th.atl-table-maker
+          ジャンル
+        %th.atl-table-price
+          料金
+        %th
+          設置台数
+    %tbody.atl-table-body
+      - @shop.shop_machine.each do |sm|
+        %tr
+          %th
+            = link_to "#{sm.machine.title}", machine_path(sm.machine_id)
+          %td
+            = "#{sm.machine.maker}"
+          %td
+            = "#{sm.machine.genre}"
+          %td
+            = "#{sm.price}"
+          %td
+            = "#{sm.own} 台"
+.mb-5
+  - if has_edit_authority?(@user, @shop)
+    = link_to "/shop_machines/#{@shop.id}/new", class: "atl-btn" do
+      %i.fa.fa-plus.fa-2x
+      登録
+    = link_to edit_shop_machine_path, class: "atl-btn" do
+      %i.fas.fa-edit.fa-2x
+      編集

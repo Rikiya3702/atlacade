@@ -1,0 +1,49 @@
+.shops{
+  background: rgb(11,7,22);
+    width: 90%;
+  margin: 2rem 1rem;
+  border-right: 3px #2f2 solid;
+  .shop-element-head{
+    border-top: #ff2 1px solid;
+    color: #2f2;
+    font-weight: bold;
+    opacity: 0.85;
+    transition: 0.6s;
+    margin: 5px 7px 5px 0;
+    padding: 5px 7px 10px;
+
+    i{
+      position: relative;
+      color: #2f2;
+      transition: 0.4s;
+    }
+    &:hover{
+      opacity: 1.0;
+      color: #f8f8ff !important;
+      padding: 10px 12px 15px;
+      margin: 0;
+        border-left: 1px #ff2 solid;
+        border-right: 3px #ff2 solid;
+      i{
+        -webkit-transform: rotateZ(360deg);
+        transform: rotateZ(360deg);
+      }
+  }
+  .shop-element{
+    border-left: 2px #2f2 solid;
+    border-bottom: 4px #2f2 double;
+  }
+
+
+
+  }
+
+
+}
+@include media-breakpoint-up(md) {
+}
+@include media-breakpoint-up(lg) {
+  .shops{
+    width: 45%;
+  }
+}

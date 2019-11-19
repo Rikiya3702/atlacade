@@ -20,4 +20,3 @@
 //= require bootstrap-sprockets
 //= require tempusdominus-bootstrap-4.js
 //= require datetimepicker.js
-//= require form

@@ -1,0 +1,24 @@
+- if @shop.event.present?
+  - @shop.event.each do |e|
+    .event.mx-auto
+      .event-date.mx-auto.bg-main
+        = "#{e.event_date.strftime("%Y年%m月%d日")}"
+      .event-content
+        = "#{e.content}"
+        - if has_edit_authority?(@user, @shop)
+          %br
+          .mt-4.text-right
+            = link_to edit_event_path(e), class: "atl-btn" do
+              %i.fa.fa-cog.fa-2x
+              編集
+            = link_to event_path(e), method: :delete, class: "atl-btn" do
+              %i.fa.fa-trash.fa-2x
+              削除
+- else
+  %p.my-5 開催中のイベントはありません。
+- if has_edit_authority?(@user, @shop)
+  = link_to "#NewEvent", class:"atl-btn", role:"button", data:{toggle: "collapse"},  aria:{expanded:"true", controls:"Events"} do
+    %i.far.fa-plus-square.fa-2x
+    イベント登録
+  #NewEvent.collapse.text-center.mx-auto
+    = render "new_event"

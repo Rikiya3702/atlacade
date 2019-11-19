@@ -1,10 +1,4 @@
-%section
-  .m-0
-    .back1
-    .back2
-  .back3
-  .back4
-%section.bg-base
+%section.atl-base
   .container
     .signboard.checkbg.bg3
       .row.text-center.py-5
@@ -21,10 +15,23 @@
 
   .text-center.py-5
     %p 好きな条件で検索しよう！
-    = link_to "検索する", shops_path, class: "btn1 bg-main w-25"
-    = link_to "/machines", machines_path, class: "btn1 bg-main w-25"
+    = form_with scope: :search, url: shops_path, method: :get, local: true do |f|
+      = f.select 
+    = link_to shops_path, class: "atl-btn ml-4" do
+      %i.fas.fa-search.fa-2x
+      検索
+    = link_to shops_path, class: "atl-btn ml-4" do
+      %i.fas.fa-home.fa-2x
+      ショップ一覧
+    = link_to machines_path, class: "atl-btn ml-4" do
+      %i.fa.fa-desktop.fa-2x
+      ゲーム一覧
 
   .text-center.py-5
     %p ログイン・新規登録はこちら
-    = link_to "ログインする", new_user_session_path, class: "btn1 bg-main w-25 mr-2"
-    = link_to "新規登録する", new_user_registration_path, class: "btn1 bg-main w-25 ml-2"
+    = link_to new_user_session_path, class: "atl-btn ml-4" do
+      %i.fas.fa-sign-in-alt.fa-2x
+      ログイン
+    = link_to new_user_registration_path, class: "atl-btn ml-4" do
+      %i.fas.fa-user-plus.fa-2x
+      アカウントの登録

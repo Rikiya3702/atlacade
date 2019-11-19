@@ -1,0 +1,25 @@
+%span.content-title 営業時間
+.content-border
+.content-child= "#{@shop.business_hours}"
+%span.content-title TEL
+.content-border
+.content-child= "#{@shop.tel}"
+%span.content-title 住所
+.content-border
+.content-child= "#{@shop.adress}"
+%span.content-title 最寄駅
+.content-border
+.content-child= "#{@shop.nearest_station}"
+%span.content-title 更新日
+.content-border
+.content-child= "#{@shop.updated_at.strftime("%Y年%m月%d日 %H:%M:%S")}"
+= link_to "#Access", class: "atl-btn" do
+  %i.far.fa-hand-point-right.fa-2x
+  アクセス
+= link_to @shop.official_url, class: "atl-btn", target: :_blank do
+  %i.far.fa-hand-point-right.fa-2x
+  公式サイト
+- if has_edit_authority?(@user, @shop)
+  = link_to edit_shop_path, class: "atl-btn" do
+    %i.fas.fa-edit.fa-2x
+    編集
