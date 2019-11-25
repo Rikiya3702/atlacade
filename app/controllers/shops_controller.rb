@@ -2,7 +2,56 @@ class ShopsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
 
   def index
-    @shops = Shop.all
+
+    # 全件表示リンク・リダイレクト用
+    if params[:search].nil?
+      @shops = Shop.all
+      flash.now[:notice] = "全店舗を表示します。"
+      flash.now[:info] = "#{@shops.count} 件のお店が見つかりました。"
+      return
+    end
+
+    # エリアが選択された時、マッチするshop_idをids[:from_adress]に代入
+    ids = {}
+    if params[:search][:adress].present?
+      ids[:from_adress] = Shop.search_adress(params[:search][:adress]).map(&:id)
+      @query_adress = params[:search][:adress]
+    # エリアもゲームも選択しなかった時は全件表示
+    elsif params[:search][:machine_ids].nil?
+      @shops = Shop.all
+      flash.now[:notice] = "全店舗を表示します。"
+      flash.now[:info] = "#{@shops.count} 件のお店が見つかりました。"
+      return
+    end
+
+    # 選択されたゲームを持つshop_idをids[:from_machine]に代入
+    # 参考URL https://orangelog.site/rails/search-filter-associated-models/
+    @machine_ids = params[:search][:machine_ids]
+    if @machine_ids.present?
+      conditions = {}
+      conditions[:shop_machines] = {}
+      conditions[:shop_machines][:machine_id] = @machine_ids.map(&:to_i)
+      ids[:from_machine] = ShopMachine.where(machine_id: conditions[:shop_machines][:machine_id]).group(:shop_id).having('count(shop_id) = ?', @machine_ids.length).map(&:shop_id)
+      @query_machines = Machine.find(@machine_ids)
+
+    end
+
+    # ids[:from_adress] と ids[:from_machine] から 出力するid配列 ids[:shop] を求める
+    if ids[:from_adress].present? && ids[:from_machine].present?
+      ids[:shop] = ids[:from_adress] & ids[:from_machine]
+    elsif ids[:from_adress].nil?
+      ids[:shop] = ids[:from_machine]
+    elsif ids[:from_machine].nil?
+      ids[:shop] = ids[:from_adress]
+    end
+
+    # ids[:shop] で抽出
+    if ids[:shop].present?
+      @shops = Shop.where(id: ids[:shop])
+      flash.now[:info] = "#{@shops.count} 件のお店が見つかりました。"
+    else
+      redirect_to root_path, notice: "該当する店舗がありませんでした。"
+    end
   end
 
   def show
@@ -46,8 +95,7 @@ class ShopsController < ApplicationController
     if  (@shop == current_user.shop || current_user.role == 2)  &&
         @shop.update_attributes(shop_params)   &&
         @shop.tag.update_attributes(tag_params)
-
-      flash[:success] = "更新しました"
+      flash[:success] = "更新しました。"
       redirect_to "/shops/#{@shop.id}"
     else
       render 'edit'

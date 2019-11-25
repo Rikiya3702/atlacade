@@ -6,13 +6,13 @@
     = show_self_image(@shop,300)
     .row.mt-3
       .col
-        = render 'tags'
+        = render 'tags', shop: @shop
   .col.text-left
     = render 'shop_status'
 .row.justify-content-center
-  .col-xs-8
+  .shop-info
     %p.py-2
-      = "#{@shop.shop_info}"
+      = simple_format @shop.shop_info
 .container.py-4.ml-2
   .row
     .col-xs-3.shop-element-head

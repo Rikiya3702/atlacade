@@ -2,21 +2,23 @@
   %table
     %thead.atl-table-head
       %tr
-        %th.atl-table-title
+        %th.w-25rem
           ゲームタイトル
-        %th.atl-table-maker
+        %th.w-8rem
           メーカー
-        %th.atl-table-maker
+        %th.w-8rem
           ジャンル
-        %th.atl-table-price
+        %th.w-6rem
           料金
-        %th
+        %th.w-6rem
           設置台数
     %tbody.atl-table-body
       - @shop.shop_machine.each do |sm|
         %tr
           %th
-            = link_to "#{sm.machine.title}", machine_path(sm.machine_id)
+            = link_to machine_path(sm.machine_id) do
+              = show_self_image(sm.machine, 30)
+              = "#{sm.machine.title}"
           %td
             = "#{sm.machine.maker}"
           %td

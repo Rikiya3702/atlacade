@@ -13,4 +13,12 @@ class Shop < ApplicationRecord
                         length: {maximum: 20},
                         uniqueness: true
   mount_uploader :image, ImageUploader
+
+  def self.search_adress(query)
+    if query
+      where(['adress LIKE ?', "#{query}%"])
+    else
+      all
+    end
+  end
 end

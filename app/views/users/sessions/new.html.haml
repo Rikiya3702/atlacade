@@ -5,13 +5,13 @@
       %i.fas.fa-pencil-alt
       = f.label       :email, "メールアドレス"
     %br
-    = f.text_field    :email, class: "mt-1 ml-3 atl-textfield", autocomplete: "email"
+    = f.text_field    :email, class: "mt-1 ml-3 atl-textfield", autocomplete: "email", value: "admin@example.com"
   .text-left.mb-3
     .form-column
       %i.fas.fa-pencil-alt
       = f.label       :password, "パスワード"
     %br
-    = f.password_field    :password, class: "mt-1 ml-3 atl-textfield"
+    = f.password_field    :password, class: "mt-1 ml-3 atl-textfield", value: "password"
   - if devise_mapping.rememberable?
     .form-tags
       = f.check_box      :remember_me

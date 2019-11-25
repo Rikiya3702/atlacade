@@ -3,14 +3,19 @@ class ShopMachinesController < ApplicationController
   before_action :user_is_owner?
 
   def new
+    @shop_machines = ShopMachine.new
     @machines = Machine.where.not(id: @shop.machine_ids)
   end
 
   def create
       success_count = 0
-      create_shop_machines_params.each do |param|
-        next if param[:own].to_i == 0
-        shop_machine = ShopMachine.create(param)
+      create_params = shop_machines_params
+      create_params[:own].each_with_index do |own, i|
+        next if own.to_i == 0
+        shop_machine = ShopMachine.create(shop_id:    create_params[:shop_id],
+                                          machine_id: create_params[:machine_id][i],
+                                          own:        create_params[:own][i],
+                                          price:      create_params[:price][i] )
         if  shop_machine.save
           success_count += 1
         end
@@ -21,7 +26,7 @@ class ShopMachinesController < ApplicationController
       else
         flash[:success] = "#{success_count}件のデータを登録しました"
       end
-      redirect_to @shop
+      redirect_to shop_path(create_params[:shop_id])
   end
 
   def edit
@@ -68,6 +73,10 @@ class ShopMachinesController < ApplicationController
       params.require(:shop_machines).map do |m|
         m.permit(:shop_id, :machine_id, :price, :own)
       end
+    end
+
+    def shop_machines_params
+      params.require(:shop_machine).permit(:shop_id, machine_id: [], price: [], own: [])
     end
 
 end

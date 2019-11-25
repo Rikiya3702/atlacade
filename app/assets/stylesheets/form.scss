@@ -29,10 +29,11 @@
   height: 2.5rem;
   padding: 0.4em 0.8em;
   transition: 0.5s;
-  width: 90%;
+  width: 60%;
 }
-.atl-textfield{
-width: 60%;
+.atl-textarea{
+  height: 5rem;
+  width: 90%;
 }
 .atl-datefield{
   -moz-appearance: none;
@@ -55,13 +56,14 @@ width: 60%;
   padding: 0.4em 0.8em;
   transition: 0.5s;
 }
+
 .atl-textarea:focus {
   border-top: 1px solid #2f2;
   border-left: 1px solid #2f2;
   border-right: 3px solid #2f2;
   border-bottom: 4px double #2f2;
   background-color: rgba(64, 64, 64, 1);
-  height: 8rem;
+  height: 12rem;
   box-shadow: none;
   outline: none;
 }
@@ -208,9 +210,7 @@ width: 60%;
 .form-required{
   display: inline-block;
   background: rgba(255, 255, 255, 0.1);
-  // color: #e02;
   font-size: 80%;
-  // font-weight: bold;
   padding: 2px 6px;
   margin-left: 1rem;
   border-top: 1px #2f2 solid;

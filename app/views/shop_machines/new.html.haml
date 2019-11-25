@@ -1,37 +1,36 @@
 - provide :title, "ゲームの登録"
-.container.atl-table-form.mx-auto.pb-5
-  %table
-    %thead.atl-table-head
-      %tr
-        %th.atl-table-title-form
-          ゲームタイトル
-        %th.atl-table-maker
-          メーカー
-        %th.atl-table-maker
-          ジャンル
-        %th.atl-table-maker
-          料金
-        %th.atl-table-maker
-          設置台数
-    %tbody.atl-table-body
-      = form_tag "/shop_machines/#{@shop.id}/create", method: :post do
+.container.atl-table-form.mx-auto
+  %p 設置台数に1以上を入力すると登録されます。
+  = form_for @shop_machines, url: shop_machines_path(params[:id]), method: :post do |f|
+    %table.mx-auto
+      %thead.atl-table-head
+        %tr
+          %th.w-15rem
+            ゲームタイトル
+          %th.w-6rem
+            メーカー
+          %th.w-6rem
+            ジャンル
+          %th.w-6rem
+            料金
+          %th.w-6rem
+            設置台数
+      %tbody.atl-table-body
+        = f.hidden_field :shop_id, value: @shop.id
         - @machines.each do |machine|
-          - shop_machine = machine.shop_machine.build(shop_id: @shop.id)
-          = fields_for "shop_machines[]", shop_machine do |f|
-            = render 'shared/error_messages', object: f.object
-            = f.hidden_field :shop_id, value: @shop.id
-            = f.hidden_field :machine_id, value: machine.id
-            %tr
-              %th.py-3
-                = f.label machine.title
-              %td
-                = f.label machine.maker
-              %td
-                = f.label machine.genre
-              %td.text-right
-                = f.text_field  :price, class:"text-right "
-              %td
-                = f.text_field  :own, class:"text-right "
-        = button_tag type: "submit", class: "atl-submit my-3" do
-          %i.far.fa-check-square.fa-2x
-          登録する
+          = f.hidden_field :machine_id, multiple: true, value: machine.id
+          %tr
+            %th
+              = show_self_image(machine, 30)
+              = f.label machine.title
+            %td
+              = f.label machine.maker
+            %td
+              = f.label machine.genre
+            %td.text-right
+              = f.text_field  :price, multiple: true, class:"text-right "
+            %td
+              = f.text_field  :own, multiple: true, class:"text-right "
+    = button_tag type: "submit", class: "atl-submit mt-5" do
+      %i.far.fa-check-square.fa-2x
+      登録する

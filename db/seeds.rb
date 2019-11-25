@@ -44,8 +44,18 @@
   ["頭脳ゲーム",      "プロゲーム",    "ワールドプレス"],
   ["頭脳ゲーム",      "プロゲーム",    "スカラ・コボォル"]
 ].each do |genre, maker, title|
-  Machine.create!(  title: title, maker:  maker, genre: genre)
+  Machine.create!(  title:        title,
+                    maker:        maker,
+                    genre:        genre,
+                    official_url: "https://www.google.com/",
+                    machine_info: Faker::Lorem.paragraph
+                  )
 end
+
+# ランダムな日付の範囲
+# 参考URL https://thr3a.hatenablog.com/entry/20151016/1444968237
+s1 = Date.parse("2019/12/01")
+s2 = Date.parse("2020/01/31")
 
 # 管理者
 su = User.create!(  nickname:   "Administrator",
@@ -72,6 +82,11 @@ su.shop.create_tag!(  emoney:     true,
                       wifi:       true,
                       smoking:    0
                     )
+5.times do
+  su.shop.event.create!( event_date:   Random.rand(s1 .. s2),
+                         content:      "#{Faker::Lorem.paragraph(sentence_count: 2)}\n#{Faker::Lorem.paragraph(sentence_count: 2)}"
+                       )
+end
 # 管理者のShopMachine
 machines = Machine.all
 owns = [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 3, 4, 4, 5, 6, 7, 8]
@@ -121,7 +136,7 @@ shop_brand = [  "ラウンドゼロ",
                     adress:           address.to_s,
                     nearest_station:  "#{address.town.to_s}駅",
                     access:           "#{address.town.to_s}駅よりXXXXX",
-                    shop_info:        "テストアカウントなのでダミーデータです。",
+                    shop_info:        "#{Faker::Lorem.paragraph(sentence_count: 2)}\n#{Faker::Lorem.paragraph(sentence_count: 4)}\n#{Faker::Lorem.paragraph(sentence_count: 4)}",
                     official_url:     "https://www.google.com/"
                   )
 
@@ -135,6 +150,13 @@ shop_brand = [  "ラウンドゼロ",
                         wifi:       bool.sample,
                         smoking:    [0, 1, 2].sample
                       )
+
+  3.times do
+    u.shop.event.create!(  event_date:   Random.rand(s1 .. s2),
+                           content:      Faker::Lorem.paragraph
+                         )
+  end
+
   machines.each do |m|
     if (own = owns.sample) == 0
       next

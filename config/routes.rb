@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
   resources :shops
   resources :machines
-  resources :shop_machines, only: [:edit, :update, :destroy]
+  resources :shop_machines, only: [:create, :edit, :update, :destroy]
   get "/shop_machines/:id/new", to: 'shop_machines#new'
-  post "/shop_machines/:id/create", to: 'shop_machines#create'
+  # post "/shop_machines/:id/create", to: 'shop_machines#create'
 
   resources :events, only: [:edit, :create, :update, :destroy]
   get "/events/:id/new", to: 'events#new'

@@ -1,13 +1,13 @@
 - if @shop.event.present?
   - @shop.event.each do |e|
     .event.mx-auto
-      .event-date.mx-auto.bg-main
-        = "#{e.event_date.strftime("%Y年%m月%d日")}"
+      .event-date.mx-auto
+        = "#{e.event_date.strftime("%Y年  %m月 %d日")}"
       .event-content
-        = "#{e.content}"
+        = simple_format e.content
         - if has_edit_authority?(@user, @shop)
           %br
-          .mt-4.text-right
+          .text-right
             = link_to edit_event_path(e), class: "atl-btn" do
               %i.fas.fa-edit.fa-2x
               編集

@@ -15,11 +15,15 @@
 
   .text-center.py-5
     %p 好きな条件で検索しよう！
-    = form_with scope: :search, url: shops_path, method: :get, local: true do |f|
-      = f.select 
-    = link_to shops_path, class: "atl-btn ml-4" do
-      %i.fas.fa-search.fa-2x
-      検索
+    = form_with scope: :search ,url: shops_path, method: :get, local: true do |f|
+      = f.select :adress, perfectures, prompt: "都道府県"
+      - @machines.each do |machine|
+        = f.label  :title, machine.title
+        = f.check_box  :machine_ids, {multiple: true, include_hidden: false }, machine[:id]
+      %br
+      = button_tag type: "submit", class: "atl-submit" do
+        %i.fas.fa-search.fa-2x
+        検索
     = link_to shops_path, class: "atl-btn ml-4" do
       %i.fas.fa-home.fa-2x
       ショップ一覧

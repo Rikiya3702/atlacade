@@ -1,40 +1,41 @@
-.bg-base {
-  background: rgb(230,248,255); /* Old browsers */
-  background: -moz-linear-gradient(top, rgba(230,248,255,1) 0%, rgba(204,220,220,1) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, rgba(230,248,255,1) 0%,rgba(204,220,220,1) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, rgba(230,248,255,1) 0%,rgba(204,220,220,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  color: #17191a;
-}
-.atl-base {
-  background: rgb(8,4,19); /* Old browsers */
-  // background: -moz-linear-gradient(top, rgba(230,248,255,1) 0%, rgba(204,220,220,1) 100%); /* FF3.6-15 */
-  // background: -webkit-linear-gradient(top, rgba(230,248,255,1) 0%,rgba(204,220,220,1) 100%); /* Chrome10-25,Safari5.1-6 */
-  // background: linear-gradient(to bottom, rgba(230,248,255,1) 0%,rgba(204,220,220,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+.flash{
   color: #e6f8ff;
+  border-top: 1px #2f2 solid;
+  border-left: 1px #2f2 solid;
+  border-bottom: 4px #2f2 double;
+  border-right: 3px #2f2 solid;
 }
 
-.bg-flash {
-  background: rgb(230,248,255); /* Old browsers */
-  background: -moz-linear-gradient(top, rgba(230,248,255,1) 0%, rgba(204,220,220,1) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, rgba(230,248,255,1) 0%,rgba(204,220,220,1) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, rgba(230,248,255,1) 0%,rgba(204,220,220,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  color: #17191a;
-  .flash{
-    border-top: 1px #000 solid;
-    border-bottom: 1px #000 solid;
-  }
+.alert{
+  margin-bottom: 0;
 }
-
-.bg-main{
-  background-color: #006e99;
-  color: #e6f8ff;
+.alert-notice{
+  background: rgba(16,48,32,0.5);
 }
-
-.bg-accent{
-  background-color: #ff6d33;
-  color: #002533;
+.alert-success{
+  background: rgba(64,192,64,0.4);
 }
-
+.alert-danger{
+  background: rgba(192,32,32,0.4);
+}
+.alert-info{
+  background: rgba(16,48,192,0.4);
+}
+.w-25rem{
+  width: 25rem;
+}
+.w-15rem{
+  width: 15rem;
+}
+.w-8rem{
+  width: 8rem;
+}
+.w-4rem{
+  width: 4rem;
+}
+.w-6rem{
+  width: 6rem;
+}
 .atl-btn {
   display: inline-block;
   position: relative;
@@ -84,8 +85,4 @@
   border-bottom: 3px #2f2 double;
   border-right: 3px #2f2 double;
   padding-bottom: 3px;
-}
-
-.alert{
-  margin-bottom: 0;
 }

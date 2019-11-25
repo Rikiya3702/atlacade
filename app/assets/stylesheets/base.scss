@@ -10,3 +10,29 @@ body{
       color: #666;
     }
 }
+
+.main-border{
+  position: relative;
+  top: 2rem;
+  border: 1px #fff solid;
+    border-radius: 4px;
+}
+
+.main-title{
+  position: relative;
+  top: -2rem;
+  display: inline-block;
+  background: rgb(11,7,22);
+  font-size: 2rem;
+  font-weight: bold;
+  border-top: 1px #2f2 solid;
+  border-left: 1px #2f2 solid;
+  border-right: 3px #2f2 double;
+  border-bottom: 4px #2f2 double;
+  padding: 4px 13px;
+}
+
+.atl-base {
+  background: rgb(8,4,19);
+  color: #e6f8ff;
+}

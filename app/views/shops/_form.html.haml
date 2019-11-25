@@ -17,7 +17,7 @@
     .col-lg-6.form-tags.mx-auto
       = fields_for :tag do |t|
         .row.mx-auto
-          タグをクリックで ON / OFF 切り替え出来ます。
+          %p タグをクリックで ON / OFF 切り替え出来ます。
         .row
           .col
             = t.check_box      :emoney, {:checked => @shop.tag.emoney} , "true", "false"
