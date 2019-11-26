@@ -36,3 +36,41 @@ body{
   background: rgb(8,4,19);
   color: #e6f8ff;
 }
+.paginates{
+  font-size: 120%;
+  width: 2rem;
+  padding: 3px 6px;
+  margin: 0 8px;
+}
+
+.pagination{
+  justify-content: center;
+  .current{
+    font-size: 120%;
+    width: 2rem;
+    margin: 0 8px;
+    padding: 3px 9px;
+    border-top: 1px #2f2 solid;
+    border-left: 1px #2f2 solid;
+    border-right: 2px #2f2 double;
+    border-bottom: 3px #2f2 double;
+    }
+  a{
+  font-size: 120%;
+  width: 2rem;
+  padding: 3px 6px;
+  // border-top: 1px #ff2 solid;
+  border-bottom: 3px #ff2 double;
+  box-sizing: border-box;
+  transition: 0.3s;
+  color: #e6f8ff !important;
+  a:link {text-decoration: none; color: #e6f8ff !important;  }
+  a:visited { text-decoration: none; color: #e6f8ff !important;}
+  &:hover{
+    border-top: 1px #2f2 solid;
+    border-left: 1px #2f2 solid;
+    border-right: 2px #2f2 double;
+    border-bottom: 3px #2f2 double;
+    }
+  }
+}

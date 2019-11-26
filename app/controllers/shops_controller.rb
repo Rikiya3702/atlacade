@@ -5,9 +5,8 @@ class ShopsController < ApplicationController
 
     # 全件表示リンク・リダイレクト用
     if params[:search].nil?
-      @shops = Shop.all
-      flash.now[:notice] = "全店舗を表示します。"
-      flash.now[:info] = "#{@shops.count} 件のお店が見つかりました。"
+      @shops = Shop.page(params[:page])
+      flash.now[:info] = "全店舗を表示します。"
       return
     end
 
@@ -18,9 +17,8 @@ class ShopsController < ApplicationController
       @query_adress = params[:search][:adress]
     # エリアもゲームも選択しなかった時は全件表示
     elsif params[:search][:machine_ids].nil?
-      @shops = Shop.all
-      flash.now[:notice] = "全店舗を表示します。"
-      flash.now[:info] = "#{@shops.count} 件のお店が見つかりました。"
+      @shops = Shop.page(params[:page])
+      flash.now[:info] = "全店舗を表示します。"
       return
     end
 
@@ -47,8 +45,7 @@ class ShopsController < ApplicationController
 
     # ids[:shop] で抽出
     if ids[:shop].present?
-      @shops = Shop.where(id: ids[:shop])
-      flash.now[:info] = "#{@shops.count} 件のお店が見つかりました。"
+      @shops = Shop.where(id: ids[:shop]).page(params[:page])
     else
       redirect_to root_path, notice: "該当する店舗がありませんでした。"
     end

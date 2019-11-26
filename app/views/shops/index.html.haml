@@ -14,9 +14,20 @@
   -else
     = "なし"
 
+%p.mb-2.text-left.pl-5
+  = @shops.total_count
+  件のお店が見つかりました。
+  %br
+  - unless @shops.total_count == 1
+    = "#{@shops.offset_value + 1} 〜 #{@shops.offset_value + @shops.length}件目を表示しています。"
+
 .shops
   - @shops.each do |shop|
     = render 'shop', shop: shop
+
+.my-2
+  = paginate @shops
+
 .text-center
   = link_to root_path, class: "atl-btn" do
     %i.fas.fa-search.fa-2x

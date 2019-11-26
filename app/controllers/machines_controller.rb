@@ -2,7 +2,7 @@ class MachinesController < ApplicationController
   before_action :admin_user, only: [:new, :edit, :craete, :update, :destroy]
 
   def index
-    @machines = Machine.all
+    @machines = Machine.page(params[:page])
   end
 
   def show
