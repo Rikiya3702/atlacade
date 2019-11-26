@@ -22,3 +22,7 @@
       = link_to @machine, class: "atl-btn", method: :delete, data: {confirm: "本当によろしいですか？"} do
         %i.fa.fa-trash.fa-2x
         削除
+.row.justify-content-center
+  .shop-info
+    %p.py-2
+      = simple_format @machine.machine_info

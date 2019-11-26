@@ -3,7 +3,7 @@
     = link_to shop_path(shop) do
       %i.fas.fa-home
       = shop.shop_name
-  .shop-element.pt-1
+  .shop-element.pt-1.mb-5
     .row.justify-content-end
       .col-xs-3.ml-4
         = link_to show_self_image(shop,100), shop_path(shop)
@@ -19,7 +19,7 @@
                     = sm.price
                   %td.w-4rem
                     = "#{sm.own} 台"
-      -else
+      - else
         .col
           = shop.tel
           %br= shop.shop_info

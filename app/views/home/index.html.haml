@@ -13,23 +13,35 @@
               = "#{@user.nickname}さん"
             こんにちは
 
-  .text-center.py-5
-    %p 好きな条件で検索しよう！
-    = form_with scope: :search ,url: shops_path, method: :get, local: true do |f|
-      = f.select :adress, perfectures, prompt: "都道府県"
-      - @machines.each do |machine|
-        = f.label  :title, machine.title
-        = f.check_box  :machine_ids, {multiple: true, include_hidden: false }, machine[:id]
-      %br
-      = button_tag type: "submit", class: "atl-submit" do
-        %i.fas.fa-search.fa-2x
-        検索
+  .text-center.my-5
     = link_to shops_path, class: "atl-btn ml-4" do
       %i.fas.fa-home.fa-2x
       ショップ一覧
     = link_to machines_path, class: "atl-btn ml-4" do
       %i.fa.fa-desktop.fa-2x
       ゲーム一覧
+  .container.main-border.text-center.pb-5
+    .main-title.mx-auto.py-3
+      検索
+    = form_with scope: :search ,url: shops_path, method: :get, local: true do |f|
+      .area-select
+        %span エリア指定：
+        = f.select :adress, perfectures, prompt: "都道府県を選択"
+      %br
+      .text-left
+        .machine-items-head
+          ゲーム指定
+      .machine-items.mb-3
+        .py-2
+          タイトルをクリックで選択出来ます。
+        - @machines.each do |machine|
+          = f.check_box  :machine_ids, {multiple: true, include_hidden: false, id: "machine_#{machine.id}", mtitle: "#{machine.title}"}, machine[:id]
+          = f.label     :machine_ids, machine.title, for: "machine_#{machine.id}"
+        #machine_query
+          選択したゲームがありません
+      = button_tag type: "submit", class: "atl-submit" do
+        %i.fas.fa-search.fa-2x
+        検索
 
   .text-center.py-5
     %p ログイン・新規登録はこちら
@@ -39,3 +51,28 @@
     = link_to new_user_registration_path, class: "atl-btn ml-4" do
       %i.fas.fa-user-plus.fa-2x
       アカウントの登録
+
+
+:javascript
+  $(function() {
+
+    // チェックボックスをチェックしたら発動
+
+    $('input[name="search[machine_ids][]"]').change(function() {
+
+      // ①空の配列を用意
+      var machines = [];
+
+      // ②チェックが入ったらループ処理
+      $('input[name="search[machine_ids][]"]:checked').each(function() {
+
+        // ③value値を配列に格納
+        machines.push($(this).attr("mtitle"));
+
+      });
+
+      // 格納した配列を表示
+      $('#machine_query').html("選択されたゲーム<br>" + machines.join("、 "));
+
+    });
+  });

@@ -16,13 +16,16 @@
 %span.fa.fa-lock{class: "#{shop.tag.locker ? 'tag' : 'tag-not'}"}
   = " 無料ロッカー"
 
-%spanfa.fa-wifi{class: "#{shop.tag.wifi ? 'tag' : 'tag-not'}"}
+%span.fa.fa-wifi{class: "#{shop.tag.wifi ? 'tag' : 'tag-not'}"}
   = " 無料Wifi"
 
 - case shop.tag.smoking
   - when 0 then
-    %span.tag 禁煙
+    %span.tag.fas.fa-smoking-ban
+      = " 禁煙"
   - when 1 then
-    %span.tag 分煙
+    %span.tag.fas.fa-smoking
+      = " 分煙"
   - else
-    %span.tag 喫煙可
+    %span.tag.fas.fa-smoking
+      = " 喫煙可"
