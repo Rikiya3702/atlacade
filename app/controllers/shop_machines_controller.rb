@@ -23,6 +23,7 @@ class ShopMachinesController < ApplicationController
 
       if success_count == 0
         flash[:danger] = "登録に失敗しました"
+        render shop_path
       else
         flash[:success] = "#{success_count}件のデータを登録しました"
       end

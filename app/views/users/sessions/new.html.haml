@@ -1,5 +1,7 @@
 - provide :title, "ログイン"
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  %p
+    そのままログインボタンを押すと全権限を持ったテストユーザーでログイン出来ます。
   .text-left.mb-5
     .form-column
       %i.fas.fa-pencil-alt

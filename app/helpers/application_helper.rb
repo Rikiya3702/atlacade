@@ -1,11 +1,12 @@
 module ApplicationHelper
 
   def has_shop?(user)
-    user.shop.present? && user.shop.persisted?
+    user_signed_in? && user.shop.present? && user.shop.persisted?
   end
 
   def has_edit_authority?(user, shop)
-    user_signed_in? && (shop.id == user.shop.id || user.role == 2 )
+    return false unless has_shop?(user)
+    user.role == 2 || shop.id == user.shop.id
   end
 
   def somoking_cheked?(shop, int)
@@ -36,7 +37,7 @@ module ApplicationHelper
   def time_rand from = 0.0, to = Time.now
     Time.at(from + rand * (to.to_f - from.to_f))
   end
-  
+
   def perfectures
     [
       ['北海道'],['青森県'],['岩手県'],['宮城県'],['秋田県'],['山形県'],['福島県'],

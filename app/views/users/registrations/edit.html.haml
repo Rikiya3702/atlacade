@@ -3,6 +3,7 @@
   = render "devise/shared/error_messages", resource: resource
   .row.justify-content-center.mb-4
     .col-lg-6
+      %p 画像をクリックでファイルから選択
       #img_field.mx-auto{onClick: "$('#file').click()"}
         = show_self_image(current_user)
     .col-lg-6.my-auto

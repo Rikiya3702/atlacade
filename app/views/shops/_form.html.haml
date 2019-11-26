@@ -2,6 +2,7 @@
   = render 'shared/error_messages', object: f.object
   .row.justify-content-center.mb-4
     .col-lg-6
+      %p 画像をクリックでファイルから選択
       #img_field.mx-auto{onClick: "$('#file').click()"}
         - if has_shop?(current_user)
           = show_self_image(@shop)

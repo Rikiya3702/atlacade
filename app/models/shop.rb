@@ -12,6 +12,12 @@ class Shop < ApplicationRecord
   validates :tel,       presence: true,
                         length: {maximum: 20},
                         uniqueness: true
+  validates :adress,          length: {maximum: 50}
+  validates :access,          length: {maximum: 50}
+  validates :business_hours,  length: {maximum: 50}
+  validates :nearest_station, length: {maximum: 50}
+  validates :shop_info,       length: {maximum: 255}
+  validates :official_url,    length: {maximum: 100}
   mount_uploader :image, ImageUploader
 
   def self.search_adress(query)

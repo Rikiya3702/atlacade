@@ -100,6 +100,9 @@ class ShopsController < ApplicationController
   end
 
   def destroy
+    Shop.find(params[:id]).destroy
+    flash[:success] = "削除しました"
+    redirect_to root_path
   end
 
   private

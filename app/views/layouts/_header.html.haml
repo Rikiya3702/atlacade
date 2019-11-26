@@ -1,5 +1,5 @@
 %header
-  %nav.navbar.navbar-dark.atl-base.navbar-expand-md
+  %nav.navbar.navbar-dark.header-base.navbar-expand-md
     .logo2.mr-5
       = link_to "AtlAcade", root_path
     %button.navbar-toggler.atl-navtoggle{"aria-controls" => "navmenu1", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navmenu1", "data-toggle" => "collapse", :type => "button"}
@@ -16,20 +16,20 @@
               .nav-item.nav-link
                 = show_self_image(@user.shop, 30)
                 = @user.shop.shop_name
-        = link_to root_path, class: "nav-item nav-link" do
+        = link_to root_path(anchor: "Search"), class: "nav-item nav-link" do
           %i.fas.fa-search
           検索
         = link_to about_path, class: "nav-item nav-link" do
           %i.far.fa-question-circle
           AtlAcadeとは？
         - if user_signed_in?
+          - if !has_shop?(current_user) && @user.role != 0
+            = link_to new_shop_path, class: "nav-item nav-link" do
+              %i.far.fa-plus-square
+              店舗データ登録
           = link_to destroy_user_session_path, class: "nav-item nav-link", method: :delete do
             %i.fas.fa-sign-out-alt
             ログアウト
-          - if !has_shop?(current_user) && @user.role != 0
-            = link_to new_shop_path, class: "nav-item nav-link" do
-              %i.far.plus-square
-              店舗データ登録
         - else
           = link_to new_user_session_path, class: "nav-item nav-link" do
             %i.fas.fa-sign-in-alt

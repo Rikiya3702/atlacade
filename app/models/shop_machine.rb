@@ -4,6 +4,7 @@ class ShopMachine < ApplicationRecord
 
   validates :shop_id,    presence: true
   validates :machine_id, presence: true
-  validates :price,      presence: true
+  validates :price,      presence: true,
+                         length: {maximum: 20}
   validates :own,        presence: true
 end

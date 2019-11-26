@@ -1,6 +1,8 @@
 - provide :title, "登録ゲームの編集"
 .container.atl-table-form.mx-auto
-  %p 設置台数に0を入力すると削除されます。
+  %p
+    設置台数は半角数字で入力して下さい。
+    %br また、0を入力すると削除されます。
   = form_tag shop_machine_path, method: :patch do
     %table.mx-auto
       %thead.atl-table-head

@@ -1,4 +1,40 @@
 ja:
+  activerecord:
+    models:
+      machines: ゲーム
+      shops: 店舗
+      events: イベント
+      tags: タグ
+    attributes:
+      machines:
+        title: ゲームタイトル
+        maker: メーカー
+        genre: ジャンル
+        official_url: 公式URL
+        machine_info: ゲーム紹介文
+      shops:
+        shop_name: 店舗名
+        adress: 住所
+        access: アクセス
+        business_hours: 営業時間
+        nearest_station: 最寄駅
+        shop_info: 店舗紹介文
+        official_url: 公式URL
+      events:
+        event_date: イベント開催日
+        content: イベント内容
+      tags:
+        emoney: 電子マニー
+        parking: 駐車場
+        open24: 24時間営業
+        older18: 18歳未満入場禁止
+        smoking: 喫煙
+        hand_towel: おしぼり
+        locker: 無料ロッカー
+        wifi: 無料Wifi
+      shop_machines:
+        price: 料金
+        own: 設置台数
   views:
     pagination:
       first: <i class="fas fa-angle-double-left"></i>
