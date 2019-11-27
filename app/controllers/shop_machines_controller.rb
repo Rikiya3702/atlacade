@@ -11,7 +11,7 @@ class ShopMachinesController < ApplicationController
       success_count = 0
       create_params = shop_machines_params
       create_params[:own].each_with_index do |own, i|
-        next if own.to_i == 0
+        next if own.to_i <= 0
         shop_machine = ShopMachine.create(shop_id:    create_params[:shop_id],
                                           machine_id: create_params[:machine_id][i],
                                           own:        create_params[:own][i],
@@ -23,7 +23,6 @@ class ShopMachinesController < ApplicationController
 
       if success_count == 0
         flash[:danger] = "登録に失敗しました"
-        render shop_path
       else
         flash[:success] = "#{success_count}件のデータを登録しました"
       end
@@ -42,7 +41,7 @@ class ShopMachinesController < ApplicationController
     update_shop_machines_params.values.each do |param|
       @shop_machine = ShopMachine.find_by(id: param[:id])
 
-      if param[:own].to_i == 0
+      if param[:own].to_i <= 0
         @shop_machine.destroy
         success_count += 1
       elsif @shop_machine[:own] == param[:own].to_i && @shop_machine[:price] == param[:price]

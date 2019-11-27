@@ -1,12 +1,16 @@
 header{
   box-sizing: border-box;
-  border-bottom: 2px #eee double;
+  border-bottom: 2px #ddd solid;
+  position: relative;
+  z-index: 100;
+  width: 100%;
 }
 
 nav{
   box-sizing: border-box;
   // border-bottom: 3px #2f2 double;
   padding-bottom: 5px;
+
 }
 .header-base{
   background: rgb(15,9,67);
@@ -43,7 +47,7 @@ nav{
 }
 
 .nav-item{
-
+  overflow: hidden;
   box-sizing: border-box;
   color: #eee !important;
   border-left: 2px solid #2f2;

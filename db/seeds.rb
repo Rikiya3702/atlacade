@@ -7,7 +7,7 @@
   ["音楽ゲーム",      "KONYAMI",       "SOUND CLIMAX"],
   ["音楽ゲーム",      "KONYAMI",       "ピアノフォルテ"],
   ["音楽ゲーム",      "KONYAMI",       "THE☆ビチバチ"],
-  ["音楽ゲーム",      "SEGO",           "Project ODIVA Arcade"],
+  ["音楽ゲーム",      "SEGO",           "Project ODIBA Arcade"],
   ["音楽ゲーム",      "SEGO",           "音華"],
   ["音楽ゲーム",      "SEGO",           "ちゅーりずむ"],
   ["音楽ゲーム",      "パーフェクト",   "WOCCO"],

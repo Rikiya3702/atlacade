@@ -8,6 +8,7 @@
 }
 
 #img_field{
+  cursor: pointer;
     width: 300px;
     height: 300px;
     border: 1px solid #2f2;
@@ -177,6 +178,7 @@
     display: none;
   }
   label{
+    cursor: pointer;
     display: inline-block;
     color: #eee;
     border-top: 1px #555 solid;

@@ -50,6 +50,9 @@ class MachinesController < ApplicationController
     end
 
     def admin_user
-      redirect_to(root_url) unless admin_user?
+      unless admin_user?
+        flash[:notice] = "権限がありません。"
+        redirect_to root_url
+      end
     end
 end
