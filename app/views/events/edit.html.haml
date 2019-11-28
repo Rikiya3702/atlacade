@@ -15,3 +15,10 @@
       = button_tag type: "submit", class: "atl-submit" do
         %i.fa.fa-calendar-plus.fa-2x
         登録する
+
+:javascript
+  $(function () {
+      $('#datetimepicker4').datetimepicker({
+          format: 'L'
+      });
+  });

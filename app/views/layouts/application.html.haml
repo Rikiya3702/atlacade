@@ -12,7 +12,7 @@
             .main-title
               = yield(:title)
             = yield
-      -else
+      - else
         = yield
       - unless current_page?(root_path)
         .text-center.py-5

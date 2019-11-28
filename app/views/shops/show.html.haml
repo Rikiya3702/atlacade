@@ -1,5 +1,3 @@
-- content_for :scripts do
-  = javascript_include_tag 'application'
 - provide :title, @shop.shop_name
 .row.py-4
   .col
@@ -44,6 +42,13 @@
         実在する住所を入力すると、ここにGoogleMapが表示されます。
 
 :javascript
+
+  $(function () {
+      $('#datetimepicker4').datetimepicker({
+          format: 'L'
+      });
+  });
+  
   handler = Gmaps.build('Google');
   handler.buildMap({
     provider: {

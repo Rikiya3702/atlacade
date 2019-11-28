@@ -50,30 +50,11 @@
       検索
     %br 何も指定しないと全てのお店を表示します。
 .text-center.py-5
-  %p ログイン・新規登録はこちら
-  = link_to new_user_session_path, class: "atl-btn ml-4" do
-    %i.fas.fa-sign-in-alt.fa-2x
-    ログイン
-  = link_to new_user_registration_path, class: "atl-btn ml-4" do
-    %i.fas.fa-user-plus.fa-2x
-    アカウントの登録
-
-
-:javascript
-
-  //選択されたゲームタイトルの配列を表示する
-  //参考URL https://www.flatflag.nir87.com/checkbox-1286
-  $(function() {
-    // チェックボックスをチェックしたら発動
-    $('input[name="search[machine_ids][]"]').change(function() {
-      // ①空の配列を用意
-      var machines = [];
-      // ②チェックが入ったらループ処理
-      $('input[name="search[machine_ids][]"]:checked').each(function() {
-        // ③value値を配列に格納
-        machines.push($(this).attr("mtitle"));
-      });
-      // 格納した配列を表示
-      $('#machine_query').html("選択されたゲーム<br>" + machines.join("、 "));
-    });
-  });
+  - unless user_signed_in?
+    %p ログイン・新規登録はこちら
+    = link_to new_user_session_path, class: "atl-btn ml-4" do
+      %i.fas.fa-sign-in-alt.fa-2x
+      ログイン
+    = link_to new_user_registration_path, class: "atl-btn ml-4" do
+      %i.fas.fa-user-plus.fa-2x
+      アカウントの登録

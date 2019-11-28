@@ -22,13 +22,13 @@
       .text-left.mb-4
         .form-column
           %i.fas.fa-pencil-alt
-          = f.label       :email, "メールアドレス"
+          = f.label       :email
         %br
         = f.text_field    :email, class: "mt-1 ml-3 atl-textfield", autocomplete: "email"
       .text-left.mb-5
         .form-column
           %i.fas.fa-pencil-alt
-          = f.label       :profile, "紹介文", class: ""
+          = f.label       :profile
         %br
         = f.text_area   :profile, class: "mt-1 ml-3 atl-textarea"
       .text-center.my-3

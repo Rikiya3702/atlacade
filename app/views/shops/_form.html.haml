@@ -44,7 +44,6 @@
             = t.label          :wifi, "無料Wifi", class: "pr-3"
             %br
         .form-smoking
-          -# = t.select         :smoking, [["禁煙", 0], ["分煙", 1], ["喫煙可", 2] ], :selected => @shop.tag.smoking
           = t.radio_button  :smoking, 0, {:checked => somoking_cheked?( @shop, 0) }
           = t.label          :smoking, "禁煙", value: 0, class: "pr-3"
           %br
@@ -58,7 +57,7 @@
       .text-left.mb-3
         .form-column
           %i.fas.fa-pencil-alt
-          = f.label       :shop_name, "店舗名", class: ""
+          = f.label       :shop_name
         .form-required.my-auto
           ※ 必須
         %br
@@ -66,13 +65,13 @@
       .text-left.mb-3
         .form-column
           %i.fas.fa-pencil-alt
-          = f.label       :business_hours, "営業時間", class: ""
+          = f.label       :business_hours
         %br
         = f.text_field  :business_hours, class: "mt-1 ml-3 atl-textfield"
       .text-left.mb-3
         .form-column
           %i.fas.fa-pencil-alt
-          = f.label       :tel, "TEL", class: ""
+          = f.label       :tel
         .form-required.my-auto
           ※ 必須
         %br
@@ -80,70 +79,34 @@
       .text-left.mb-3
         .form-column
           %i.fas.fa-pencil-alt
-          = f.label       :adress, "住所", class: ""
+          = f.label       :adress
         %br
         = f.text_field  :adress, class: "mt-1 ml-3 atl-textfield"
       .text-left.mb-3
         .form-column
           %i.fas.fa-pencil-alt
-          = f.label       :nearest_station, "最寄駅", class: ""
+          = f.label       :nearest_station
         %br
         = f.text_field  :nearest_station, class: "mt-1 ml-3 atl-textfield"
       .text-left.mb-3
         .form-column
           %i.fas.fa-pencil-alt
-          = f.label       :access, "アクセス", class: ""
+          = f.label       :access
         %br
         = f.text_field  :access, class: "mt-1 ml-3 atl-textfield"
       .text-left.mb-3
         .form-column
           %i.fas.fa-pencil-alt
-          = f.label       :official_url, "公式URL", class: ""
+          = f.label       :official_url
         %br
         = f.text_field  :official_url, class: "mt-1 ml-3 atl-textfield"
     .col-lg-9.mx-auto
       .text-left.mb-3
         .form-column
           %i.fas.fa-pencil-alt
-          = f.label       :shop_info, "紹介文", class: ""
+          = f.label       :shop_info
         %br
         = f.text_area   :shop_info, class: "mt-1 ml-3 atl-textarea"
   = button_tag type: "submit", class: "atl-submit" do
     %i.far.fa-check-square.fa-2x
     登録する
-
-:javascript
-  $('tag-change').click(function(){
-    if($('#hidden').hasClass('tag')){
-      $('#hidden').removeClass("tag")
-      $('#hidden').addClass("tag-not")
-    }else{
-      $('#hidden').removeClass("tag-not")
-      $('#hidden').addClass("tag")
-    }
-  });
-
-  //参考URL
-  // https://whatsupguys.net/programming-school-dive-into-code-learning-88/
-  $(function(){
-    $fileField = $('#file')
-    // 選択された画像を取得し表示
-    $($fileField).on('change', $fileField, function(e) {
-      file = e.target.files[0]
-      reader = new FileReader(),
-      $preview = $("#img_field");
-
-      reader.onload = (function(file) {
-        return function(e) {
-          $preview.empty();
-          $preview.append($('<img>').attr({
-            src: e.target.result,
-            width: "100%",
-            class: "preview",
-            title: file.name
-          }));
-        };
-      })(file);
-      reader.readAsDataURL(file);
-    });
-  });

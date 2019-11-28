@@ -5,11 +5,7 @@ body{
   a:visited { text-decoration: none; }
 }
 
-.link_to_user{
-    &:hover{
-      color: #666;
-    }
-}
+.link_to_user:hover{ color: #666; }
 
 .main-border{
   position: relative;
@@ -32,10 +28,6 @@ body{
   padding: 4px 13px;
 }
 
-.atl-base {
-  background: rgb(8,4,19);
-  color: #e6f8ff;
-}
 .paginates{
   font-size: 120%;
   width: 2rem;

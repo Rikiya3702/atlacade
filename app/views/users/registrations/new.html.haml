@@ -16,7 +16,7 @@
   .text-left.mb-5
     .form-column
       %i.fas.fa-pencil-alt
-      = f.label       :email, "メールアドレス"
+      = f.label       :email
     .form-required.my-auto
       ※ 必須
     %br
@@ -24,7 +24,7 @@
   .text-left.mb-3
     .form-column
       %i.fas.fa-pencil-alt
-      = f.label       :password, "パスワード"
+      = f.label       :password
     .form-required.my-auto
       ※ 6文字以上 必須
     %br
@@ -45,14 +45,3 @@
     = button_tag type: "submit", class: "atl-submit" do
       %i.fas.fa-sign-in-alt.fa-2x
       登録する
-
-:javascript
-  $('tag-change').click(function(){
-    if($('#hidden').hasClass('tag')){
-      $('#hidden').removeClass("tag")
-      $('#hidden').addClass("tag-not")
-    }else{
-      $('#hidden').removeClass("tag-not")
-      $('#hidden').addClass("tag")
-    }
-  });

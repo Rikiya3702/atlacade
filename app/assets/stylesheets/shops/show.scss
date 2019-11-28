@@ -1,5 +1,5 @@
 .self-image{
-    border: 2px #ddd solid;
+  border: 2px #ddd solid;
 }
 
 .content-title{
@@ -44,7 +44,6 @@
     height: 0;
     left: 0;
   }
-
   100%{
     width: 25rem;
     left: 20px;
@@ -78,7 +77,6 @@
 
 .shop-element-head{
   text-decoration: none;
-
   display: inline-block;
   position: relative;
   left: -0.5rem;
@@ -92,9 +90,7 @@
   padding-right: 35px;
   font-size: 150%;
   box-shadow: 0 -1px #9e9b9a inset;
-  a{
-    color: #e6f8ff !important;
-  }
+  a{ color: #e6f8ff !important; }
 }
 
 .shop-element{
@@ -103,9 +99,7 @@
   border-bottom: 2px #2f2 solid;
 }
 
-.shop-info{
-  width: 90%;
-}
+.shop-info{ width: 90%; }
 
 .event{
   width: 80%;
@@ -140,14 +134,9 @@
   margin-bottom: 25px;
   padding-top: 3rem;
 }
-#datetimepicker4{
-  z-index: 3;
-}
+#datetimepicker4{ z-index: 3; }
 
-.atl-table{
-  width: 90%;
-
-}
+.atl-table{ width: 90%; }
 
 .atl-table-head{
   th{
@@ -160,12 +149,12 @@
 }
 
 .atl-table-body{
+  img{ margin-right: 1rem; }
   th{
     padding: 1rem 0;
-    a{
-      color: #fff !important;
-      }
+    a{ color: #fff !important; }
     }
+
   tr{
     background: rgba( 24, 24, 24, 0.5);
     border-bottom: 1px #ddd solid;
@@ -175,9 +164,6 @@
     background: rgba( 8, 8, 48, 0.5);
     border-bottom: 1px #2ff solid;
     border-right: 1px #2ff solid;
-  }
-  img{
-    margin-right: 1rem;
   }
 }
 
@@ -218,6 +204,4 @@
   border-bottom: 4px #ddd double;
   border-right: 3px #ddd solid;
 }
-#map{
-  height: 400px;
-}
+#map{ height: 400px; }

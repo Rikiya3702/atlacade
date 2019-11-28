@@ -19,8 +19,8 @@
       color: #f8f8ff !important;
       padding: 10px 12px 15px;
       margin: 0;
-        border-left: 3px #ff2 solid;
-        border-right: 1px #ff2 solid;
+      border-left: 3px #ff2 solid;
+      border-right: 1px #ff2 solid;
       i{
         -webkit-transform: rotateZ(360deg);
         transform: rotateZ(360deg);
@@ -31,7 +31,6 @@
     border-left: 4px #2f2 double;
     border-bottom: 3px #2f2 solid;
   }
-
 }
 
 .shops-child{
@@ -45,16 +44,9 @@
 }
 
 @include media-breakpoint-up(lg) {
-  .shops-child{
-    // width: 45%;
-  }
-  .shops {
-    column-count: 2;
-  }
+  .shops { column-count: 2; }
 }
 
 .machine-list{
-  tr{
-    padding: 3rem 0;
-  }
+  tr{ padding: 3rem 0; }
 }

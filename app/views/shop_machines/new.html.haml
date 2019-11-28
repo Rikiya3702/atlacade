@@ -24,11 +24,11 @@
           %tr
             %th
               = show_self_image(machine, 30)
-              = f.label machine.title
+              = machine.title
             %td
-              = f.label machine.maker
+              = machine.maker
             %td
-              = f.label machine.genre
+              = machine.genre
             %td.text-right
               = f.text_field  :price, multiple: true, class:"text-right "
             %td

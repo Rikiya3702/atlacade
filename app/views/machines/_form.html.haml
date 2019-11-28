@@ -14,7 +14,7 @@
       .text-left.mb-4
         .form-column
           %i.fas.fa-pencil-alt
-          = f.label       :title, "ゲームタイトル"
+          = f.label       :title
         .form-required.my-auto
           ※ 必須
         %br
@@ -22,21 +22,27 @@
       .text-left.mb-4
         .form-column
           %i.fas.fa-pencil-alt
-          = f.label       :maker, "メーカー"
+          = f.label       :maker
         %br
         = f.text_field    :maker, class: "mt-1 ml-3 atl-textfield"
       .text-left.mb-4
         .form-column
           %i.fas.fa-pencil-alt
-          = f.label       :genre, "ジャンル"
+          = f.label       :genre
         %br
         = f.text_field    :genre, class: "mt-1 ml-3 atl-textfield"
       .text-left.mb-4
         .form-column
           %i.fas.fa-pencil-alt
-          = f.label       :official_url, "公式URL"
+          = f.label       :official_url
         %br
         = f.text_field    :official_url, class: "mt-1 ml-3 atl-textfield"
+      .text-left.mb-3
+        .form-column
+          %i.fas.fa-pencil-alt
+          = f.label       :machine_info
+        %br
+        = f.text_area   :machine_info, class: "mt-1 ml-3 atl-textarea"
   = button_tag type: "submit", class: "atl-submit my-3" do
     %i.far.fa-check-square.fa-2x
     保存する
