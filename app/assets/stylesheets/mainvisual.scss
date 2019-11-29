@@ -1,6 +1,6 @@
 #Signboard{
   text-align: center;
-  height: 300px;
+
   width: 100%;
   position: relative;
 
@@ -22,7 +22,7 @@
     height: 75px;
     background: rgb(8,4,19);
     top: 25px;
-    animation: title_0 0.1s linear 1.2s,
+    animation: title_0  0.1s linear 1.2s,
                title_1 0.06s linear 1.8s,
                title_2 0.04s linear 2.0s,
                title_3 0.04s linear 2.15s,
@@ -31,7 +31,7 @@
                title_6 0.04s linear 2.9s,
                title_7 0.04s linear 3.15s,
                title_8 0.04s linear 3.3s,
-               title_9 0.8s linear 3.6s;
+               title_9  0.8s linear 3.6s;
     animation-fill-mode: forwards;
   }
   .title::after{
@@ -67,9 +67,14 @@
   .hello{
     position:relative;
     z-index: 0;
-    top: -250px;
-    animation: hello 1s ease 3.6s;
+    top: -350px;
+    border-bottom: #ddd 2px solid;
+    padding-bottom: 1rem;
+    animation: hello 1.5s ease 3.5s;
     animation-fill-mode: forwards;
+    p{
+      font-size: 18px;
+    }
   }
 }
 

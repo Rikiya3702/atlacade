@@ -13,7 +13,7 @@
 %span.content-title 更新日
 .content-border
 .content-child= "#{@shop.updated_at.strftime("%Y年%m月%d日 %H:%M:%S")}"
-= link_to anchor: "Access", class: "atl-btn" do
+= link_to "#Access", class: "atl-btn" do
   %i.far.fa-hand-point-right.fa-2x
   アクセス
 = link_to @shop.official_url, class: "atl-btn", target: :_blank do

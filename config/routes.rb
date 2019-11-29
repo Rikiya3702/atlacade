@@ -12,8 +12,5 @@ Rails.application.routes.draw do
   get "/shop_machines/:id/new", to: 'shop_machines#new'
 
   resources :events, only: [:edit, :create, :update, :destroy]
-  # get "/events/:id/new", to: 'events#new'
-
-
 
 end

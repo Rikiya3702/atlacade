@@ -20,9 +20,8 @@
           %i.fas.fa-search
           検索
         = link_to about_path, class: "nav-item nav-link" do
-          %i.far.fa-question-circle
-          %span.font-atl>AtlAcade
-          とは？
+          %i.fas.fa-info-circle
+          ABOUT
         - if user_signed_in?
           - if !has_shop?(current_user) && @user.role != 0
             = link_to new_shop_path, class: "nav-item nav-link" do

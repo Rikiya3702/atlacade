@@ -1,18 +1,17 @@
 - provide :title, "アカウント情報"
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = render "devise/shared/error_messages", resource: resource
-  .row.justify-content-center.mb-4
-    .col-lg-6
-      %p 画像をクリックでファイルから選択
+  .row.mb-4
+    .col-lg-5
       #img_field.mx-auto{onClick: "$('#file').click()"}
         = show_self_image(current_user)
-    .col-lg-6.my-auto
-      %label.image-label.atl-btn.mt-3
-        %i.fa.fa-image.fa-2x
-        画像を選択
-        = f.file_field :image, class: "none", id: "file"
-  .row.justify-content-center
-    .col-lg-10
+      .row.align-items-center.justify-content-center.mb-5
+        %p.pt-4.pr-3 画像クリックで変更
+        %label.image-label.atl-btn.mt-3
+          %i.fa.fa-image.fa-2x
+          画像を選択
+          = f.file_field :image, class: "none", id: "file"
+    .col-lg-7
       .text-left.mb-4
         .form-column
           %i.fas.fa-pencil-alt
@@ -31,12 +30,12 @@
           = f.label       :profile
         %br
         = f.text_area   :profile, class: "mt-1 ml-3 atl-textarea"
-      .text-center.my-3
-        = button_tag type: "submit", class: "atl-submit" do
-          %i.far.fa-check-square.fa-2x
-          保存する
+  .row.justify-content-center.my-3
+    = button_tag type: "submit", class: "atl-submit" do
+      %i.far.fa-check-square.fa-2x
+      保存する
 
-  .container.ml-1
+  .container.ml-1.pt-3
     .row
       = link_to "#Change_password", role: "button", class:"atl-btn", data:{toggle: "collapse"}, aria: {expanded: "true", controls: "Change_password"} do
         %i.fas.fa-exclamation-circle.fa-2x
@@ -44,3 +43,26 @@
     #Change_password.collapse.text-center.ml-5
       .shop-element
         = render 'change_password', f: f
+
+:javascript
+  $(function(){
+    $fileField = $('#file')
+    $($fileField).on('change', $fileField, function(e) {
+      file = e.target.files[0]
+      reader = new FileReader(),
+      $preview = $("#img_field");
+
+      reader.onload = (function(file) {
+        return function(e) {
+          $preview.empty();
+          $preview.append($('<img>').attr({
+            src: e.target.result,
+            width: "100%",
+            class: "preview",
+            title: file.name
+          }));
+        };
+      })(file);
+      reader.readAsDataURL(file);
+    });
+  });

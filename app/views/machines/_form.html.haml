@@ -1,16 +1,16 @@
 = form_for @machine do |f|
   = render 'shared/error_messages', object: f.object
   .row.justify-content-center.mb-4
-    .col-lg-6
+    .col-lg-5
       #img_field.mx-auto{onClick: "$('#file').click()"}
         = show_self_image(@machine)
-    .col-lg-6.my-auto
-      %label.image-label.atl-btn.mt-3
-        %i.fa.fa-image.fa-2x
-        画像を選択
-        = f.file_field :image, class: "none", id: "file"
-  .row.mb-4
-    .col-lg-10.mx-auto
+      .row.align-items-center.justify-content-center.mb-5
+        %p.pt-4.pr-3 画像クリックで変更
+        %label.image-label.atl-btn.mt-3
+          %i.fa.fa-image.fa-2x
+          画像を選択
+          = f.file_field :image, class: "none", id: "file"
+    .col-lg-7
       .text-left.mb-4
         .form-column
           %i.fas.fa-pencil-alt
@@ -46,3 +46,26 @@
   = button_tag type: "submit", class: "atl-submit my-3" do
     %i.far.fa-check-square.fa-2x
     保存する
+
+:javascript
+  $(function(){
+    $fileField = $('#file')
+    $($fileField).on('change', $fileField, function(e) {
+      file = e.target.files[0]
+      reader = new FileReader(),
+      $preview = $("#img_field");
+      
+      reader.onload = (function(file) {
+        return function(e) {
+          $preview.empty();
+          $preview.append($('<img>').attr({
+            src: e.target.result,
+            width: "100%",
+            class: "preview",
+            title: file.name
+          }));
+        };
+      })(file);
+      reader.readAsDataURL(file);
+    });
+  });

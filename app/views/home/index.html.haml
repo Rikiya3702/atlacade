@@ -4,19 +4,24 @@
       .title_underline
         %span.title> AtlAcade
       .hello.mt-3
-        - if current_user
-          ようこそ
-          = "#{@user.nickname}さん、こんにちは"
-        - else
-          ようこそ、こんにちは
-        %p
-          %span.font-atl>AtlAcade
-          は全国のアミューズメント施設を検索します。
-        %p 詳しくはこちらへ
-        = link_to about_path, class: "atl-btn" do
-          %i.far.fa-question-circle.fa-2x
-          %span.font-atl>AtlAcade
-          とは？
+        .row
+          .col
+            = image_tag("logo.png", height: 200)
+          .col
+            %p
+              - if current_user
+                ようこそ
+                = "#{@user.nickname}さん、こんにちは"
+              - else
+                ようこそ、こんにちは
+            %p
+              %span.font-atl>AtlAcade
+              は全国のアミューズメント施設を検索します。
+
+            詳しくはこちらへ
+            = link_to about_path, class: "atl-btn mt-3" do
+              %i.fas.fa-info-circle.fa-2x
+              ABOUT
   .container.text-center.my-5
     %p 今日は何をお探しですか？
     %p 素晴らしい店舗やゲームとの出会いを願っています。
@@ -45,7 +50,7 @@
         = f.label     :machine_ids, machine.title, for: "machine_#{machine.id}"
       #machine_query
         選択したゲームがありません
-    = button_tag type: "submit", class: "atl-submit" do
+    = button_tag type: "submit", class: "atl-submit my-3" do
       %i.fas.fa-search.fa-2x
       検索
     %br 何も指定しないと全てのお店を表示します。
@@ -58,3 +63,16 @@
     = link_to new_user_registration_path, class: "atl-btn ml-4" do
       %i.fas.fa-user-plus.fa-2x
       アカウントの登録
+
+:javascript
+  //選択されたゲームタイトルの配列を表示する
+  //参考URL https://www.flatflag.nir87.com/checkbox-1286
+  $(function() {
+    $('input[name="search[machine_ids][]"]').change(function() {
+      var machines = [];
+      $('input[name="search[machine_ids][]"]:checked').each(function() {
+        machines.push($(this).attr("mtitle"));
+      });
+      $('#machine_query').html("選択されたゲーム<br>" + machines.join("、 "));
+    });
+  });

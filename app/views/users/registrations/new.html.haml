@@ -2,15 +2,15 @@
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = render "devise/shared/error_messages", resource: resource
   %p 今なら登録しなくてもテストアカウントですぐにログイン出来ます。
-  = link_to new_user_session_path, class: "atl-btn ml-4" do
+  = link_to new_user_session_path, class: "atl-btn ml-4 mb-5" do
     %i.fas.fa-sign-in-alt.fa-2x
     ログインへ
   .text-left.mb-4
     .form-column
       %i.fas.fa-pencil-alt
       = f.label       :nickname, "ユーザー名 (ニックネーム)"
-      .form-required.my-auto
-        ※ 必須
+    .form-required.my-auto
+      ※ 必須
     %br
     = f.text_field    :nickname, class: "mt-1 ml-3 atl-textfield", autofocus: true, autocomplete: "name"
   .text-left.mb-5
@@ -37,11 +37,12 @@
       ※ 必須
     %br
     = f.password_field    :password_confirmation, class: "mt-1 ml-3 atl-textfield"
+  %br 店舗オーナー様はこちらのオーナーボタンをONにして下さい。
   .form-tags
     = f.check_box      :role
     = f.label          :role, "店舗オーナー", class: "pr-3"
     %br
-  .mb-4
+  .my-4
     = button_tag type: "submit", class: "atl-submit" do
       %i.fas.fa-sign-in-alt.fa-2x
       登録する
