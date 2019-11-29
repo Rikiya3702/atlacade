@@ -1,24 +1,78 @@
-%section.bg-base
+%section.atl-base
   .container
-    .signboard.checkbg.bg3
-      .row.text-center.py-5
-        .col-md-4.image_atlacade
-          = image_tag "logo.png", class: "logo", size:"400x400"
-        .col-md-8
-          %span.title> AtlAcade
-          へようこそ
-          %p
-            - if current_user
-              - sou = "15"
-              = "#{@user.nickname}さん"
-            こんにちは
+    #Signboard
+      .title_underline
+        %span.title> AtlAcade
+      .hello.mt-3
+        .row
+          .col
+            = image_tag("logo.png", height: 200)
+          .col
+            %p
+              - if current_user
+                ようこそ
+                = "#{@user.nickname}さん、こんにちは"
+              - else
+                ようこそ、こんにちは
+            %p
+              %span.font-atl>AtlAcade
+              は全国のアミューズメント施設を検索します。
 
-  .text-center.py-5
-    %p 好きな条件で検索しよう！
-    = link_to "検索する", shops_path, class: "btn1 bg-main w-25"
-    = link_to "/machines", machines_path, class: "btn1 bg-main w-25"
-
-  .text-center.py-5
+            詳しくはこちらへ
+            = link_to about_path, class: "atl-btn mt-3" do
+              %i.fas.fa-info-circle.fa-2x
+              ABOUT
+  .container.text-center.my-5
+    %p 今日は何をお探しですか？
+    %p 素晴らしい店舗やゲームとの出会いを願っています。
+    = link_to shops_path, class: "atl-btn mr-3" do
+      %i.fas.fa-home.fa-2x
+      ショップ一覧
+    = link_to machines_path, class: "atl-btn ml-3" do
+      %i.fa.fa-desktop.fa-2x
+      ゲーム一覧
+#Search.container.main-border.text-center.pb-5
+  .main-title.mx-auto.py-3
+    検索
+  = form_with scope: :search ,url: shops_path, method: :get, local: true do |f|
+    .area-select
+      %span エリア指定：
+      = f.select :adress, perfectures, prompt: "都道府県を選択"
+    %br
+    .text-left
+      .machine-items-head
+        ゲーム指定
+    .machine-items.mb-3
+      .py-2
+        タイトルをクリックで選択出来ます。
+      - @machines.each do |machine|
+        = f.check_box  :machine_ids, {multiple: true, include_hidden: false, id: "machine_#{machine.id}", mtitle: "#{machine.title}"}, machine[:id]
+        = f.label     :machine_ids, machine.title, for: "machine_#{machine.id}"
+      #machine_query
+        選択したゲームがありません
+    = button_tag type: "submit", class: "atl-submit my-3" do
+      %i.fas.fa-search.fa-2x
+      検索
+    %br 何も指定しないと全てのお店を表示します。
+.text-center.py-5
+  - unless user_signed_in?
     %p ログイン・新規登録はこちら
-    = link_to "ログインする", new_user_session_path, class: "btn1 bg-main w-25 mr-2"
-    = link_to "新規登録する", new_user_registration_path, class: "btn1 bg-main w-25 ml-2"
+    = link_to new_user_session_path, class: "atl-btn ml-4" do
+      %i.fas.fa-sign-in-alt.fa-2x
+      ログイン
+    = link_to new_user_registration_path, class: "atl-btn ml-4" do
+      %i.fas.fa-user-plus.fa-2x
+      アカウントの登録
+
+:javascript
+  //選択されたゲームタイトルの配列を表示する
+  //参考URL https://www.flatflag.nir87.com/checkbox-1286
+  $(function() {
+    $('input[name="search[machine_ids][]"]').change(function() {
+      var machines = [];
+      $('input[name="search[machine_ids][]"]:checked').each(function() {
+        machines.push($(this).attr("mtitle"));
+      });
+      $('#machine_query').html("選択されたゲーム<br>" + machines.join("、 "));
+    });
+  });

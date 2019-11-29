@@ -5,8 +5,65 @@ body{
   a:visited { text-decoration: none; }
 }
 
-.link_to_user{
-    &:hover{
-      color: #666;
+.link_to_user:hover{ color: #666; }
+
+.main-border{
+  position: relative;
+  top: 2rem;
+  border: 1px #fff solid;
+  border-radius: 4px;
+}
+
+.main-title{
+  position: relative;
+  top: -2rem;
+  display: inline-block;
+  background: rgb(11,7,22);
+  font-size: 2rem;
+  font-weight: bold;
+  border-top: 1px #2f2 solid;
+  border-left: 1px #2f2 solid;
+  border-right: 3px #2f2 double;
+  border-bottom: 4px #2f2 double;
+  padding: 4px 13px;
+}
+
+.paginates{
+  font-size: 120%;
+  width: 2rem;
+  padding: 3px 6px;
+  margin: 0 8px;
+}
+
+.pagination{
+  justify-content: center;
+  .current{
+    font-size: 120%;
+    width: 2rem;
+    margin: 0 8px;
+    padding: 3px 9px;
+    border-top: 1px #2f2 solid;
+    border-left: 1px #2f2 solid;
+    border-right: 2px #2f2 double;
+    border-bottom: 3px #2f2 double;
     }
+  a{
+  font-size: 120%;
+  width: 2rem;
+  padding: 3px 6px;
+  border-top: 1px #ff2 solid;
+  border-bottom: 3px #ff2 double;
+  box-sizing: border-box;
+  transition: 0.3s;
+  color: #e6f8ff !important;
+  a:link {text-decoration: none; color: #e6f8ff !important;  }
+  a:visited { text-decoration: none; color: #e6f8ff !important;}
+  &:hover{
+    background: rgb(16,8,96);
+    border-top: 1px #2f2 solid;
+    border-left: 1px #2f2 solid;
+    border-right: 2px #2f2 double;
+    border-bottom: 3px #2f2 double;
+    }
+  }
 }

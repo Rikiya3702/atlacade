@@ -2,7 +2,7 @@ class MachinesController < ApplicationController
   before_action :admin_user, only: [:new, :edit, :craete, :update, :destroy]
 
   def index
-    @machines = Machine.all
+    @machines = Machine.page(params[:page])
   end
 
   def show
@@ -46,10 +46,13 @@ class MachinesController < ApplicationController
   private
 
     def machine_params
-      params.require(:machine).permit( :title, :genre, :maker )
+      params.require(:machine).permit( :title, :genre, :maker, :official_url)
     end
 
     def admin_user
-      redirect_to(root_url) unless current_user.role == 2
+      unless admin_user?
+        flash[:notice] = "権限がありません。"
+        redirect_to root_url
+      end
     end
 end

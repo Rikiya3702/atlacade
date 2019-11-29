@@ -1,4 +1,3 @@
-%section.bg-flash
-  .container.text-center
-    - flash.each do |message_type, message|
-      = content_tag(:div, message, class: "flash my-2 alert alert-#{message_type}")
+- flash.each do |message_type, message|
+  .container.text-center.py-4.flash-area
+    = content_tag(:div, message, class: "flash py-2 alert alert-#{message_type}")

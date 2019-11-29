@@ -1,72 +1,61 @@
-%section.bg-base
-  .container.text-center.py-4
-    .display-4
-      = @shop.shop_name
-    .row.py-4
+- provide :title, @shop.shop_name
+.row.py-4
+  .col
+    = show_self_image(@shop,300)
+    .row.mt-3
       .col
-        - if  user_signed_in? && has_shop?(current_user) && @shop.id == current_user.shop.id
-          = link_to "編集", edit_shop_path, class: "btn1 bg-main w-25"
-    .row.py-4
-      .col
-        = show_self_image(@shop,300)
-        .row.mt-3
-          .col
-            - if @shop.tag.emoney
-              %span.tag 電子マネー
-            -# - if @shop.tag.paseli
-            -#   %span.tag PASELI
-            - if @shop.tag.parking
-              %span.tag 駐車場アリ
-            - if @shop.tag.open24h
-              %span.tag 24時間営業
-            - if @shop.tag.older18
-              %span.tag R18
-            - case @shop.tag.smoking
-              - when 0 then
-                %span.tag 禁煙
-              - when 1 then
-                %span.tag 分煙
-              - else
-                %span.tag 禁煙
+        = render 'tags', shop: @shop
+  .col.text-left
+    = render 'shop_status'
+.row.justify-content-center
+  .shop-info
+    %p.py-2
+      = simple_format @shop.shop_info
+.container.py-4.ml-2
+  .row
+    .col-xs-3.shop-element-head
+      %i.fa.fa-flag
+      = link_to "イベント", "#Events", role: "button", data:{toggle: "collapse"}, aria: {expanded: "true", controls: "Events"}
+  #Events.collapse.show.shop-element
+    = render 'events'
 
-      .col.text-left
-        %span.content-title.mt-0 営業時間
-        %br= "#{@shop.business_hours}"
-        %span.content-title TEL
-        %br= "#{@shop.tel}"
-        %span.content-title 住所
-        %br= "#{@shop.adress}"
-        %span.content-title 最寄駅
-        %br= "#{@shop.nearest_station}"
-        = link_to "アクセス", "#Access_forjump", class: "btn1 bg-main my-3 ml-1"
-        %br
-        %span.content-title 更新日
-        %br= "#{@shop.updated_at.strftime("%Y年%m月%d日 %H:%M:%S")}"
-    %hr.py-4
+.container.py-4.ml-2
+  .row
+    .col-xs-3.shop-element-head
+      %i.fa.fa-desktop
+      = link_to "設置ゲーム", "#Machines", role: "button", data:{toggle: "collapse"}, aria: {expanded: "true", controls: "Machines"}
+  #Machines.collapse.show.shop-element
+    = render 'machines'
 
-    %a(class="btn btn-outline-info w-75 mb-5" data-toggle="collapse" href="#Events" role="button" aria-expanded="true" aria-controls="Events")
-      イベント
-    #Events.collapse.show
-      %p 開催中のイベントはありません。
-      %p.mb-5 ここにTwitter
+.container.py-4.ml-2
+  .row
+    .col-xs-3.shop-element-head
+      %i.fa.fa-map-marker-alt
+      = link_to "アクセス", "#Access", role: "button", data:{toggle: "collapse"}, aria: {expanded: "true", controls: "Access"}
+  #Access.collapse.show.shop-element
+    %p= "#{@shop.access}"
+    - if @shop.latitude
+      .googlemap.mx-auto.mb-5
+        #map
+    - else
+      .text-center.mb-5
+        実在する住所を入力すると、ここにGoogleMapが表示されます。
 
-    %a(class="btn btn-outline-info w-75 mb-5" data-toggle="collapse" href="#Machines" role="button" aria-expanded="true" aria-controls="Machines")
-      設置ゲーム一覧
-    #Machines.row.collapse.text-center.show
-      %div{class: "accordion w-50 mx-auto mb-4", id: "machine_1_accordion"}
-        .card
-          %div{class: "card-header text-center", role: "tab", id: "head_1"}
-            %h6.mb-0
-              %a(data-toggle="collapse" class="stretched-link " href="#collapse_1" aria-expanded="true" aria-controls="collapse_1") ゲームタイトル1
-          %div(id="collapse_1" class="collapse show" aria-labelledby="head_1" data-parent="machine_1_accordion")
-            .card-body ゲーム1のコンテンツ
+:javascript
 
-    %a(class="btn btn-outline-info w-75 mb-5" id="Access_forjump" data-toggle="collapse" href="#Access" role="button" aria-expanded="true" aria-controls="Access")
-      アクセス
-    #Access.collapse.show
-      %p
-        = "#{@shop.access}"
-      %p.mb-5 ここにGoogleMap
-
-  .text-center.pb-5
-    =link_to "検索結果に戻る", shops_path, class: "btn1 bg-main w-50"
+  $(function () {
+      $('#datetimepicker4').datetimepicker({
+          format: 'L'
+      });
+  });
+  
+  handler = Gmaps.build('Google');
+  handler.buildMap({
+    provider: {
+      zoom: 12,
+      center:    new google.maps.LatLng(#{@shop.latitude}, #{@shop.longitude}),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    },
+    internal: {id: 'map'}}, function(){
+    handler.fitMapToBounds();
+  });

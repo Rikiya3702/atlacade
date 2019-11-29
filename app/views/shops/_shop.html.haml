@@ -1,12 +1,26 @@
-.card.bg-light.mb-4.px-0.shadow.col-md-6
-  .card-header
-    = link_to shop.shop_name, shop_path(shop)
-  .row.no-gutters
-    .col-md-3.my-auto
-      = link_to show_self_image(shop,150), shop_path(shop)
-    .col-md-9
-      .card-body
-        %h5.card-title
-        %p.card-text
-          = shop.tel
-        %p.card-text サンプルテキスト、サンプルテキスト、サンプルテキスト
+.shops-child.text-left
+  .shop-element-head
+    = link_to shop_path(shop) do
+      %i.fas.fa-home
+      = shop.shop_name
+  .shop-element.pt-1.mb-5
+    .row.justify-content-end
+      .col-xs-3.ml-4
+        = link_to show_self_image(shop,100), shop_path(shop)
+      - if @query_machines
+        %table.col.machine-list
+          %tbody
+            - shop.shop_machine.each do |sm|
+              - if @machine_ids.include?(sm.machine_id.to_s)
+                %tr
+                  %td.w-15rem.text-center.py-1
+                    = sm.machine.title
+                  %td.w-4rem
+                    = sm.price
+                  %td.w-4rem
+                    = "#{sm.own} 台"
+      - else
+        .col
+          = shop.shop_info
+    .row.ml-2.mr-1.my-1
+      = render 'tags', shop: shop

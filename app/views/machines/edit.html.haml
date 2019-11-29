@@ -1,24 +1,2 @@
-%section.bg-base
-  .container.text-center
-    .display-4.py-5 ゲームの編集
-    = form_for @machine do |f|
-      = render 'shared/error_messages', object: f.object
-      .row.text-center
-        .col-md-2.mb-4.text-left
-          = show_self_image(@machine)
-          .row.mt-3.ml-5
-            = f.file_field :image
-        .offset-sm-2
-        .col-sm-8
-          .form-group.row
-            = f.label       :title, "ゲームタイトル", class: "col-sm-3"
-            = f.text_field  :title, class: "form-control col-sm-9"
-          .form-group.row
-            = f.label       :genre, "ジャンル", class: "col-sm-3"
-            = f.text_field  :genre, class: "form-control col-sm-9"
-          .form-group.row
-            = f.label       :maker, "メーカー", class: "col-sm-3"
-            = f.text_field  :maker, class: "form-control col-sm-9"
-          = f.submit "更新する", class: "btn1 bg-accent w-50 my-4"
-
-    =link_to "戻る", machine_path(@machine), class: "btn1 bg-main w-25 mb-5"
+- provide :title, "ゲームデータの編集"
+= render 'form'

@@ -18,7 +18,19 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit :sign_in,        keys: added_attributes
     end
 
+    def user_is_owner?
+      authenticate_user!
+      return admin_user?
+      if current_user.role == 0 || current_user.shop.blank? || current_user.shop != @shop
+        redirect_to(root_url)
+      end
+    end
+    
     def set_user
       @user = current_user
+    end
+
+    def admin_user?
+      current_user.role == 2
     end
 end

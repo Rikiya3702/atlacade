@@ -1,0 +1,208 @@
+.image-label{ cursor: pointer; }
+
+#img_field{
+  cursor: pointer;
+  width: 300px;
+  height: 300px;
+  border: 1px solid #2f2;
+}
+
+.atl-textarea, .atl-textfield{
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: rgba(64, 64, 64, 0.3);
+  background-image: none;
+  border-left: 2px solid #2f2;
+  border-bottom: 4px double #2f2;
+  border-top: none;
+  border-right: none;
+  border-radius: 0;
+  color: #fff;
+  font-size: 1em;
+  height: 2.5rem;
+  padding: 0.4em 0.8em;
+  transition: 0.5s;
+  width: 60%;
+}
+.atl-textarea{
+  height: 5rem;
+  width: 90%;
+}
+.atl-datefield{
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: rgba(64, 64, 64, 0.3);
+  background-image: none;
+  position: relative;
+  left: 2rem;
+  top: 0.2rem;
+  border-bottom: 4px double #2f2;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-radius: 0;
+  width: 10rem;
+  color: #fff;
+  font-size: 1em;
+  height: 2rem;
+  padding: 0.4em 0.8em;
+  transition: 0.5s;
+}
+
+.atl-textarea:focus {
+  border-top: 1px solid #2f2;
+  border-left: 1px solid #2f2;
+  border-right: 3px solid #2f2;
+  border-bottom: 4px double #2f2;
+  background-color: rgba(64, 64, 64, 1);
+  height: 12rem;
+  box-shadow: none;
+  outline: none;
+}
+
+.atl-textfield:focus {
+  border-top: 1px solid #2f2;
+  border-left: 1px solid #2f2;
+  border-right: 3px solid #2f2;
+  border-bottom: 4px double #2f2;
+  background-color: rgba(64, 64, 64, 1);
+  box-shadow: none;
+  outline: none;
+  width: 90%
+}
+
+.form-column{
+  display: inline-block;
+  padding: 3px 7px;
+  border-bottom: 3px double #ff2;
+  border-right: 1px solid #ff2;
+}
+.atl-calendar{
+  display: inline-block;
+  position: relative;
+  left: 2.2rem;
+  top: -0.2rem;
+  height: 3rem;
+  z-index: 1;
+  box-sizing: border-box;
+  background: rgb(8,4,19);
+  color: #2f2 !important;
+  font-size: 1.5rem;
+  font-weight: bold;
+  opacity: 0.85;
+  border-top: 1px #ff2 solid;
+  border-bottom: 3px #ff2 double;
+  border-left: 1px #ff2 solid;
+  border-right: 3px #ff2 double;
+  padding: 4px 8px;
+  transition: 0.6s;
+  i{
+    position: relative;
+    color: #2f2;
+    transition: 0.4s;
+  }
+  &:hover{
+    opacity: 1.0;
+    color: #f8f8ff !important;
+    margin: 0;
+    i{
+      -webkit-transform: rotateZ(360deg);
+      transform: rotateZ(360deg);
+    }
+  }
+}
+.atl-submit {
+  -webkit-appearance: none;
+  background: rgb(8,4,19);
+  background-image: none;
+  border: none;
+  text-decoration: none;
+  border-radius: 0;
+  color: #2f2 !important;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  z-index: 1;
+  font-size: 1em;
+  font-weight: bold;
+  margin: 5px 7px;
+  padding: 0.6em 2em;
+  opacity: 0.9;
+  border-top: 1px #ff2 solid;
+  border-bottom: 4px #ff2 double;
+  padding: 10px 12px 15px;
+  transition: 0.6s;
+  i{
+    position: relative;
+    color: #2f2;
+    top: 0.3rem;
+    left: -0.3rem;
+    transition: 0.4s;
+  }
+  &:hover{
+    opacity: 1.0;
+    background: rgb(16,8,96);
+    color: #f8f8ff !important;
+    padding: 15px 17px 20px;
+    margin: 0;
+    border-left: 1px #ff2 solid;
+    border-right: 3px #ff2 solid;
+    i{
+      -webkit-transform: rotateZ(360deg);
+      transform: rotateZ(360deg);
+    }
+  }
+}
+
+.submit{
+  position: relative;
+  top: -4rem;
+}
+
+.form-tags{
+  input{ display: none; }
+  label{
+    cursor: pointer;
+    display: inline-block;
+    color: #eee;
+    border-top: 1px #555 solid;
+    border-right: 1px #555 solid;
+    border-bottom: 1px #555 double;
+    opacity: 0.5;
+    margin: 0.8rem 0;
+    padding: 5px 7px;
+    box-sizing: border-box;
+  }
+  input:checked + label{
+    display: inline-block;
+    opacity: 1;
+    border-top: 1px #2f2 solid;
+    border-right: 3px #2f2 solid;
+    border-bottom: 4px #2f2 double;
+    margin: 1rem 0;
+    padding: 5px 7px;
+    box-sizing: border-box;
+  }
+}
+
+.form-smoking{
+  margin: 1rem auto;
+  width: 45%;
+  height: 12rem;
+  border: 1px #eee solid;
+  border-right: none;
+}
+
+.form-required{
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 80%;
+  padding: 2px 6px;
+  margin-left: 1rem;
+  border-top: 1px #f22 solid;
+  border-right: 3px #f22 solid;
+  border-bottom: 4px #f22 double;
+}

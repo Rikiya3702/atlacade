@@ -1,0 +1,39 @@
+- provide :title, "登録ゲームの編集"
+.container.atl-table-form.mx-auto
+  %p
+    設置台数は半角数字で入力して下さい。
+    %br また、0を入力すると削除されます。
+  = form_tag shop_machine_path, method: :patch do
+    %table.mx-auto
+      %thead.atl-table-head
+        %tr
+          %th.w-15rem
+            ゲームタイトル
+          %th.w-6rem
+            メーカー
+          %th.w-6rem
+            ジャンル
+          %th.w-6rem
+            料金
+          %th.w-6rem
+            設置台数
+      %tbody.atl-table-body
+        - @shop_machines.each do |shop_machine|
+          = fields_for "shop_machines[]", shop_machine do |f|
+            = render 'shared/error_messages', object: f.object
+            = f.hidden_field :id, value: shop_machine.id
+            %tr
+              %th
+                = show_self_image(shop_machine.machine, 30)
+                = shop_machine.machine.title
+              %td
+                = shop_machine.machine.maker
+              %td
+                = shop_machine.machine.genre
+              %td
+                = f.text_field  :price, class:"text-right "
+              %td
+                = f.text_field  :own, class:"text-right"
+    = button_tag type: "submit", class: "atl-submit mt-5" do
+      %i.far.fa-check-square.fa-2x
+      登録する

@@ -1,0 +1,135 @@
+= form_for @shop do |f|
+  = render 'shared/error_messages', object: f.object
+  .row.justify-content-center.mb-4
+    .col-lg-5
+      #img_field.mx-auto{onClick: "$('#file').click()"}
+        - if has_shop?(current_user)
+          = show_self_image(@shop)
+        - else
+          アイコン画像を選択
+      .row.align-items-center.justify-content-center.mb-5
+        %p.pt-4.pr-3 画像クリックで変更
+        %label.image-label.atl-btn.mt-3
+          %i.fa.fa-image.fa-2x
+          画像を選択
+          = f.file_field :image, class: "none", id: "file"
+      .row
+        .col.form-tags.mx-auto
+          = fields_for :tag do |t|
+            .row.text-center
+              %p.mx-auto タグをクリックで ON / OFF 切り替え出来ます。
+            .row
+              .col
+                = t.check_box      :emoney, {:checked => @shop.tag.emoney} , "true", "false"
+                = t.label          :emoney, "電子マネー", class: "pr-3"
+                %br
+                = t.check_box      :parking, {:checked => @shop.tag.parking}, "true", "false"
+                = t.label          :parking, "駐車場アリ", class: "pr-3"
+                %br
+                = t.check_box      :open24h, {:checked => @shop.tag.open24h}, "true", "false"
+                = t.label          :open24h, "24時間営業", class: "pr-3"
+                %br
+                = t.check_box      :older18, {:checked => @shop.tag.older18}, "true", "false"
+                = t.label          :older18, "18歳未満禁止", class: "pr-3"
+                %br
+              .col
+                = t.check_box      :hand_towel, {:checked => @shop.tag.hand_towel}, "true", "false"
+                = t.label          :hand_towel, "おしぼり", class: "pr-3"
+                %br
+                = t.check_box      :locker, {:checked => @shop.tag.locker}, "true", "false"
+                = t.label          :locker, "無料ロッカー", class: "pr-3"
+                %br
+                = t.check_box      :wifi, {:checked => @shop.tag.wifi}, "true", "false"
+                = t.label          :wifi, "無料Wifi", class: "pr-3"
+                %br
+            .form-smoking.mb-5
+              = t.radio_button  :smoking, 0, {:checked => somoking_cheked?( @shop, 0) }
+              = t.label          :smoking, "禁煙", value: 0, class: "pr-3"
+              %br
+              = t.radio_button  :smoking, 1, {:checked => somoking_cheked?( @shop, 1) }
+              = t.label          :smoking, "分煙", value: 1, class: "pr-3"
+              %br
+              = t.radio_button  :smoking, 2, {:checked => somoking_cheked?( @shop, 2) }
+              = t.label          :smoking, "喫煙可", value: 2, class: "pr-3"
+
+    .col-lg-7
+      .text-left.mb-4
+        .form-column
+          %i.fas.fa-pencil-alt
+          = f.label       :shop_name
+        .form-required.my-auto
+          ※ 必須
+        %br
+        = f.text_field  :shop_name, class: "mt-1 ml-3 atl-textfield"
+      .text-left.mb-4
+        .form-column
+          %i.fas.fa-pencil-alt
+          = f.label       :business_hours
+        %br
+        = f.text_field  :business_hours, class: "mt-1 ml-3 atl-textfield"
+      .text-left.mb-4
+        .form-column
+          %i.fas.fa-pencil-alt
+          = f.label       :tel
+        .form-required.my-auto
+          ※ 必須
+        %br
+        = f.text_field  :tel, class: "mt-1 ml-3 atl-textfield"
+      .text-left.mb-4
+        .form-column
+          %i.fas.fa-pencil-alt
+          = f.label       :adress
+        %br
+        = f.text_field  :adress, class: "mt-1 ml-3 atl-textfield"
+      .text-left.mb-4
+        .form-column
+          %i.fas.fa-pencil-alt
+          = f.label       :nearest_station
+        %br
+        = f.text_field  :nearest_station, class: "mt-1 ml-3 atl-textfield"
+      .text-left.mb-4
+        .form-column
+          %i.fas.fa-pencil-alt
+          = f.label       :access
+        %br
+        = f.text_field  :access, class: "mt-1 ml-3 atl-textfield"
+      .text-left.mb-4
+        .form-column
+          %i.fas.fa-pencil-alt
+          = f.label       :official_url
+        %br
+        = f.text_field  :official_url, class: "mt-1 ml-3 atl-textfield"
+      .text-left.mb-4
+        .form-column
+          %i.fas.fa-pencil-alt
+          = f.label       :shop_info
+        %br
+        = f.text_area   :shop_info, class: "mt-1 ml-3 atl-textarea"
+
+
+    = button_tag type: "submit", class: "atl-submit" do
+      %i.far.fa-check-square.fa-2x
+      登録する
+
+:javascript
+  $(function(){
+    $fileField = $('#file')
+    $($fileField).on('change', $fileField, function(e) {
+      file = e.target.files[0]
+      reader = new FileReader(),
+      $preview = $("#img_field");
+
+      reader.onload = (function(file) {
+        return function(e) {
+          $preview.empty();
+          $preview.append($('<img>').attr({
+            src: e.target.result,
+            width: "100%",
+            class: "preview",
+            title: file.name
+          }));
+        };
+      })(file);
+      reader.readAsDataURL(file);
+    });
+  });

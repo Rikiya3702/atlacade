@@ -1,10 +1,34 @@
-%section.bg-base.py-5.text-center
-  .container.px-0
-    %p.mb-5
-      = @shops.count
-      件のお店が見つかりました。
-    .row.justify-content-between
-      - @shops.each do |shop|
-        = render 'shop', shop: shop
-  .text-center.py-5
-    =link_to "条件を変えて検索する", root_path, class: "btn1 bg-main w-50"
+- provide :title, "検索結果"
+%p.mb-2.text-left.pl-5
+  = "エリア条件："
+  - if @query_adress
+    = "#{@query_adress}"
+  - else
+    = "なし"
+
+%p.mb-2.text-left.pl-5
+  = "ゲーム条件："
+  - if @query_machines
+    - @query_machines.each do |machine|
+      = " [#{machine.title}] "
+  -else
+    = "なし"
+
+%p.mb-2.text-left.pl-5
+  = @shops.total_count
+  件のお店が見つかりました。
+  %br
+  - unless @shops.total_count == 1
+    = "#{@shops.offset_value + 1} 〜 #{@shops.offset_value + @shops.length}件目を表示しています。"
+
+.shops
+  - @shops.each do |shop|
+    = render 'shop', shop: shop
+
+.my-2
+  = paginate @shops
+
+.text-center
+  = link_to root_path, class: "atl-btn" do
+    %i.fas.fa-search.fa-2x
+    条件を変えて検索する

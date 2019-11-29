@@ -1,59 +1,68 @@
-%section.bg-base.pb-5
-  .container.text-center
-    %h2.display-4.py-4 アカウント設定
-    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-      = render "devise/shared/error_messages", resource: resource
-      .row
-        .col-md-4.text-center.my-auto
-          = show_self_image(@user)
-          .row.mt-5
-            = f.file_field :image
-        .col-md-6.text-left.ml-5
-          .field.form-group.mb-5
-            = f.label :nickname, "ユーザー名", class: ""
-            = f.text_field :nickname, class: "form-control", autofocus: true, autocomplete: "name"
-          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-            %div
-              Currently waiting confirmation for: #{resource.unconfirmed_email}
-          .field.form-group.mb-5
-            = f.label :email, "メールアドレス", class: ""
-            %br/
-            = f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email"
-          .field.form-group.mb-5
-            = f.label :profile, "紹介文", class: ""
-            %br/
-            = f.text_area :profile, class: "form-control profile", autofocus: true
-          .row
-            .col
-              .actions.my-5
-                = f.submit "変更を保存する", class: "col btn1 bg-accent w-50"
-              / Button trigger modal
-              %button.btn1.bg-main.w-50{"data-target" => "#exampleModal", "data-toggle" => "modal", :type => "button"}
-                パスワードの変更
-              / Modal
-              #exampleModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
-                .modal-dialog{:role => "document"}
-                  .modal-content
-                    .modal-header.bg-main
-                      %h5#exampleModalLabel.modal-title パスワードの変更
-                      %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-                        %span{"aria-hidden" => "true"} ×
-                    .modal-body.container.bg-base
-                      .field.my-3.form-group.text-left
-                        = f.label :password, "新しいパスワード", class: ""
-                        - if @minimum_password_length
-                          %em
-                            (#{@minimum_password_length}文字以上)
-                        = f.password_field :password, class: "form-control w-50", autocomplete: "new-password"
-                      .field.mt-5.form-group.text-left
-                        = f.label :password_confirmation, "新しいパスワード（確認）", class: ""
-                        %br/
-                        = f.password_field :password_confirmation, class: "form-control w-50", autocomplete: "new-password"
-                      .field.mt-5.form-group.text-left
-                        = f.label :current_password, "現在のパスワード", class: ""
-                        %br/
-                        = f.password_field :current_password, class: "form-control w-50", autocomplete: "current-password"
-                    .modal-footer.bg-base
-                      %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} キャンセル
-                      = f.submit "変更する", class: "btn1 bg-accent w-25"
-    = link_to "戻る", :back
+- provide :title, "アカウント情報"
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+  = render "devise/shared/error_messages", resource: resource
+  .row.mb-4
+    .col-lg-5
+      #img_field.mx-auto{onClick: "$('#file').click()"}
+        = show_self_image(current_user)
+      .row.align-items-center.justify-content-center.mb-5
+        %p.pt-4.pr-3 画像クリックで変更
+        %label.image-label.atl-btn.mt-3
+          %i.fa.fa-image.fa-2x
+          画像を選択
+          = f.file_field :image, class: "none", id: "file"
+    .col-lg-7
+      .text-left.mb-4
+        .form-column
+          %i.fas.fa-pencil-alt
+          = f.label       :nickname, "ユーザー名 (ニックネーム)"
+        %br
+        = f.text_field    :nickname, class: "mt-1 ml-3 atl-textfield", autocomplete: "name"
+      .text-left.mb-4
+        .form-column
+          %i.fas.fa-pencil-alt
+          = f.label       :email
+        %br
+        = f.text_field    :email, class: "mt-1 ml-3 atl-textfield", autocomplete: "email"
+      .text-left.mb-5
+        .form-column
+          %i.fas.fa-pencil-alt
+          = f.label       :profile
+        %br
+        = f.text_area   :profile, class: "mt-1 ml-3 atl-textarea"
+  .row.justify-content-center.my-3
+    = button_tag type: "submit", class: "atl-submit" do
+      %i.far.fa-check-square.fa-2x
+      保存する
+
+  .container.ml-1.pt-3
+    .row
+      = link_to "#Change_password", role: "button", class:"atl-btn", data:{toggle: "collapse"}, aria: {expanded: "true", controls: "Change_password"} do
+        %i.fas.fa-exclamation-circle.fa-2x
+        パスワードの変更
+    #Change_password.collapse.text-center.ml-5
+      .shop-element
+        = render 'change_password', f: f
+
+:javascript
+  $(function(){
+    $fileField = $('#file')
+    $($fileField).on('change', $fileField, function(e) {
+      file = e.target.files[0]
+      reader = new FileReader(),
+      $preview = $("#img_field");
+
+      reader.onload = (function(file) {
+        return function(e) {
+          $preview.empty();
+          $preview.append($('<img>').attr({
+            src: e.target.result,
+            width: "100%",
+            class: "preview",
+            title: file.name
+          }));
+        };
+      })(file);
+      reader.readAsDataURL(file);
+    });
+  });

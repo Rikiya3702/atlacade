@@ -1,29 +1,48 @@
-%section.bg-base.pb-5
-  .container.text-center
-    %h2.display-4.py-4 新規登録
-    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-      = render "devise/shared/error_messages", resource: resource
-      .field.form-group.row.mb-5
-        = f.label :nickname, "ユーザー名", class: "col-sm-5 text-right"
-        %br/
-        = f.text_field :nickname, class: "form-control col-sm-5", autofocus: true, autocomplete: "name"
-      .field.form-group.row.mb-5
-        = f.label :email, "メールアドレス", class: "col-sm-5 text-right"
-        %br/
-        = f.email_field :email, class: "form-control col-sm-5", autofocus: true, autocomplete: "email"
-      .field.form-group.row.my-3
-        = f.label :password, "パスワード", class: "col-sm-5 text-right"
-        - if @minimum_password_length
-          %em
-            (#{@minimum_password_length}文字以上)
-        = f.password_field :password, class: "form-control col-sm-5", autocomplete: "new-password"
-      .field.form-group.row.mt-3
-        = f.label :password_confirmation, "パスワード（確認）", class: "col-sm-5 text-right"
-        %br/
-        = f.password_field :password_confirmation, class: "form-control col-sm-5", autocomplete: "new-password"
-      .field.form-group.row.mt-3
-        = f.check_box :role
-        = f.label :role
-      .actions.my-5
-        = f.submit "登録する", class: "btn1 bg-accent w-50"
-    = render "users/shared/links"
+- provide :title, "新規登録"
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = render "devise/shared/error_messages", resource: resource
+  %p 今なら登録しなくてもテストアカウントですぐにログイン出来ます。
+  = link_to new_user_session_path, class: "atl-btn ml-4 mb-5" do
+    %i.fas.fa-sign-in-alt.fa-2x
+    ログインへ
+  .text-left.mb-4
+    .form-column
+      %i.fas.fa-pencil-alt
+      = f.label       :nickname, "ユーザー名 (ニックネーム)"
+    .form-required.my-auto
+      ※ 必須
+    %br
+    = f.text_field    :nickname, class: "mt-1 ml-3 atl-textfield", autofocus: true, autocomplete: "name"
+  .text-left.mb-5
+    .form-column
+      %i.fas.fa-pencil-alt
+      = f.label       :email
+    .form-required.my-auto
+      ※ 必須
+    %br
+    = f.text_field    :email, class: "mt-1 ml-3 atl-textfield", autocomplete: "email"
+  .text-left.mb-3
+    .form-column
+      %i.fas.fa-pencil-alt
+      = f.label       :password
+    .form-required.my-auto
+      ※ 6文字以上 必須
+    %br
+    = f.password_field    :password, class: "mt-1 ml-3 atl-textfield"
+  .text-left.mb-3
+    .form-column
+      %i.fas.fa-pencil-alt
+      = f.label       :password_confirmation, "パスワード（確認）"
+    .form-required.my-auto
+      ※ 必須
+    %br
+    = f.password_field    :password_confirmation, class: "mt-1 ml-3 atl-textfield"
+  %br 店舗オーナー様はこちらのオーナーボタンをONにして下さい。
+  .form-tags
+    = f.check_box      :role
+    = f.label          :role, "店舗オーナー", class: "pr-3"
+    %br
+  .my-4
+    = button_tag type: "submit", class: "atl-submit" do
+      %i.fas.fa-sign-in-alt.fa-2x
+      登録する

@@ -1,0 +1,13 @@
+.shops-child.text-left
+  .shop-element-head
+    = link_to machine_path(machine) do
+      %i.fa.fa-desktop
+      = machine.title
+  .shop-element.pt-1.mb-5
+    .row.justify-content-end
+      .col-xs-3.ml-4
+        = link_to show_self_image(machine,100), machine_path(machine)
+      .col.text-center
+        = machine.genre
+        %br= machine.maker
+        %p.text-left.pt-2= machine.machine_info

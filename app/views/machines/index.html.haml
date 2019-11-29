@@ -1,23 +1,17 @@
-%section.bg-base.py-5.text-center
-  .container.px-0
-    %p
-      = @machines.count
-      件のゲームが登録されています。
-    = link_to "/new", new_machine_path, class: "btn1 bg-main w-25 mb-4"
-    .row.justify-content-between
-      - @machines.each do |machine|
-        .card.bg-light.mb-4.px-0.shadow.col-md-6
-          .card-header
-            = link_to machine.title, machine
-          .row.no-gutters
-            .col-md-3.my-auto
-              = link_to show_self_image(machine,150), machine
-            .col-md-9
-              .card-body
-                %h5.card-title
-                %p.card-text
-                  = machine.genre
-                %p.card-text
-                  = machine.maker
-  .text-center.py-5
-    =link_to "TOPへ", root_path, class: "btn1 bg-main w-50"
+- provide :title, "ゲーム一覧"
+%p.mb-2.text-left.pl-5
+  = @machines.total_count
+  件のゲームが登録されています。
+  %br
+  = "#{@machines.offset_value + 1} 〜 #{@machines.offset_value + @machines.length}件目を表示しています。"
+- if current_user.role == 2
+  .text-center.my-2
+    = link_to new_machine_path, class: "atl-btn" do
+      %i.fa.fa-plus.fa-2x
+      ゲーム登録
+
+.shops
+  - @machines.each do |machine|
+    = render 'machine', machine: machine
+.mt-2
+  = paginate @machines

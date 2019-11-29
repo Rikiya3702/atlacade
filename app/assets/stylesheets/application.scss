@@ -1,16 +1,11 @@
 @import "bootstrap";
+@import "tempusdominus-bootstrap-4.css";
+@import 'font-awesome-sprockets';
+@import "font-awesome";
 @import "utility";
 @import "base";
-@import "header";
+@import "mainvisual";
 @import "home";
-@import "about";
-@import "/users/edit";
+@import "form";
 @import "/shops/show";
-
-footer{
-  background-color: #ccc;
-  font-size: 10px;
-  p{
-    padding:15px 0px;
-  }
-}
+@import "/shops/index";

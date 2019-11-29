@@ -4,6 +4,19 @@
     = render 'layouts/head'
   %body
     = render 'layouts/header'
-    = render 'layouts/flash_message'
-    = yield
+    .atl-base
+      = render 'layouts/flash_message'
+      - unless current_page?(root_path)
+        .container.text-center.pt-4
+          .main-border.pb-5
+            .main-title
+              = yield(:title)
+            = yield
+      - else
+        = yield
+      - unless current_page?(root_path)
+        .text-center.py-5
+          = link_to :back, class: "atl-btn" do
+            %i.far.fa-arrow-alt-circle-left.fa-2x
+            戻る
     = render 'layouts/footer'

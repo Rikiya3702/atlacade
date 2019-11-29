@@ -1,0 +1,24 @@
+- provide :title, "イベントの編集"
+= form_for @event do |f|
+  = render 'shared/error_messages', object: f.object
+  .row.justify-content-left
+    = f.label       :content, "イベント内容", class:"form-column ml-3"
+  .row.justify-content-center
+    = f.text_area   :content, class: "atl-textarea"
+  .row.justify-content-left.mt-3
+    = f.label      :event_date, "開催日", class: "mt-3 ml-3 form-column"
+  #datetimepicker4.row.mt-1{data: {target: {input: "nearest"} } }
+    .atl-calendar{data: {target: "#datetimepicker4", toggle: "datetimepicker"} }
+      %i.fa.fa-calendar
+    = f.text_field :event_date, class: "atl-datefield datetimepicker-input", placeholder:"カレンダーで入力", data: {target: "#datetimepicker4"}
+    .col.text-center
+      = button_tag type: "submit", class: "atl-submit" do
+        %i.fa.fa-calendar-plus.fa-2x
+        登録する
+
+:javascript
+  $(function () {
+      $('#datetimepicker4').datetimepicker({
+          format: 'L'
+      });
+  });

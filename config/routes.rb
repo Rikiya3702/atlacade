@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   root 'home#index'
   get 'about', to: "home#about"
-  get 'result', to: "home#result"
-  # get 'shop', to: "home#shop"
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -10,5 +8,9 @@ Rails.application.routes.draw do
 
   resources :shops
   resources :machines
+  resources :shop_machines, only: [:create, :edit, :update, :destroy]
+  get "/shop_machines/:id/new", to: 'shop_machines#new'
+
+  resources :events, only: [:edit, :create, :update, :destroy]
 
 end
