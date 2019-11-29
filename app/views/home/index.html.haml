@@ -6,7 +6,7 @@
       .hello.mt-3
         .row
           .col
-            = image_tag("logo.png", height: 200)
+            = image_tag("/images/logo.png", height: 200)
           .col
             %p
               - if current_user
@@ -65,8 +65,6 @@
       アカウントの登録
 
 :javascript
-  //選択されたゲームタイトルの配列を表示する
-  //参考URL https://www.flatflag.nir87.com/checkbox-1286
   $(function() {
     $('input[name="search[machine_ids][]"]').change(function() {
       var machines = [];

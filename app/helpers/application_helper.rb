@@ -21,19 +21,15 @@ module ApplicationHelper
         else           image_tag object.image.thumb.url
       end
     elsif object.class == User
-        # if object.role == 2
-        #   image_tag("default_user_admin", height: size)
-        #   return
-      image_tag "default_user/#{object.id % 19}.jpg", height: size
+      image_tag "/images/default_user/#{object.id % 19}.jpg", height: size
     elsif object.class == Shop
-      image_tag "default_shop/#{object.id % 26}.jpg", class:"self-image", height: size
+      image_tag "/images/default_shop/#{object.id % 26}.jpg", class:"self-image", height: size
     else
-      image_tag("logo.png", height: size)
+      image_tag("/images/logo.png", height: size)
     end
   end
 
   # ランダムな日付を取得する
-  # 参考URL https://codeday.me/jp/qa/20190112/126884.html
   def time_rand from = 0.0, to = Time.now
     Time.at(from + rand * (to.to_f - from.to_f))
   end
