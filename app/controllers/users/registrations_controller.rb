@@ -41,7 +41,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
     # passwordとpassword_confirmationが空の場合のみcurrent_passwordを無視する
-    # 参考 https://qiita.com/kei_f_1996/items/32c87b924076445ab55e 
     def update_resource(resource, params)
       return super if params["password"]&.present?
       resource.update_without_password(params.except("current_password"))
