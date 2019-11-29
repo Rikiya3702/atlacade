@@ -12,8 +12,8 @@
 
 ActiveRecord::Schema.define(version: 20191125025118) do
 
-  create_table "events", force: :cascade do |t|
-    t.integer "shop_id", null: false
+  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "shop_id", null: false
     t.date "event_date", null: false
     t.text "content", null: false
     t.datetime "created_at", null: false
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20191125025118) do
     t.index ["shop_id"], name: "index_events_on_shop_id"
   end
 
-  create_table "machines", force: :cascade do |t|
+  create_table "machines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title", null: false
     t.string "maker"
     t.string "genre"
@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(version: 20191125025118) do
     t.text "machine_info"
   end
 
-  create_table "shop_machines", force: :cascade do |t|
-    t.integer "shop_id", null: false
-    t.integer "machine_id", null: false
+  create_table "shop_machines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "shop_id", null: false
+    t.bigint "machine_id", null: false
     t.string "price", default: "100円"
     t.integer "own", default: 0
     t.datetime "created_at", null: false
@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 20191125025118) do
     t.index ["shop_id"], name: "index_shop_machines_on_shop_id"
   end
 
-  create_table "shops", force: :cascade do |t|
-    t.integer "user_id", null: false
+  create_table "shops", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id", null: false
     t.string "shop_name", null: false
     t.string "tel", null: false
     t.string "adress"
@@ -57,14 +57,14 @@ ActiveRecord::Schema.define(version: 20191125025118) do
     t.datetime "updated_at", null: false
     t.string "image"
     t.string "official_url"
-    t.float "latitude"
-    t.float "longitude"
+    t.float "latitude", limit: 24
+    t.float "longitude", limit: 24
     t.index ["tel"], name: "index_shops_on_tel", unique: true
     t.index ["user_id"], name: "index_shops_on_user_id"
   end
 
-  create_table "tags", force: :cascade do |t|
-    t.integer "shop_id", null: false
+  create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "shop_id", null: false
     t.boolean "emoney", default: false
     t.boolean "paseli", default: false
     t.boolean "parking", default: false
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20191125025118) do
     t.index ["shop_id"], name: "index_tags_on_shop_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -95,4 +95,9 @@ ActiveRecord::Schema.define(version: 20191125025118) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "events", "shops"
+  add_foreign_key "shop_machines", "machines"
+  add_foreign_key "shop_machines", "shops"
+  add_foreign_key "shops", "users"
+  add_foreign_key "tags", "shops"
 end
