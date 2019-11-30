@@ -1,24 +1,54 @@
-# README
+# AtlAcade
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<http://atlacade.com/>
 
-Things you may want to cover:
+全国のアミューズメント施設を検索できるサービスです。
 
-* Ruby version
+#### 作成したきっかけ
+アミューズメント施設をメーカー、ショップの枠を越えて総合的に検索できるサービスがなかった。
+１つのゲームが置いてるショップの検索はメーカー公式で出来るが、複数のゲームを置いてるショップを検索する事は出来ないため。  
 
-* System dependencies
+___
+#### 主な機能
+- レスポンシブ対応
+- ショップ一覧
+- ショップを都道府県 and 設置ゲーム（複数選択可)で検索
+- ゲーム一覧
+- ページネーション
+- ユーザーアカウント登録（ログイン）
+- オーナーユーザーはショップ登録
+- ショップに対しタグ、イベント、設置ゲーム情報の追加
+- オーナーのみ自身のショップの編集権限
+- 管理者は全データの編集と、ゲーム登録が出来る
+- ユーザー、ショップ、ゲームにアイコン画像アップロード
 
-* Configuration
+#### 使用した技術やサービスなど
+- Atom
+- Ruby on Rails 5
+- MySQL
+- Bootstrap 4
+- Devise
+- Haml
+- Carrierwave
+- RMagick
+- Font Awesome
+- Google Fonts
+- Faker
+- Kaminari
+- Pry
 
-* Database creation
+###### デプロイ
+- AWS EC2
+- AWS Route 53
+- unicorn
+- Nginx
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+___
+#### 今後の課題
+- RSpecでテスト作成
+- Ajax
+- ソート機能
+- 検索機能の拡張（絞り込み、フリーワード）
+- Twitter認証、ツイートボタン
+- facebook認証、LINE認証
+- いいね（お気に入り）とコメント機能
