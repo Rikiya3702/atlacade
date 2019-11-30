@@ -4,7 +4,7 @@
   件のゲームが登録されています。
   %br
   = "#{@machines.offset_value + 1} 〜 #{@machines.offset_value + @machines.length}件目を表示しています。"
-- if current_user.role == 2
+- if user_signed_in? && current_user.role == 2
   .text-center.my-2
     = link_to new_machine_path, class: "atl-btn" do
       %i.fa.fa-plus.fa-2x

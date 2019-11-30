@@ -25,12 +25,12 @@ class ApplicationController < ActionController::Base
         redirect_to(root_url)
       end
     end
-    
+
     def set_user
       @user = current_user
     end
 
     def admin_user?
-      current_user.role == 2
+      user_signed_in? && current_user.role == 2
     end
 end
