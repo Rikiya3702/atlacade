@@ -23,4 +23,7 @@
 .byebug_history
 
 /public/uploads
+/public/assets
+yarn.lock
 /config/unicorn.conf.rb
+/db/seeds.rb

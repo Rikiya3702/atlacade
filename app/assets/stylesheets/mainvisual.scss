@@ -33,6 +33,39 @@
                title_8 0.04s linear 3.3s,
                title_9  0.8s linear 3.6s;
     animation-fill-mode: forwards;
+    -webkit-animation: title_0  0.1s linear 1.2s,
+               title_1 0.06s linear 1.8s,
+               title_2 0.04s linear 2.0s,
+               title_3 0.04s linear 2.15s,
+               title_4 0.06s linear 2.4s,
+               title_5 0.04s linear 2.7s,
+               title_6 0.04s linear 2.9s,
+               title_7 0.04s linear 3.15s,
+               title_8 0.04s linear 3.3s,
+               title_9  0.8s linear 3.6s;
+    -webkit-animation-fill-mode: forwards;
+    -ms-animation: title_0  0.1s linear 1.2s,
+               title_1 0.06s linear 1.8s,
+               title_2 0.04s linear 2.0s,
+               title_3 0.04s linear 2.15s,
+               title_4 0.06s linear 2.4s,
+               title_5 0.04s linear 2.7s,
+               title_6 0.04s linear 2.9s,
+               title_7 0.04s linear 3.15s,
+               title_8 0.04s linear 3.3s,
+               title_9  0.8s linear 3.6s;
+    -ms-animation-fill-mode: forwards;
+    -moz-animation: title_0  0.1s linear 1.2s,
+               title_1 0.06s linear 1.8s,
+               title_2 0.04s linear 2.0s,
+               title_3 0.04s linear 2.15s,
+               title_4 0.06s linear 2.4s,
+               title_5 0.04s linear 2.7s,
+               title_6 0.04s linear 2.9s,
+               title_7 0.04s linear 3.15s,
+               title_8 0.04s linear 3.3s,
+               title_9  0.8s linear 3.6s;
+    -moz-animation-fill-mode: forwards;
   }
   .title::after{
     display: block;
@@ -43,6 +76,15 @@
     animation: leftline1 0.4s ease 0.7s,
                leftline2 0.4s ease 1.1s;
     animation-fill-mode: forwards;
+    -webkit-animation: leftline1 0.4s ease 0.7s,
+                       leftline2 0.4s ease 1.1s;
+    -webkit-animation-fill-mode: forwards;
+    -ms-animation: leftline1 0.4s ease 0.7s,
+                   leftline2 0.4s ease 1.1s;
+    -ms-animation-fill-mode: forwards;
+    -moz-animation: leftline1 0.4s ease 0.7s,
+               leftline2 0.4s ease 1.1s;
+    -moz-animation-fill-mode: forwards;
     top: 100px;
   }
   .title_underline{
@@ -62,6 +104,15 @@
     animation: underline1 0.5s ease 0.1s,
                underline2 0.4s ease 0.5s;
     animation-fill-mode: forwards;
+    -webkit-animation: underline1 0.5s ease 0.1s,
+                       underline2 0.4s ease 0.5s;
+    -webkit-animation-fill-mode: forwards;
+    -ms-animation: underline1 0.5s ease 0.1s,
+                   underline2 0.4s ease 0.5s;
+    -ms-animation-fill-mode: forwards;
+    -moz-animation: underline1 0.5s ease 0.1s,
+                    underline2 0.4s ease 0.5s;
+    -moz-animation-fill-mode: forwards;
   }
   p{ font-size: 16px; }
   .hello{
@@ -72,6 +123,12 @@
     padding-bottom: 1rem;
     animation: hello 1.5s ease 3.5s;
     animation-fill-mode: forwards;
+    -webkit-animation: hello 1.5s ease 3.5s;
+    -webkit-animation-fill-mode: forwards;
+    animation: hello 1.5s ease 3.5s;
+    animation-fill-mode: forwards;
+    -moz-animation: hello 1.5s ease 3.5s;
+    -moz-animation-fill-mode: forwards;
     p{
       font-size: 18px;
     }
@@ -139,6 +196,198 @@
   100%{ height: 0; top: 100px; }
 }
 @keyframes hello{
+  0%{ }
+  100%{ top: 0; }
+}
+@-webkit-keyframes leftline1{
+  0%{   height: 0;    top: 100px;}
+  100%{ height: 75px; top: 25px; background: #2f2;}
+}
+@-webkit-keyframes leftline2{
+  0%{   width: 2px; background: #2f2;}
+  100%{ width: 100%; background: none;}
+}
+@-webkit-keyframes underline1{
+  0%{   width: 0;}
+  100%{ width: 100%;}
+}
+@-webkit-keyframes underline2{
+  0%{   border-bottom: #2f2 1px solid;}
+  100%{ border-bottom: #ddd 5px double; background: none; height: 75px;}
+}
+@-webkit-keyframes title_none{
+  0%{    display: none;}
+  100%{  display: inline-block; }
+}
+@-webkit-keyframes title_0{
+  0%{   border-left: none }
+  100%{ border-left: 6px #2f2 solid; }
+}
+@-webkit-keyframes title_1{
+  0%{   left: 0; }
+  100%{ left: 65px; }
+}
+@-webkit-keyframes title_2{
+  0%{   left: 65px; }
+  100%{ left: 85px; }
+}
+@-webkit-keyframes title_3{
+  0%{   left: 85px; }
+  100%{ left: 105px; }
+}
+@-webkit-keyframes title_4{
+  0%{   left: 105px; }
+  100%{ left: 170px; }
+}
+@-webkit-keyframes title_5{
+  0%{   left: 170px; }
+  100%{ left: 208px; }
+}
+@-webkit-keyframes title_6{
+  0%{   left: 208px; }
+  100%{ left: 250px; }
+}
+@-webkit-keyframes title_7{
+  0%{   left: 250px; }
+  100%{ left: 298px; }
+}
+@-webkit-keyframes title_8{
+  0%{   left: 298px; }
+  100%{ left: 340px; }
+}
+@-webkit-keyframes title_9{
+  0%{ }
+  100%{ height: 0; top: 100px; }
+}
+@-webkit-keyframes hello{
+  0%{ }
+  100%{ top: 0; }
+}
+@-ms-keyframes leftline1{
+  0%{   height: 0;    top: 100px;}
+  100%{ height: 75px; top: 25px; background: #2f2;}
+}
+@-ms-keyframes leftline2{
+  0%{   width: 2px; background: #2f2;}
+  100%{ width: 100%; background: none;}
+}
+@-ms-keyframes underline1{
+  0%{   width: 0;}
+  100%{ width: 100%;}
+}
+@-ms-keyframes underline2{
+  0%{   border-bottom: #2f2 1px solid;}
+  100%{ border-bottom: #ddd 5px double; background: none; height: 75px;}
+}
+@-ms-keyframes title_none{
+  0%{    display: none;}
+  100%{  display: inline-block; }
+}
+@-ms-keyframes title_0{
+  0%{   border-left: none }
+  100%{ border-left: 6px #2f2 solid; }
+}
+@-ms-keyframes title_1{
+  0%{   left: 0; }
+  100%{ left: 65px; }
+}
+@-ms-keyframes title_2{
+  0%{   left: 65px; }
+  100%{ left: 85px; }
+}
+@-ms-keyframes title_3{
+  0%{   left: 85px; }
+  100%{ left: 105px; }
+}
+@-ms-keyframes title_4{
+  0%{   left: 105px; }
+  100%{ left: 170px; }
+}
+@-ms-keyframes title_5{
+  0%{   left: 170px; }
+  100%{ left: 208px; }
+}
+@-ms-keyframes title_6{
+  0%{   left: 208px; }
+  100%{ left: 250px; }
+}
+@-ms-keyframes title_7{
+  0%{   left: 250px; }
+  100%{ left: 298px; }
+}
+@-ms-keyframes title_8{
+  0%{   left: 298px; }
+  100%{ left: 340px; }
+}
+@-ms-keyframes title_9{
+  0%{ }
+  100%{ height: 0; top: 100px; }
+}
+@-ms-keyframes hello{
+  0%{ }
+  100%{ top: 0; }
+}
+@-moz-keyframes leftline1{
+  0%{   height: 0;    top: 100px;}
+  100%{ height: 75px; top: 25px; background: #2f2;}
+}
+@-moz-keyframes leftline2{
+  0%{   width: 2px; background: #2f2;}
+  100%{ width: 100%; background: none;}
+}
+@-moz-keyframes underline1{
+  0%{   width: 0;}
+  100%{ width: 100%;}
+}
+@-moz-keyframes underline2{
+  0%{   border-bottom: #2f2 1px solid;}
+  100%{ border-bottom: #ddd 5px double; background: none; height: 75px;}
+}
+@-moz-keyframes title_none{
+  0%{    display: none;}
+  100%{  display: inline-block; }
+}
+@-moz-keyframes title_0{
+  0%{   border-left: none }
+  100%{ border-left: 6px #2f2 solid; }
+}
+@-moz-keyframes title_1{
+  0%{   left: 0; }
+  100%{ left: 65px; }
+}
+@-moz-keyframes title_2{
+  0%{   left: 65px; }
+  100%{ left: 85px; }
+}
+@-moz-keyframes title_3{
+  0%{   left: 85px; }
+  100%{ left: 105px; }
+}
+@-moz-keyframes title_4{
+  0%{   left: 105px; }
+  100%{ left: 170px; }
+}
+@-moz-keyframes title_5{
+  0%{   left: 170px; }
+  100%{ left: 208px; }
+}
+@-moz-keyframes title_6{
+  0%{   left: 208px; }
+  100%{ left: 250px; }
+}
+@-moz-keyframes title_7{
+  0%{   left: 250px; }
+  100%{ left: 298px; }
+}
+@-moz-keyframes title_8{
+  0%{   left: 298px; }
+  100%{ left: 340px; }
+}
+@-moz-keyframes title_9{
+  0%{ }
+  100%{ height: 0; top: 100px; }
+}
+@-moz-keyframes hello{
   0%{ }
   100%{ top: 0; }
 }

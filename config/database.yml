@@ -27,4 +27,6 @@ test:
 
 production:
   <<: *default
-  database: db_production
+  database: atlacade_production
+  username: root
+  password:
