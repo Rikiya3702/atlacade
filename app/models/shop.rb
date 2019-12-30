@@ -7,6 +7,7 @@ class Shop < ApplicationRecord
   accepts_nested_attributes_for :tag
   geocoded_by :adress
   after_validation :geocode
+  validates :user_id,  uniqueness: true
   validates :shop_name, presence: true,
                         length: {maximum: 50}
   validates :tel,       presence: true,

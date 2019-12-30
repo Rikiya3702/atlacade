@@ -5,6 +5,7 @@ class Machine < ApplicationRecord
   validates :maker,        length: {maximum: 50}
   validates :genre,        length: {maximum: 50}
   validates :official_url, length: {maximum: 100}
+  validates :machine_info, length: {maximum: 255}
   mount_uploader :image, ImageUploader
 
 end
