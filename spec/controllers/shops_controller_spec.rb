@@ -69,7 +69,7 @@ RSpec.describe ShopsController, type: :controller do
         shop_params = FactoryBot.attributes_for(:shop)
         tag_params  = FactoryBot.attributes_for(:tag)
         post :create, params: {shop: shop_params, tag: tag_params}
-        expect{response}.to redirect_to "/users/sign_in"
+        expect(response).to redirect_to "/users/sign_in"
       end
     end
   end

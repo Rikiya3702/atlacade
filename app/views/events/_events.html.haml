@@ -1,0 +1,8 @@
+- if @events.present?
+  %ul
+    - @events.each do |e|
+      %li
+        .event.mx-auto{id: "event_#{e.id}"}
+          = render './events/event', e: e
+- else
+  %p.my-5 開催中のイベントはありません。

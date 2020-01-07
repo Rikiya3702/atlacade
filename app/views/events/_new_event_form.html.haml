@@ -1,5 +1,5 @@
 .container.my-4
-  = form_for @new_event do |f|
+  = form_for @new_event, remote: true do |f|
     = render 'shared/error_messages', object: f.object
     = f.hidden_field :shop_id, value: @shop.id
     .row.justify-content-left

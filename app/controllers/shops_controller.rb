@@ -54,7 +54,7 @@ class ShopsController < ApplicationController
   def show
     @shop = Shop.find(params[:id])
     @new_event = Event.new
-
+    @events = @shop.event
   end
 
   def new

@@ -17,7 +17,9 @@
       %i.fa.fa-flag
       = link_to "イベント", "#Events", role: "button", data:{toggle: "collapse"}, aria: {expanded: "true", controls: "Events"}
   #Events.collapse.show.shop-element
-    = render 'events'
+    #event_list
+      = render './events/events'
+    = render './events/new_event'
 
 .container.py-4.ml-2
   .row
@@ -48,7 +50,7 @@
           format: 'L'
       });
   });
-  
+
   handler = Gmaps.build('Google');
   handler.buildMap({
     provider: {

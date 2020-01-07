@@ -6,6 +6,10 @@ RSpec.describe Event, type: :model do
     expect(FactoryBot.build(:event)).to be_valid
   end
 
+  it "255文字のcontentは有効である" do
+    expect(FactoryBot.build(:event, content: "t" * 255)).to be_valid
+  end
+  
   it "256文字のcontentは無効である" do
     event = FactoryBot.build(:event, content: "t" * 256)
     event.valid?

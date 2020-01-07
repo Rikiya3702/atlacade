@@ -101,6 +101,11 @@
 
 .shop-info{ width: 90%; }
 
+#event_list{
+  li{
+    list-style: none;
+  }
+}
 .event{
   width: 80%;
   border-top: 1px #ddd solid;

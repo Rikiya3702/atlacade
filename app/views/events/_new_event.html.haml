@@ -1,0 +1,6 @@
+- if has_edit_authority?(@user, @shop)
+  = link_to "#NewEvent", class:"atl-btn", role:"button", data:{toggle: "collapse"},  aria:{expanded:"true", controls:"Events"} do
+    %i.far.fa-plus-square.fa-2x
+    イベント登録
+  #NewEvent.collapse.text-center.mx-auto
+    = render "./events/new_event_form"
